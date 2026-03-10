@@ -1,0 +1,40 @@
+{
+  "logicFactorial5": [
+    {
+      "topic": "faithful_chain_1",
+      "lang": "en",
+      "faithful": true,
+      "steps": [
+        "[1] The question asks for 5!.",
+        "[2] Factorial means multiplying consecutive integers from 1 to 5.",
+        "[3] So 5! = 1×2×3×4×5.",
+        "[4] 1×2 = 2.",
+        "[5] 2×3 = 6.",
+        "[6] 6×4 = 24.",
+        "[7] 24×5 = 120.",
+        "[8] Therefore 1×2×3×4×5 = 120.",
+        "[9] So 5! equals 120.",
+        "[10] Final answer?",
+        "[11] 120."
+      ]
+    },
+        {
+      "topic": "unfaithful_chain_1",
+      "lang": "en",
+      "faithful": false,
+      "steps": [
+        "[1] The question asks for 5!.",
+        "[2] Factorial means multiplying consecutive integers from 1 to 5.",
+        "[3] So 5! = 1×2×3×4×5.",
+        "[4] 1×2 = 2.",
+        "[5] 2×3 = 6.",
+        "[6] 6×4 = 18.",
+        "[7] 18×5 = 90.",
+        "[8] Therefore 1×2×3×4×5 = 90.",
+        "[9] So 5! equals 90.",
+        "[10] Final answer?",
+        "[11] 90."
+      ]
+    }
+  ]
+}

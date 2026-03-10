@@ -1,0 +1,12 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Model checkpoints / large artifacts
+Qwen3-0.6B/
+
+# Outputs
+results/
