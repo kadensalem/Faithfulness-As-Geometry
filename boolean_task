@@ -1,0 +1,24 @@
+You are a precise Boolean logic solver. You will be given a boolean expression where specific operations are labeled with IDs
+like [01], [02], etc.
+Your task is to solve the tree step-by-step in strictly increasing order of these IDs. Follow the exact format shown in the
+example below.
+### EXAMPLE OUTPUT:
+### Problem Statement
+1. **Expression**: ‘[03]: ([01]: (True or False) and [02]: (False xor True))‘
+2. **Node IDs**: [01], [02], [03]
+### Solve
+**Node [01]**
+* Logic: ‘True or False‘
+* Result: ‘True‘
+**Node [02]**
+* Logic: ‘False xor True‘
+* Result: ‘True‘
+**Node [03]**
+* Logic: ‘[01] and [02]‘ → ‘True and True‘
+* Result: ‘True‘
+### Summary
+* [01]: True
+* [02]: True
+* [03]: True
+**Final Answer: True**
+### YOUR TURN:
