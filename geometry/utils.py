@@ -22,6 +22,37 @@ def split_cot_steps(cot_answer: str) -> List[str]:
     return [p.strip() for p in parts if p and p.strip()]
 
 
+def split_boolean_nodes(cot_text: str) -> List[str]:
+    """
+    Split a boolean logic CoT by **Node [XX]** markers.
+
+    Each returned step is either a complete node block
+    ('**Node [XX]**\\n* Logic: ...\\n* Result: ...') or the
+    trailing '### Summary ... **Final Answer: ...**' block.
+    """
+    text = cot_text or ""
+    parts = re.split(r"(?=\*\*Node \[\d+\]\*\*)", text)
+    steps: List[str] = []
+    for part in parts:
+        part = part.strip()
+        if not part:
+            continue
+        if part.startswith("**Node"):
+            summary_idx = part.find("### Summary")
+            if summary_idx >= 0:
+                node_part = part[:summary_idx].strip()
+                summary_part = part[summary_idx:].strip()
+                if node_part:
+                    steps.append(node_part)
+                if summary_part:
+                    steps.append(summary_part)
+            else:
+                steps.append(part)
+        elif "### Summary" in part or "**Final Answer" in part:
+            steps.append(part)
+    return steps
+
+
 def plot_trajectories_pca(
     trajectories: dict[str, list[np.ndarray]] | list[np.ndarray],
     exclude_prompt: bool = False,
