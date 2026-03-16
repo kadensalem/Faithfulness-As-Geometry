@@ -1,21 +1,21 @@
 #!/bin/bash
-#SBATCH --job-name bool-gen
+#SBATCH --job-name mcq-gen
 #SBATCH --account=<YOUR_ACCOUNT>
 #SBATCH --partition=<YOUR_PARTITION>
 #SBATCH --qos=<YOUR_QOS>
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:a100:1
-#SBATCH --time=1:00:00
+#SBATCH --time=2:00:00
 #SBATCH --mem=64GB
 #SBATCH --requeue
-#SBATCH -o logs/bool-gen-%j.out
-#SBATCH -e logs/bool-gen-%j.err
+#SBATCH -o logs/mcq-gen-%j.out
+#SBATCH -e logs/mcq-gen-%j.err
 
-# ─── Phase 1: Generate boolean CoTs using LLaMA-3-8B-Instruct ───
+# ─── Phase 1: Generate MCQ CoTs using LLaMA-3-8B-Instruct ───
 #
-# This job prompts the model to produce structured boolean logic CoTs.
-# In ground_truth mode (no GPU needed) the model is not loaded; switch
-# --mode to "model" to actually run inference on the GPU.
+# This job loads OpenBookQA, prompts the model with the structured
+# Premise/Reasoning/Conclusion format, and saves CoT datasets for
+# the unlearning and geometry pipelines.
 
 date
 mkdir -p logs
@@ -26,7 +26,6 @@ mkdir -p logs
 # conda activate fur
 
 # ── HuggingFace cache (point to fast local storage on CHPC) ──
-# CHPC home dirs are small; use scratch or group space for the cache
 export HF_HOME="/scratch/general/vast/<YOUR_UID>/hf_cache"
 export HF_DATASETS_CACHE="${HF_HOME}/datasets"
 mkdir -p "$HF_HOME" "$HF_DATASETS_CACHE"
@@ -36,31 +35,26 @@ nvidia-smi
 
 # ── Configuration ──
 MODEL_NAME="meta-llama/Meta-Llama-3-8B-Instruct"
-MODE="model"           # "ground_truth" for CPU-only, "model" for GPU inference
-NUM_STRUCTURES=10      # number of distinct boolean tree topologies
-INSTANCES_PER=5        # CoT instances per topology
-DEPTHS="2,3,4"         # tree depths to sample from
+SPLIT="test"
+MAX_INSTANCES=200
 SEED=42
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$PROJECT_ROOT"
 
 echo "Project root: $PROJECT_ROOT"
-echo "Mode: $MODE"
 echo "Model: $MODEL_NAME"
-echo "Structures: $NUM_STRUCTURES, Instances/struct: $INSTANCES_PER"
-echo "Depths: $DEPTHS"
+echo "Split: $SPLIT"
+echo "Max instances: $MAX_INSTANCES"
 echo "Seed: $SEED"
 
-python generate_boolean_cots.py \
-  --mode "$MODE" \
+python generate_mcq_cots.py \
   --hf_model "$MODEL_NAME" \
-  --num_structures "$NUM_STRUCTURES" \
-  --instances_per "$INSTANCES_PER" \
-  --depths "$DEPTHS" \
+  --split "$SPLIT" \
+  --max_instances "$MAX_INSTANCES" \
   --seed "$SEED" \
   --device cuda:0 \
-  --system_prompt_file boolean_task \
+  --system_prompt_file context/structured_reasoning_prompt.tx \
   --output_dir data
 
 echo "Phase 1 complete."

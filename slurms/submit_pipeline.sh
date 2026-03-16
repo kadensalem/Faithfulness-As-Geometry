@@ -11,7 +11,7 @@
 set -euo pipefail
 mkdir -p logs
 
-echo "Submitting Phase 1: Generate boolean CoTs..."
+echo "Submitting Phase 1: Generate MCQ CoTs (OpenBookQA)..."
 JOB1=$(sbatch --parsable slurms/run_generate.sh)
 echo "  Job ID: $JOB1"
 
@@ -25,9 +25,9 @@ echo "  Job ID: $JOB3"
 
 echo ""
 echo "Pipeline submitted:"
-echo "  Phase 1 (generate):     $JOB1"
-echo "  Phase 2 (unlearn):      $JOB2  (after $JOB1)"
-echo "  Phase 3+4 (trajectory): $JOB3  (after $JOB2)"
+echo "  Phase 1 (generate MCQ CoTs):  $JOB1"
+echo "  Phase 2 (unlearn):            $JOB2  (after $JOB1)"
+echo "  Phase 3+4 (trajectory):       $JOB3  (after $JOB2)"
 echo ""
 echo "Monitor with: squeue -u \$USER"
 echo "Cancel all:   scancel $JOB1 $JOB2 $JOB3"

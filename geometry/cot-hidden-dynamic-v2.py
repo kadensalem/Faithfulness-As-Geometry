@@ -7,19 +7,19 @@ Key differences from the original cot-hidden-dynamic.py:
   1. --layer_index / --layer_indices: extract from a specific transformer
      layer instead of the last hidden state.
   2. --pooling anchor_last: extract the hidden state at the final token
-     of the '* Result:' line (or '**Final Answer:**') instead of
+     of the anchor line (Conclusion / Final Answer) instead of
      mean-pooling over the step.
-  3. --boolean: use **Node [XX]** block boundaries instead of sentence
-     splitting.
+  3. --mcq: use Answer X: block boundaries for MCQ CoTs.
+     --boolean: use **Node [XX]** block boundaries (legacy).
 
 Usage:
     python geometry/cot-hidden-dynamic-v2.py \
         --hf_model meta-llama/Meta-Llama-3-8B-Instruct \
-        --data_file data/boolean_cots.json \
+        --data_file data/mcq_cots.json \
         --pooling anchor_last --accumulation cumulative \
-        --layer_index 20 --boolean \
+        --layer_index 20 --mcq \
         --similarity_order 1 \
-        --save_dir results/boolean_trajectories
+        --save_dir results/mcq_trajectories
 """
 
 import argparse
@@ -34,7 +34,7 @@ import pandas as pd
 import torch
 from transformers import AutoTokenizer, AutoModel, AutoModelForCausalLM
 
-from utils import split_cot_steps, split_boolean_nodes
+from utils import split_cot_steps, split_boolean_nodes, split_mcq_answer_blocks
 from utils_stat import (
     pairwise_similarity,
     pairwise_menger_curvature_similarity,
@@ -55,11 +55,16 @@ class LogicItem:
     faithful: Optional[bool] = None
 
 
-def load_dataset_any_logic(path: str, boolean: bool = False) -> List[LogicItem]:
+def load_dataset_any_logic(path: str, boolean: bool = False, mcq: bool = False) -> List[LogicItem]:
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
     items: List[LogicItem] = []
-    splitter = split_boolean_nodes if boolean else split_cot_steps
+    if mcq:
+        splitter = split_mcq_answer_blocks
+    elif boolean:
+        splitter = split_boolean_nodes
+    else:
+        splitter = split_cot_steps
     for logic_key, seq_list in data.items():
         if not isinstance(seq_list, list):
             continue
@@ -86,18 +91,28 @@ def load_dataset_any_logic(path: str, boolean: bool = False) -> List[LogicItem]:
 # ──────────────────────────────────────────────────────────────────────
 
 _RESULT_RE = re.compile(r"\*\s*Result:\s*'(True|False)'")
-_ANSWER_RE = re.compile(r"\*\*Final Answer:\s*(True|False)\*\*")
+_BOOL_ANSWER_RE = re.compile(r"\*\*Final Answer:\s*(True|False)\*\*")
+_CONCLUSION_RE = re.compile(r"\*\s*Conclusion:\s*[SR]")
+_MCQ_ANSWER_RE = re.compile(r"\*\*Final Answer\*\*\s*\n?\s*Answer\s*:\s*[A-Za-z]")
 
 
 def _find_anchor_suffix(step: str) -> str:
     """
-    Return the substring ending at the anchor point (Result line or
-    Final Answer line) within a single step.
+    Return the substring ending at the anchor point within a single step.
+
+    Supports both boolean format (Result / Final Answer: True|False) and
+    MCQ format (Conclusion: S|R / **Final Answer** Answer: X).
     """
+    m = _CONCLUSION_RE.search(step)
+    if m:
+        return step[: m.end()]
+    m = _MCQ_ANSWER_RE.search(step)
+    if m:
+        return step[: m.end()]
     m = _RESULT_RE.search(step)
     if m:
         return step[: m.end()]
-    m = _ANSWER_RE.search(step)
+    m = _BOOL_ANSWER_RE.search(step)
     if m:
         return step[: m.end()]
     return step
@@ -259,13 +274,15 @@ def _count_layers(model) -> int:
 
 def main():
     ap = argparse.ArgumentParser(
-        description="Hidden-state trajectory analysis (v2) — layer selection, anchor pooling, boolean nodes"
+        description="Hidden-state trajectory analysis (v2) — layer selection, anchor pooling, MCQ/boolean nodes"
     )
     ap.add_argument("--hf_model", type=str, required=False)
     ap.add_argument("--hf_models", type=str, default=None)
-    ap.add_argument("--data_file", type=str, default="data/boolean_cots.json")
+    ap.add_argument("--data_file", type=str, default="data/mcq_cots.json")
+    ap.add_argument("--mcq", action="store_true",
+                     help="Use Answer X: block boundaries for MCQ CoTs")
     ap.add_argument("--boolean", action="store_true",
-                     help="Use **Node [XX]** block boundaries instead of sentence splitting")
+                     help="Use **Node [XX]** block boundaries (legacy)")
     ap.add_argument("--pooling", type=str, default="anchor_last",
                      choices=["step_mean", "context_mean", "last",
                               "context_aware_mean", "anchor_last"])
@@ -286,7 +303,7 @@ def main():
     ap.add_argument("--attn_implementation", type=str, default=None)
     ap.add_argument("--sections", type=str, default="all")
     ap.add_argument("--similarity_order", type=int, default=1)
-    ap.add_argument("--save_dir", type=str, default="results/boolean_trajectories")
+    ap.add_argument("--save_dir", type=str, default="results/mcq_trajectories")
     ap.add_argument("--hide_axis_text", action="store_true")
     ap.add_argument("--color_scale", type=str, default="RdBu_r")
     ap.add_argument("--save_html", action="store_true")
@@ -294,7 +311,7 @@ def main():
 
     ensure_dir(args.save_dir)
 
-    items = load_dataset_any_logic(args.data_file, boolean=args.boolean)
+    items = load_dataset_any_logic(args.data_file, boolean=args.boolean, mcq=args.mcq)
     if args.sections != "all":
         keep = {s.strip() for s in args.sections.split(",") if s.strip()}
         items = [it for it in items if it.logic in keep]
@@ -414,6 +431,7 @@ def main():
                 "similarity_order": int(args.similarity_order),
                 "layer_index": layer_idx,
                 "layer_tag": layer_tag,
+                "mcq": args.mcq,
                 "boolean": args.boolean,
                 "sections": args.sections,
                 "hf_model": mid,

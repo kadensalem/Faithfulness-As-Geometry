@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-Phase 2b: NPO unlearning adapted for boolean logic tree node steps.
+Phase 2: NPO unlearning adapted for MCQ answer-block reasoning steps.
 
-For each boolean CoT instance and each node step, unlearns the step via
-Negative Preference Optimization (NPO) and checks whether the model's
+For each MCQ CoT instance and each answer-block step, unlearns the step
+via Negative Preference Optimization (NPO) and checks whether the model's
 final answer flips.  Steps where the answer flips are classified as
 *faithful*; steps where it does not are *unfaithful*.
 
 Usage:
-    python boolean_unlearn.py \
+    python mcq_unlearn.py \
         --model_name meta-llama/Meta-Llama-3-8B-Instruct \
-        --data_file data/boolean_cots_fur.jsonl \
+        --data_file data/mcq_cots_fur.jsonl \
         --epochs 5 --lr 1e-5
 """
 
@@ -27,56 +27,48 @@ if FUR_PATH not in sys.path:
 import argparse
 import json
 import gc
-import copy
 import random
 
 import torch
-import torch.nn.functional as F
-import numpy as np
 from torch.utils.data import DataLoader
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 from data import (
     FRCollator,
     SegmentOTFDataset,
-    IGNORE_IDX,
-    qcot_encoder,
-    left_pad_sequence,
-    make_targets,
 )
 from unlearn import (
     compute_loss,
     get_linear_schedule_with_warmup,
-    get_batch_loss,
 )
 from evaluate import (
     answer_probabilities,
     completion_probabilities,
     complete,
     generation_fixed_cot,
-    ANSWER_LETTERS,
 )
 from util import set_random_seed
-from boolean_dataload import (
-    BooleanDataHandler,
-    segment_boolean_cot,
-    load_boolean_fur_data,
+from mcq_dataload import (
+    MCQDataHandler,
+    segment_mcq_cot,
+    load_mcq_fur_data,
 )
 
 
 # ──────────────────────────────────────────────────────────────────────
-# Adapted segmentation strategy for boolean node blocks
+# Segmentation strategy for MCQ answer blocks
 # ──────────────────────────────────────────────────────────────────────
 
-def boolean_make_targets(cot_dict: dict) -> list:
+def mcq_make_targets(cot_dict: dict) -> list:
     """
-    Build forget targets from a boolean CoT using node-block segmentation.
-    Each node block becomes a (completion, prefix) pair.
+    Build forget targets from an MCQ CoT using answer-block segmentation.
+    Each answer block (Premise/Reasoning/Conclusion) becomes a
+    (completion, prefix) pair.
     """
     prompt = cot_dict["cot_prompt"]
     segments = cot_dict.get("segmented_cot")
     if segments is None:
-        segments = segment_boolean_cot(cot_dict["cot"])
+        segments = segment_mcq_cot(cot_dict["cot"])
 
     targets = []
     prefixes: list = []
@@ -90,7 +82,7 @@ def boolean_make_targets(cot_dict: dict) -> list:
     return targets
 
 
-def boolean_cot_to_otfd(
+def mcq_cot_to_otfd(
     target: dict,
     all_cots: list,
     tokenizer,
@@ -98,16 +90,14 @@ def boolean_cot_to_otfd(
     stepwise: bool = True,
     step_idx: int = 0,
 ):
-    """
-    Build a SegmentOTFDataset for boolean node-step unlearning.
-    """
+    """Build a SegmentOTFDataset for MCQ answer-step unlearning."""
     pool = [c for c in all_cots if c["id"] != target["id"]]
 
-    forget_targets = boolean_make_targets(target)
+    forget_targets = mcq_make_targets(target)
     retain_pool = random.sample(pool, min(n_retain, len(pool)))
     retain_targets = []
     for r in retain_pool:
-        retain_targets.extend(boolean_make_targets(r))
+        retain_targets.extend(mcq_make_targets(r))
 
     return SegmentOTFDataset(
         forget_targets,
@@ -122,9 +112,9 @@ def boolean_cot_to_otfd(
 # Evaluation helpers
 # ──────────────────────────────────────────────────────────────────────
 
-def evaluate_boolean(model, tokenizer, dh, target, step_idx):
+def evaluate_mcq(model, tokenizer, dh, target, step_idx):
     """
-    Evaluate the model after (or before) unlearning a specific node step.
+    Evaluate the model after (or before) unlearning a specific answer step.
     Returns a dict with probabilities, predictions, and new CoT.
     """
     model.eval()
@@ -137,7 +127,7 @@ def evaluate_boolean(model, tokenizer, dh, target, step_idx):
 
     segments = target.get("segmented_cot")
     if segments is None:
-        segments = segment_boolean_cot(cot_text)
+        segments = segment_mcq_cot(cot_text)
 
     unlearned_step = segments[step_idx] if step_idx < len(segments) else ""
     previous_steps = segments[:step_idx]
@@ -175,17 +165,17 @@ def evaluate_boolean(model, tokenizer, dh, target, step_idx):
 # Single-instance unlearning loop
 # ──────────────────────────────────────────────────────────────────────
 
-def unlearn_single_node(
+def unlearn_single_step(
     model_id: str,
     tokenizer,
     args,
     target: dict,
     step_idx: int,
     all_cots: list,
-    dh: BooleanDataHandler,
+    dh: MCQDataHandler,
 ):
     """
-    Unlearn a single node step from one boolean CoT instance.
+    Unlearn a single answer-block step from one MCQ CoT instance.
     Returns per-epoch evaluation results.
     """
     model = AutoModelForCausalLM.from_pretrained(
@@ -199,7 +189,7 @@ def unlearn_single_node(
     device = model.device
     collator = FRCollator(tokenizer, device=device)
 
-    dataset = boolean_cot_to_otfd(
+    dataset = mcq_cot_to_otfd(
         target, all_cots, tokenizer,
         n_retain=4, stepwise=True, step_idx=step_idx,
     )
@@ -223,7 +213,7 @@ def unlearn_single_node(
     )
 
     results_per_epoch = {}
-    results_per_epoch[0] = evaluate_boolean(model, tokenizer, dh, target, step_idx)
+    results_per_epoch[0] = evaluate_mcq(model, tokenizer, dh, target, step_idx)
 
     for epoch in range(epochs):
         model.train()
@@ -237,7 +227,7 @@ def unlearn_single_node(
             scheduler.step()
             optimizer.zero_grad()
 
-        epoch_result = evaluate_boolean(model, tokenizer, dh, target, step_idx)
+        epoch_result = evaluate_mcq(model, tokenizer, dh, target, step_idx)
         results_per_epoch[epoch + 1] = epoch_result
 
     del collator, loader, dataset, scheduler, optimizer, model, oracle_model
@@ -253,7 +243,7 @@ def unlearn_single_node(
 
 def classify_faithfulness(results_per_epoch: dict) -> bool:
     """
-    A node step is *faithful* if unlearning it causes the model's
+    A reasoning step is *faithful* if unlearning it causes the model's
     prediction to change relative to the pre-unlearning prediction.
     """
     if results_per_epoch is None:
@@ -274,22 +264,22 @@ def classify_faithfulness(results_per_epoch: dict) -> bool:
 
 def main():
     ap = argparse.ArgumentParser(
-        description="NPO unlearning for boolean CoT node steps"
+        description="NPO unlearning for MCQ CoT answer-block steps"
     )
     ap.add_argument("--model_name", type=str,
-                     default="meta-llama/Meta-Llama-3-8B-Instruct")
+                    default="meta-llama/Meta-Llama-3-8B-Instruct")
     ap.add_argument("--data_file", type=str,
-                     default="data/boolean_cots_fur.jsonl")
+                    default="data/mcq_cots_fur.jsonl")
     ap.add_argument("--method", type=str, default="npo_KL")
     ap.add_argument("--epochs", type=int, default=5)
     ap.add_argument("--lr", type=float, default=1e-5)
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--max_instances", type=int, default=50,
-                     help="Max instances to process")
+                    help="Max instances to process")
     ap.add_argument("--output_file", type=str,
-                     default="data/boolean_faithfulness.jsonl")
+                    default="data/mcq_faithfulness.jsonl")
     ap.add_argument("--system_prompt_file", type=str,
-                     default="boolean_task")
+                    default="context/structured_reasoning_prompt.tx")
     args = ap.parse_args()
 
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -300,8 +290,8 @@ def main():
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    dh = BooleanDataHandler(system_prompt_path=args.system_prompt_file)
-    all_cots = load_boolean_fur_data(args.data_file)
+    dh = MCQDataHandler(system_prompt_path=args.system_prompt_file)
+    all_cots = load_mcq_fur_data(args.data_file)
     random.shuffle(all_cots)
 
     os.makedirs(os.path.dirname(args.output_file) or ".", exist_ok=True)
@@ -316,32 +306,31 @@ def main():
     for idx, target in enumerate(all_cots[:args.max_instances]):
         segments = target.get("segmented_cot")
         if segments is None:
-            segments = segment_boolean_cot(target["cot"])
+            segments = segment_mcq_cot(target["cot"])
             target["segmented_cot"] = segments
 
-        node_ids = target.get("node_ids", [])
         n_steps = len(segments)
 
         print(f"\n[{idx + 1}/{min(len(all_cots), args.max_instances)}] "
               f"Instance: {target['id']} ({n_steps} steps)")
 
-        node_faithfulness = {}
+        step_faithfulness = {}
         for step_idx in range(n_steps):
             check_id = f"{target['id']}_step{step_idx}"
             if check_id in processed:
                 print(f"  Step {step_idx}: already processed, skipping")
                 continue
 
-            step_label = node_ids[step_idx] if step_idx < len(node_ids) else f"summary"
+            step_label = _step_label(segments, step_idx)
             print(f"  Unlearning step {step_idx} ({step_label})...")
 
-            results = unlearn_single_node(
+            results = unlearn_single_step(
                 model_id, tokenizer, args,
                 target, step_idx, all_cots, dh,
             )
 
             is_faithful = classify_faithfulness(results)
-            node_faithfulness[step_label] = is_faithful
+            step_faithfulness[step_label] = is_faithful
 
             record = {
                 "id": check_id,
@@ -349,15 +338,28 @@ def main():
                 "step_idx": step_idx,
                 "step_label": step_label,
                 "faithful": is_faithful,
-                "logic_key": target.get("logic_key", ""),
-                "ground_truth": target.get("ground_truth"),
+                "correct_letter": target.get("correct_letter", ""),
                 "unlearning_results": results,
             }
 
             with open(args.output_file, "a", encoding="utf-8") as f:
                 f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
-        print(f"  Node faithfulness: {node_faithfulness}")
+        print(f"  Step faithfulness: {step_faithfulness}")
+
+
+def _step_label(segments: list, step_idx: int) -> str:
+    """Derive a human-readable label for a segment (e.g. 'Answer_A' or 'Final')."""
+    if step_idx >= len(segments):
+        return "unknown"
+    seg = segments[step_idx].strip()
+    import re
+    m = re.match(r"Answer\s+([A-Za-z])\s*:", seg)
+    if m:
+        return f"Answer_{m.group(1).upper()}"
+    if "**Final Answer**" in seg or re.match(r"Answer\s*:", seg):
+        return "Final"
+    return f"step_{step_idx}"
 
 
 if __name__ == "__main__":

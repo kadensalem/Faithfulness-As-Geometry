@@ -222,9 +222,9 @@ def main():
                      help="Directory containing .npy embedding files")
     ap.add_argument("--steps_dir", type=str, default=None,
                      help="Directory with step JSON metadata (defaults to sibling of embeddings_dir)")
-    ap.add_argument("--geometry_data", type=str, default="data/boolean_cots.json")
+    ap.add_argument("--geometry_data", type=str, default="data/mcq_cots.json")
     ap.add_argument("--faithfulness_file", type=str,
-                     default="data/boolean_faithfulness.jsonl")
+                     default="data/mcq_faithfulness.jsonl")
     ap.add_argument("--orders", type=str, default="0,1,2,3")
     ap.add_argument("--save_dir", type=str, default="results/comparison")
     ap.add_argument("--color_scale", type=str, default="RdBu_r")

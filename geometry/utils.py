@@ -53,6 +53,37 @@ def split_boolean_nodes(cot_text: str) -> List[str]:
     return steps
 
 
+def split_mcq_answer_blocks(cot_text: str) -> List[str]:
+    """
+    Split a structured MCQ CoT by ``Answer X:`` markers.
+
+    Each returned step is either an answer-evaluation block
+    (``Answer A:\\n* Premise: ...\\n* Reasoning: ...\\n* Conclusion: S|R``)
+    or the trailing ``**Final Answer** ...`` block.
+    """
+    text = cot_text or ""
+    parts = re.split(r"(?=Answer\s+[A-Za-z]\s*:)", text)
+    steps: List[str] = []
+    for part in parts:
+        part = part.strip()
+        if not part:
+            continue
+        if re.match(r"Answer\s+[A-Za-z]\s*:", part):
+            final_idx = part.find("**Final Answer**")
+            if final_idx >= 0:
+                answer_part = part[:final_idx].strip()
+                final_part = part[final_idx:].strip()
+                if answer_part:
+                    steps.append(answer_part)
+                if final_part:
+                    steps.append(final_part)
+            else:
+                steps.append(part)
+        elif "**Final Answer**" in part or re.search(r"Answer\s*:", part):
+            steps.append(part)
+    return steps
+
+
 def plot_trajectories_pca(
     trajectories: dict[str, list[np.ndarray]] | list[np.ndarray],
     exclude_prompt: bool = False,

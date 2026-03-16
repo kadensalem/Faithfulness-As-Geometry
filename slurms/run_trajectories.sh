@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name bool-traj
+#SBATCH --job-name mcq-traj
 #SBATCH --account=<YOUR_ACCOUNT>
 #SBATCH --partition=<YOUR_PARTITION>
 #SBATCH --qos=<YOUR_QOS>
@@ -8,14 +8,14 @@
 #SBATCH --time=2:00:00
 #SBATCH --mem=80GB
 #SBATCH --requeue
-#SBATCH -o logs/bool-traj-%j.out
-#SBATCH -e logs/bool-traj-%j.err
+#SBATCH -o logs/mcq-traj-%j.out
+#SBATCH -e logs/mcq-traj-%j.err
 
 # ─── Phases 3 + 4: Extract trajectory embeddings & compare ───
 #
-# Phase 3: Load LLaMA-3-8B, run each boolean CoT through the model
+# Phase 3: Load LLaMA-3-8B, run each MCQ CoT through the model
 #   with output_hidden_states=True, extract the hidden state at the
-#   anchor-last token of each node step from a middle-to-late layer.
+#   anchor-last token of each answer step from a middle-to-late layer.
 #
 # Phase 4: Load the embeddings + faithfulness labels from Phase 2,
 #   group by faithful/unfaithful, compute similarity matrices at
@@ -39,16 +39,16 @@ nvidia-smi
 # ── Configuration ──
 MODEL_NAME="meta-llama/Meta-Llama-3-8B-Instruct"
 LAYER_INDEX="auto"          # "auto" picks middle-to-late (layers 12-24 for 8B)
-POOLING="anchor_last"       # extract final token of Result/Final Answer line
+POOLING="anchor_last"       # extract final token of Conclusion/Final Answer line
 ACCUMULATION="cumulative"   # context-cumulative trajectory
 SEED=42
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$PROJECT_ROOT"
 
-GEO_DATA="data/boolean_cots.json"
-FAITH_FILE="results/boolean_faithfulness.jsonl"
-EMBED_DIR="results/boolean_trajectories"
+GEO_DATA="data/mcq_cots.json"
+FAITH_FILE="results/mcq_faithfulness.jsonl"
+EMBED_DIR="results/mcq_trajectories"
 COMPARE_DIR="results/comparison"
 mkdir -p "$EMBED_DIR" "$COMPARE_DIR"
 
@@ -67,7 +67,7 @@ echo "═══ Phase 3: Extracting trajectory embeddings ═══"
 python geometry/cot-hidden-dynamic-v2.py \
   --hf_model "$MODEL_NAME" \
   --data_file "$GEO_DATA" \
-  --boolean \
+  --mcq \
   --pooling "$POOLING" \
   --accumulation "$ACCUMULATION" \
   --layer_index "$LAYER_INDEX" \
