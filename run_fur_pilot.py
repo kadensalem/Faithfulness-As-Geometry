@@ -111,6 +111,9 @@ def build_fur_args(args):
         lr=args.lr,
         pos=args.pos,
         ff2=args.ff2,
+        kl_coeff=args.kl_coeff,
+        npo_coeff=args.npo_coeff,
+        beta=args.beta,
         mmlu=0,
         gsm=0,
         num_p=None,
@@ -127,7 +130,7 @@ def main():
     parser.add_argument("--model_name", default="meta-llama/Meta-Llama-3-8B-Instruct")
     parser.add_argument("--fur_file", default="data_tune_30/mcq_cots_fur.jsonl")
     parser.add_argument("--question_ids", nargs="+",
-                        default=["openbook_1955", "openbook_508", "openbook_9-491"],
+                        default=["openbook_7-156", "openbook_278", "openbook_7-969"],
                         help="IDs from the 'id' field of the jsonl to unlearn")
     parser.add_argument("--output_file", default="data/pilot_fur_results.jsonl")
     parser.add_argument("--epochs", type=int, default=5)
@@ -138,6 +141,14 @@ def main():
                         help="Filter function tokens during unlearning")
     parser.add_argument("--ff2", action="store_true",
                         help="Optimize only MLP down-projection layers")
+    parser.add_argument("--step_ids", nargs="*", type=int, default=None,
+                        help="Step indices to run (default: all). E.g. --step_ids 0 2")
+    parser.add_argument("--kl_coeff", type=float, default=1.0,
+                        help="KL retain loss coefficient in NPO+KL (default: 1.0)")
+    parser.add_argument("--npo_coeff", type=float, default=1.0,
+                        help="NPO forget loss coefficient (default: 1.0)")
+    parser.add_argument("--beta", type=float, default=0.1,
+                        help="NPO beta temperature — controls sharpness of forget gradient (default: 0.1)")
     args = parser.parse_args()
 
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -217,6 +228,10 @@ def main():
         print(f"Question {t_idx+1}/{len(targets)}: {target['id']}  ({n_steps} steps)")
 
         for step_idx in range(n_steps):
+            if args.step_ids is not None and step_idx not in args.step_ids:
+                print(f"  [skip-filter] step {step_idx} not in --step_ids")
+                continue
+
             check_id = f"{target['question']}_{step_idx}"
 
             if check_id in completed:

@@ -5,7 +5,7 @@
 #SBATCH --qos=soc-gpu-class-grn
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:rtxpr6000bl:1
-#SBATCH --time=6:00:00
+#SBATCH --time=2:00:00
 #SBATCH --mem=80GB
 #SBATCH --requeue
 #SBATCH -o logs/fur-pilot-%j.out
@@ -40,24 +40,56 @@ cd "$PROJECT_ROOT"
 
 MODEL_NAME="meta-llama/Meta-Llama-3-8B-Instruct"
 FUR_FILE="data_tune_30/mcq_cots_fur.jsonl"
-OUTPUT_FILE="data/pilot_fur_results.jsonl"
-EPOCHS=5
+EPOCHS=1
 LR="5e-5"
 SEED=42
 
 echo "Project root : $PROJECT_ROOT"
 echo "Model        : $MODEL_NAME"
 echo "Data         : $FUR_FILE"
-echo "Output       : $OUTPUT_FILE"
 echo "Epochs/LR    : $EPOCHS / $LR"
 
+# ── Condition A: baseline (ff2, KL_coeff=1.0) ──────────────────────────────
+echo "--- Condition A: ff2, kl_coeff=1.0 ---"
 python run_fur_pilot.py \
     --model_name "$MODEL_NAME" \
     --fur_file "$FUR_FILE" \
     --question_ids openbook_1955 openbook_508 openbook_9-491 \
-    --output_file "$OUTPUT_FILE" \
+    --step_ids 0 \
+    --output_file "data/pilot_cond_A.jsonl" \
     --epochs "$EPOCHS" \
     --lr "$LR" \
+    --seed "$SEED" \
+    --ff2 \
+    --pos
+
+# ── Condition B: ff2 + stronger retain (KL_coeff=2.0) ──────────────────────
+echo "--- Condition B: ff2, kl_coeff=2.0 ---"
+python run_fur_pilot.py \
+    --model_name "$MODEL_NAME" \
+    --fur_file "$FUR_FILE" \
+    --question_ids openbook_1955 openbook_508 openbook_9-491 \
+    --step_ids 0 \
+    --output_file "data/pilot_cond_B.jsonl" \
+    --epochs "$EPOCHS" \
+    --lr "$LR" \
+    --kl_coeff 2.0 \
+    --seed "$SEED" \
+    --ff2 \
+    --pos
+
+# ── Condition C: lower beta (0.05) + stronger retain (KL_coeff=3.0) + 5 epochs
+echo "--- Condition C: ff2, beta=0.05, kl_coeff=3.0, epochs=5 ---"
+python run_fur_pilot.py \
+    --model_name "$MODEL_NAME" \
+    --fur_file "$FUR_FILE" \
+    --question_ids openbook_1955 openbook_508 openbook_9-491 \
+    --step_ids 0 \
+    --output_file "data/pilot_cond_C.jsonl" \
+    --epochs 5 \
+    --lr "$LR" \
+    --beta 0.05 \
+    --kl_coeff 3.0 \
     --seed "$SEED" \
     --ff2 \
     --pos

@@ -1,41 +1,0 @@
-`torch_dtype` is deprecated! Use `dtype` instead!
-/uufs/chpc.utah.edu/common/home/u1427573/software/pkg/miniforge3/envs/fur/lib/python3.12/site-packages/torch/cuda/__init__.py:235: UserWarning: 
-NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition with CUDA capability sm_120 is not compatible with the current PyTorch installation.
-The current PyTorch install supports CUDA capabilities sm_50 sm_60 sm_70 sm_75 sm_80 sm_86 sm_90.
-If you want to use the NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/
-
-  warnings.warn(
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:16<00:50, 16.85s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:25<00:24, 12.11s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:38<00:12, 12.28s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:41<00:00,  8.66s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:41<00:00, 10.31s/it]
-Computing nocot/cot probs:   0%|          | 0/30 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
-Computing nocot/cot probs:   0%|          | 0/30 [00:00<?, ?it/s]
-Traceback (most recent call last):
-  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/run_fur_pilot.py", line 262, in <module>
-    main()
-  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/run_fur_pilot.py", line 167, in main
-    adapted.append(adapt_record(rec, model, tokenizer, DH))
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/run_fur_pilot.py", line 86, in adapt_record
-    _, nocot_probs, _ = answer_probabilities(model, tokenizer, DH, raw)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/fur/parametric-faithfulness-2/evaluate.py", line 34, in answer_probabilities
-    answer_output = model.generate(input_ids=answer_inputs, max_new_tokens=10,
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/uufs/chpc.utah.edu/common/home/u1427573/software/pkg/miniforge3/envs/fur/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/uufs/chpc.utah.edu/common/home/u1427573/software/pkg/miniforge3/envs/fur/lib/python3.12/site-packages/transformers/generation/utils.py", line 2431, in generate
-    self._prepare_special_tokens(generation_config, kwargs_has_attention_mask, device=device)
-  File "/uufs/chpc.utah.edu/common/home/u1427573/software/pkg/miniforge3/envs/fur/lib/python3.12/site-packages/transformers/generation/utils.py", line 2111, in _prepare_special_tokens
-    and isin_mps_friendly(elements=eos_token_tensor, test_elements=pad_token_tensor).any()
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/uufs/chpc.utah.edu/common/home/u1427573/software/pkg/miniforge3/envs/fur/lib/python3.12/site-packages/transformers/pytorch_utils.py", line 345, in isin_mps_friendly
-    return torch.isin(elements, test_elements)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-RuntimeError: CUDA error: no kernel image is available for execution on the device
-CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
-For debugging consider passing CUDA_LAUNCH_BLOCKING=1
-Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
-
-Traceback (most recent call last):
-  File "<string>", line 3, in <module>
-FileNotFoundError: [Errno 2] No such file or directory: 'data/smoke_fur_results.jsonl'

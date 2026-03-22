@@ -9,6 +9,7 @@ import re
 import json
 import os
 import sys
+import torch
 from typing import List, Optional
 
 FUR_PATH = os.path.join(
@@ -111,3 +112,54 @@ class MCQDataHandler(DataHandler):
 
     def make_bowman_demonstration(self, instance):
         return self._openqa.make_bowman_demonstration(instance)
+
+    def generate_prefix_forced_cot(self, model, tokenizer, instance):
+        """
+        Generate a structured MCQ CoT using prefix forcing.
+
+        At each block boundary, structural header tokens are injected as forced
+        context; the model only generates content within each slot. This ensures
+        the Answer/Premise/Reasoning/Conclusion structure is present even after
+        unlearning has degraded free-generation quality.
+
+        Must be called symmetrically on both the pre- and post-unlearning model
+        so that geometric deltas between embeddings reflect only weight changes,
+        not generation-method differences.
+
+        Returns the CoT string only (no prompt prefix), matching the format of
+        the cot field in mcq_cots_fur.jsonl.
+        """
+        device = next(model.parameters()).device
+
+        def _gen_slot(ctx: str, max_tokens: int) -> str:
+            ids = tokenizer.encode(
+                ctx, add_special_tokens=False, return_tensors="pt"
+            ).to(device)
+            with torch.no_grad():
+                out = model.generate(
+                    input_ids=ids,
+                    max_new_tokens=max_tokens,
+                    do_sample=False,
+                    pad_token_id=tokenizer.pad_token_id,
+                )
+            new_ids = out[0][ids.shape[-1]:]
+            text = tokenizer.decode(new_ids, skip_special_tokens=True)
+            nl = text.find("\n")
+            return text[:nl] if nl >= 0 else text
+
+        header = self.make_cot_prompt(instance)
+        context = header
+
+        for letter in ["A", "B", "C", "D"]:
+            context += f"Answer {letter}:\n* Premise: "
+            context += _gen_slot(context, 40)
+            context += "\n* Reasoning: "
+            context += _gen_slot(context, 60)
+            context += "\n* Conclusion: "
+            context += _gen_slot(context, 3)
+            context += "\n"
+
+        context += "\n**Final Answer**\nAnswer: "
+        context += _gen_slot(context, 3)
+
+        return context[len(header):].strip()

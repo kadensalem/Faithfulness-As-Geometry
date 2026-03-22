@@ -191,7 +191,10 @@ def evaluate(model, tokenizer, DH, target, specificity_split, step_idx, consiste
   if consistency_cot:
      for i in range(consistency_cot_num):
         # (3) new CoT: check how the model generated CoT looks like after unlearning
-        new_cot = complete(model, tokenizer, DH.make_cot_prompt(target['raw_instance']), temperature=0.7)
+        if hasattr(DH, 'generate_prefix_forced_cot'):
+            new_cot = DH.generate_prefix_forced_cot(model, tokenizer, target['raw_instance'])
+        else:
+            new_cot = complete(model, tokenizer, DH.make_cot_prompt(target['raw_instance']), temperature=0.7)
         # (4) probability under new CoT (agreement before/after unlearning)
         new_cot_probs, new_cot_predicted_letter = generation_fixed_cot(model, tokenizer, DH, target['raw_instance'], new_cot)
 
@@ -199,9 +202,12 @@ def evaluate(model, tokenizer, DH, target, specificity_split, step_idx, consiste
         new_cot_probs_all.append(new_cot_probs.tolist())
         new_cot_answers_all.append(new_cot_predicted_letter)
 
-  else:  
+  else:
     # (3) new CoT: check how the model generated CoT looks like after unlearning
-    new_cot = complete(model, tokenizer, DH.make_cot_prompt(target['raw_instance']))
+    if hasattr(DH, 'generate_prefix_forced_cot'):
+        new_cot = DH.generate_prefix_forced_cot(model, tokenizer, target['raw_instance'])
+    else:
+        new_cot = complete(model, tokenizer, DH.make_cot_prompt(target['raw_instance']))
     new_cot_all.append(new_cot)
 
     # (4) probability under new CoT (agreement before/after unlearning)
@@ -291,7 +297,10 @@ def unlearn_single(model_id, tokenizer, args, target, step_idx, cots_train, cots
       optimizer.zero_grad()
 
       for step, batch in enumerate(train_dataloader):
-        loss = compute_loss(model, oracle_model, batch, loss_type=args.method) 
+        loss = compute_loss(model, oracle_model, batch, loss_type=args.method,
+                            beta=getattr(args, 'beta', 0.1),
+                            npo_coeff=getattr(args, 'npo_coeff', 1.0),
+                            KL_coeff=getattr(args, 'kl_coeff', 1.0))
 
         loss.backward()
         optimizer.step()
