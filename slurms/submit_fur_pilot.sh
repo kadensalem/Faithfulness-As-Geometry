@@ -49,44 +49,16 @@ echo "Model        : $MODEL_NAME"
 echo "Data         : $FUR_FILE"
 echo "Epochs/LR    : $EPOCHS / $LR"
 
-# ── Condition A: baseline (ff2, KL_coeff=1.0) ──────────────────────────────
-echo "--- Condition A: ff2, kl_coeff=1.0 ---"
-python run_fur_pilot.py \
-    --model_name "$MODEL_NAME" \
-    --fur_file "$FUR_FILE" \
-    --question_ids openbook_1955 openbook_508 openbook_9-491 \
-    --step_ids 0 \
-    --output_file "data/pilot_cond_A.jsonl" \
-    --epochs "$EPOCHS" \
-    --lr "$LR" \
-    --seed "$SEED" \
-    --ff2 \
-    --pos
-
-# ── Condition B: ff2 + stronger retain (KL_coeff=2.0) ──────────────────────
-echo "--- Condition B: ff2, kl_coeff=2.0 ---"
-python run_fur_pilot.py \
-    --model_name "$MODEL_NAME" \
-    --fur_file "$FUR_FILE" \
-    --question_ids openbook_1955 openbook_508 openbook_9-491 \
-    --step_ids 0 \
-    --output_file "data/pilot_cond_B.jsonl" \
-    --epochs "$EPOCHS" \
-    --lr "$LR" \
-    --kl_coeff 2.0 \
-    --seed "$SEED" \
-    --ff2 \
-    --pos
 
 # ── Condition C: lower beta (0.05) + stronger retain (KL_coeff=3.0) + 5 epochs
 echo "--- Condition C: ff2, beta=0.05, kl_coeff=3.0, epochs=5 ---"
 python run_fur_pilot.py \
     --model_name "$MODEL_NAME" \
     --fur_file "$FUR_FILE" \
-    --question_ids openbook_1955 openbook_508 openbook_9-491 \
+    --question_ids openbook_1955 openbook_508 openbook_9-491 openbook_7-969 openbook_9-625 openbook_9-1088 openbook_8-212 \
     --step_ids 0 \
-    --output_file "data/pilot_cond_C.jsonl" \
-    --epochs 5 \
+    --output_file "data/pilot_7_samples.jsonl" \
+    --epochs 3 \
     --lr "$LR" \
     --beta 0.05 \
     --kl_coeff 3.0 \
