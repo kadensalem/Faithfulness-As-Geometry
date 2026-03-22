@@ -28,8 +28,8 @@ date
 mkdir -p logs
 
 # ── Conda environment ──
-source ~/software/pkg/miniforge3/etc/profile.d/conda.sh
-conda activate fur
+source /uufs/chpc.utah.edu/common/home/u1427573/software/pkg/miniforge3/etc/profile.d/conda.sh
+conda activate fur-sm120
 
 # ── HuggingFace cache ──
 export HF_HOME="/scratch/general/vast/${USER}/hf_cache"
@@ -38,7 +38,7 @@ mkdir -p "$HF_HOME" "$HF_DATASETS_CACHE"
 
 nvidia-smi
 
-PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+PROJECT_ROOT="/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry"
 cd "$PROJECT_ROOT"
 
 MODEL_NAME="meta-llama/Meta-Llama-3-8B-Instruct"

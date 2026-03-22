@@ -1,0 +1,79 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.07it/s]
+Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.09it/s]
+Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.11it/s]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.60it/s]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.37it/s]
+
+Computing nocot/cot probs:   0%|          | 0/30 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+
+Computing nocot/cot probs:   3%|▎         | 1/30 [00:01<00:33,  1.16s/it]
+Computing nocot/cot probs:   7%|▋         | 2/30 [00:01<00:21,  1.29it/s]
+Computing nocot/cot probs:  10%|█         | 3/30 [00:02<00:17,  1.50it/s]
+Computing nocot/cot probs:  13%|█▎        | 4/30 [00:02<00:15,  1.67it/s]
+Computing nocot/cot probs:  17%|█▋        | 5/30 [00:03<00:14,  1.76it/s]
+Computing nocot/cot probs:  20%|██        | 6/30 [00:03<00:13,  1.83it/s]
+Computing nocot/cot probs:  23%|██▎       | 7/30 [00:04<00:12,  1.87it/s]
+Computing nocot/cot probs:  27%|██▋       | 8/30 [00:04<00:11,  1.90it/s]
+Computing nocot/cot probs:  30%|███       | 9/30 [00:05<00:10,  1.92it/s]
+Computing nocot/cot probs:  33%|███▎      | 10/30 [00:05<00:10,  1.93it/s]
+Computing nocot/cot probs:  37%|███▋      | 11/30 [00:06<00:09,  1.94it/s]
+Computing nocot/cot probs:  40%|████      | 12/30 [00:06<00:09,  1.95it/s]
+Computing nocot/cot probs:  43%|████▎     | 13/30 [00:07<00:08,  1.97it/s]
+Computing nocot/cot probs:  47%|████▋     | 14/30 [00:07<00:08,  1.97it/s]
+Computing nocot/cot probs:  50%|█████     | 15/30 [00:08<00:07,  1.96it/s]
+Computing nocot/cot probs:  53%|█████▎    | 16/30 [00:08<00:06,  2.02it/s]
+Computing nocot/cot probs:  57%|█████▋    | 17/30 [00:09<00:06,  2.00it/s]
+Computing nocot/cot probs:  60%|██████    | 18/30 [00:09<00:06,  1.99it/s]
+Computing nocot/cot probs:  63%|██████▎   | 19/30 [00:10<00:05,  1.98it/s]
+Computing nocot/cot probs:  67%|██████▋   | 20/30 [00:10<00:05,  1.99it/s]
+Computing nocot/cot probs:  70%|███████   | 21/30 [00:11<00:04,  1.99it/s]
+Computing nocot/cot probs:  73%|███████▎  | 22/30 [00:11<00:04,  1.98it/s]
+Computing nocot/cot probs:  77%|███████▋  | 23/30 [00:12<00:03,  1.98it/s]
+Computing nocot/cot probs:  80%|████████  | 24/30 [00:12<00:03,  1.98it/s]
+Computing nocot/cot probs:  83%|████████▎ | 25/30 [00:13<00:02,  1.98it/s]
+Computing nocot/cot probs:  87%|████████▋ | 26/30 [00:13<00:02,  1.97it/s]
+Computing nocot/cot probs:  90%|█████████ | 27/30 [00:14<00:01,  1.97it/s]
+Computing nocot/cot probs:  93%|█████████▎| 28/30 [00:14<00:01,  1.97it/s]
+Computing nocot/cot probs:  97%|█████████▋| 29/30 [00:15<00:00,  1.97it/s]
+Computing nocot/cot probs: 100%|██████████| 30/30 [00:15<00:00,  1.96it/s]
+Computing nocot/cot probs: 100%|██████████| 30/30 [00:15<00:00,  1.89it/s]
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.08it/s]
+Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.09it/s]
+Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.12it/s]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.61it/s]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.38it/s]
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.08it/s]
+Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.10it/s]
+Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.12it/s]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.61it/s]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:02<00:00,  1.38it/s]
+Traceback (most recent call last):
+  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/run_fur_pilot.py", line 262, in <module>
+    main()
+  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/run_fur_pilot.py", line 228, in main
+    result = unlearn_single(
+             ^^^^^^^^^^^^^^^
+  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/fur/parametric-faithfulness-2/furV2.py", line 250, in unlearn_single
+    dataset = cot_to_otfd(target, cots_train, tokenizer, strategy=args.strategy, stepwise=args.stepwise, step_idx=step_idx, pos=args.pos, num_p=args.num_p)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/fur/parametric-faithfulness-2/data.py", line 387, in cot_to_otfd
+    return SegmentOTFDataset(targets, retain, tokenizer, stepwise, step_idx=step_idx, pos_filter=pos)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/fur/parametric-faithfulness-2/data.py", line 151, in __init__
+    self.NLP = spacy.load("en_core_web_sm", disable=['ner'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/uufs/chpc.utah.edu/common/home/u1427573/software/pkg/miniforge3/envs/fur-sm120/lib/python3.12/site-packages/spacy/__init__.py", line 52, in load
+    return util.load_model(
+           ^^^^^^^^^^^^^^^^
+  File "/uufs/chpc.utah.edu/common/home/u1427573/software/pkg/miniforge3/envs/fur-sm120/lib/python3.12/site-packages/spacy/util.py", line 531, in load_model
+    raise IOError(Errors.E050.format(name=name))
+OSError: [E050] Can't find model 'en_core_web_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+

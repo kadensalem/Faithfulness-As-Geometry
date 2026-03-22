@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name fur-pilot
-#SBATCH --account=<YOUR_ACCOUNT>
-#SBATCH --partition=<YOUR_PARTITION>
-#SBATCH --qos=<YOUR_QOS>
+#SBATCH --account=cs6966
+#SBATCH --partition=soc-gpu-class-grn
+#SBATCH --qos=soc-gpu-class-grn
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:a100:1
+#SBATCH --gres=gpu:rtxpr6000bl:1
 #SBATCH --time=6:00:00
-#SBATCH --mem=100GB
+#SBATCH --mem=80GB
 #SBATCH --requeue
 #SBATCH -o logs/fur-pilot-%j.out
 #SBATCH -e logs/fur-pilot-%j.err
@@ -25,8 +25,8 @@ date
 mkdir -p logs
 
 # ── Conda environment ──
-source ~/software/pkg/miniforge3/etc/profile.d/conda.sh
-conda activate fur
+source /uufs/chpc.utah.edu/common/home/u1427573/software/pkg/miniforge3/etc/profile.d/conda.sh
+conda activate fur-sm120
 
 # ── HuggingFace cache ──
 export HF_HOME="/scratch/general/vast/${USER}/hf_cache"
@@ -35,7 +35,7 @@ mkdir -p "$HF_HOME" "$HF_DATASETS_CACHE"
 
 nvidia-smi
 
-PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+PROJECT_ROOT="/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry"
 cd "$PROJECT_ROOT"
 
 MODEL_NAME="meta-llama/Meta-Llama-3-8B-Instruct"
