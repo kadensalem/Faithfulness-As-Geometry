@@ -60,8 +60,9 @@ def main():
     trajectories = load_trajectories(args.trajectories)
     labels = load_labels(args.labels)
 
-    # trajectories is a list of dicts, each with an 'id' field
-    traj_by_id = {t["id"]: t for t in trajectories}
+    # trajectories is a list of dicts; extract_anchor_embeddings.py stores
+    # the question id under 'question_id' (not 'id')
+    traj_by_id = {t["question_id"]: t for t in trajectories}
 
     print(f"Trajectories loaded : {len(traj_by_id)} questions")
     print(f"FUR labels loaded   : {len(labels)} questions")
@@ -90,21 +91,22 @@ def main():
     print(f"\nJoined {len(joined)} question(s)\n")
 
     header = (f"{'ID':<25}  {'ff_hard':>8}  {'ff_soft':>8}  "
-              f"{'n_anchors':>9}  {'disp_mid_mean':>13}  {'disp_last_mean':>14}")
+              f"{'n_anchors':>9}  {'mean_disp_norm':>14}")
     print(header)
     print("-" * len(header))
 
     for qid, d in sorted(joined.items()):
-        n_anchors = len(d.get("anchors_mid", []))
+        # anchor_embeddings: dict of {anchor_name: np.ndarray | None}
+        ae = d.get("anchor_embeddings", {})
+        n_anchors = sum(1 for v in ae.values() if v is not None)
 
-        # displacement vectors stored by extract_anchor_embeddings.py
-        disps_mid  = d.get("displacement_mid",  [])
-        disps_last = d.get("displacement_last", [])
-        disp_mid_mean  = float(np.mean([norm(v) for v in disps_mid]))  if disps_mid  else float("nan")
-        disp_last_mean = float(np.mean([norm(v) for v in disps_last])) if disps_last else float("nan")
+        # displacement_vectors: dict of named vectors from extract_anchor_embeddings.py
+        dv = d.get("displacement_vectors", {})
+        valid_disps = [v for v in dv.values() if v is not None]
+        mean_disp = float(np.mean([norm(v) for v in valid_disps])) if valid_disps else float("nan")
 
         print(f"{qid:<25}  {str(d['ff_hard']):>8}  {d['ff_soft']:>8.4f}  "
-              f"{n_anchors:>9}  {disp_mid_mean:>13.4f}  {disp_last_mean:>14.4f}")
+              f"{n_anchors:>9}  {mean_disp:>14.4f}")
 
     print()
 
