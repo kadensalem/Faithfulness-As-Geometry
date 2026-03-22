@@ -1,0 +1,4 @@
+python: can't open file '/uufs/granite/sys/var/slurm/slurmd.spool/grn075/run_fur_pilot.py': [Errno 2] No such file or directory
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: 'data/smoke_fur_results.jsonl'

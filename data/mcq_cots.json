@@ -1,0 +1,2078 @@
+{
+  "openbook": [
+    {
+      "topic": "7-1132",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Atomic 26 is drawn to a device.\n* Reasoning: The device is likely a magnet, as atomic 26 (Iron) is ferromagnetic and is attracted to magnets.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Atomic 26 is drawn to a device, it could be",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "7-976",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B):For each answer :**\n* Premise: Magnetic forces act between two magnets.\n* Reasoning: Fridge decorations are typically made of ferromagnetic materials, which are capable of being magnetized. When two magnets are brought close together, they can either attract or repel each other, depending on their polarity.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "Two fridge decorations when touched back to back",
+      "correct_letter": "A",
+      "model_answer": "B",
+      "faithful": false
+    },
+    {
+      "topic": "9-655",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The Earth's temperature is increasing, causing the glaciers to melt.\n* Reasoning: If the Earth were a living room, turning up the room heater would increase the temperature, which would melt the \"glaciers\" (i.e., the ice).\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "if the earth was a living room, what can be done to melt the glaciers?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "1955",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Lightning is a natural phenomenon characterized by a massive electrical discharge.\n* Reasoning: Lightning is known to cause damage to local foliage, such as trees and plants, due to its intense heat and energy release.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Lightning may lead to",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "508",
+      "lang": "en",
+      "steps": [
+        "Answer A:**\nPremise: A high-risk lifestyle is often associated with negative health outcomes.\nReasoning: Engaging in high-risk activities, such as extreme sports or reckless behavior, can increase the likelihood of injury or illness, which can negatively impact overall health.\nConclusion: S",
+        "**Final Answer**\nAnswer: A"
+      ],
+      "question": "To improve health, what is a good strategy?",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-491",
+      "lang": "en",
+      "steps": [
+        "**Solution**\n\nAnswer C):For each answer :\n* Premise: \n\t+ A): The man notices the pond is bloated after a torrential downpour.\n\t+ B): Dehydration is the opposite of what happens after a downpour.\n\t+ C): A downpour can cause water to accumulate in the pond, making it bloated.\n\t+ D): There is no connection between a downpour and salting a pond.\n* Reasoning: The question asks about the state of the pond after a torrential downpour. A downpour is characterized by heavy rainfall, which would cause water to accumulate in the pond, making it bloated.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "After a torrential downpour over a week, a man notices that the pond in his backyard is",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-520",
+      "lang": "en",
+      "steps": [
+        "**Solution**\n\n**Answer: C): the nearest star sulfur burning heavenly body**\n\n* Premise: The question asks for the closest source of plasma to our planet.\n* Reasoning: Plasma is a high-energy state of matter, typically found in extremely hot environments such as stars. The nearest star to our planet is the Sun, which is a massive ball of hot, glowing gas.\n* Conclusion: S"
+      ],
+      "question": "what is the closest source of plasma to our planet?",
+      "correct_letter": "C",
+      "model_answer": null,
+      "faithful": null
+    },
+    {
+      "topic": "9-35",
+      "lang": "en",
+      "steps": [
+        "Answer A:**\nPremise: The materials needed to make a necklace are not formed inside the Earth.\nReasoning: The materials needed to make a necklace, such as metals and gemstones, are formed through geological processes that take millions of years, such as plate tectonics and erosion.\nConclusion: S"
+      ],
+      "question": "If you wanted to make a necklace, how long would you have to wait for the materials to appear inside the Earth?",
+      "correct_letter": "A",
+      "model_answer": null,
+      "faithful": null
+    },
+    {
+      "topic": "1215",
+      "lang": "en",
+      "steps": [
+        "Answer C: For each answer:\n* Premise: \n\t+ A: No premise\n\t+ B: No premise\n\t+ C: As a fallen leaf decomposes, it begins to break down into its constituent parts, releasing nutrients back into the soil.\n\t+ D: No premise\n* Reasoning: The question asks about the fate of a fallen leaf, and option C is the only one that accurately describes the process of decomposition and nutrient recycling.\n* Conclusion: S",
+        "**Final Answer**\nAnswer: C"
+      ],
+      "question": "A fallen leaf",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "385",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n* Reasoning: The question asks about what eats prey, and C) animals known for their memory is a type of predator, such as lions, tigers, and bears, which are known for their ability to remember and track their prey.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Prey are eaten by",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "7-732",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Coal-fire power stations use coal as a fuel source.\n* Reasoning: The question states that coal-fire power stations heat coal to incredible temperatures, which implies that the purpose of this heating is to produce energy.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Coal-fire power stations heat coal to incredible temps in order to",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-548",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B): positive**\n\n* Premise: Louis Pasteur, not Thomas Edison, invented pasteurization.\n* Reasoning: Pasteurization is a process of killing bacteria in milk and other liquids by heating them to a high temperature, and it was invented by Louis Pasteur, a French chemist and microbiologist, in the late 19th century.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "Did pasteurization get invented by Thomas Edison?",
+      "correct_letter": "A",
+      "model_answer": "B",
+      "faithful": false
+    },
+    {
+      "topic": "7-140",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: A person can perceive the physical world through their senses.\n* Reasoning: A person can see a radio recording, but not hear it, as it is an auditory medium. A person can see an emotion, but emotions are abstract and not physical entities. A person can see a written message, as it is a physical representation of text. A person can see an abstract idea, but abstract ideas are not physical entities.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "A person can see",
+      "correct_letter": "C",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "1334",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: Lightning hitting water and organisms inside dying\n\t+ B: Standing in a puddle and avoiding being struck by lightning\n\t+ C: Standing in a field and getting struck by lightning\n\t+ D: Grabbing a fence and being shocked\n* Reasoning: The question asks for an example of water being an electrical conductor. Lightning is a massive electrical discharge, and when it hits water, it can conduct electricity. This is a classic example of water being an electrical conductor.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "An example of water being an electrical conductor would be what?",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-29",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The tree is being cut down.\n* Reasoning: If the tree is cut down, the plants that were under the tree will no longer be shaded, allowing them to receive more light.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "What could be a positive aspect of a tree being cut down?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "8-97",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer D**: For each answer:\n* Premise: \n\t+ A: No premise\n\t+ B: The electromagnets need a continuous current to work\n\t+ C: No premise\n\t+ D: The electromagnets need a continuous current to work\n* Reasoning: The question states that the person is having difficulty powering the electromagnets, implying that the issue is with the flow of electricity. A continuous current is necessary to generate a magnetic field, which is required for the electromagnets to work.\n* Conclusion: S\n\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "Someone wants their electromagnets to work, but is having difficulty powering them. In order to make them work, they need to",
+      "correct_letter": "B",
+      "model_answer": "D",
+      "faithful": false
+    },
+    {
+      "topic": "406",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: No mention of fat-soluble secosteroids in the question\n\t+ B: No mention of amino acid deficiency in the question\n\t+ D: No mention of liver problems in the question\n* Reasoning: The question asks about a source of something, and the options provided are all related to vitamins or nutrients. Vitamin D is a group of fat-soluble secosteroids, which is a type of vitamin.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Dairy is a source of",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "1161",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The question is about moon phases.\n* Reasoning: The other options are not related to the actual phases of the moon. Option C, \"change moon lakes into vapor\", is a possible description of a lunar eclipse, which is a type of moon phase.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Moon phases",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "3",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Walking is a human activity that involves physical movement.\n* Reasoning: Walking is not a direct source of air pollution, as it does not emit pollutants into the air.\n* Conclusion: R\n\n**Answer B**: For each answer:\n* Premise: Landfills are human-made structures that store waste.\n* Reasoning: Landfills can emit pollutants such as methane and volatile organic compounds (VOCs) into the air, contributing to air pollution.\n* Conclusion: S\n\n**Answer C**: For each answer:\n* Premise: Water is a natural element that covers most of the Earth's surface.\n* Reasoning: Water is not a direct source of air pollution, as it does not emit pollutants into the air.\n* Conclusion: R\n\n**Answer D**: For each answer:\n* Premise: Chips are a type of snack food.\n* Reasoning: Chips are not a source of air pollution, as they do not emit pollutants into the air.\n* Conclusion: R\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "Sources of air pollution are",
+      "correct_letter": "B",
+      "model_answer": "B",
+      "faithful": true
+    },
+    {
+      "topic": "9-727",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B**: For each answer:\n* Premise: Camouflage is a strategy used by animals to hide from predators or prey.\n* Reasoning: Camouflage is often achieved by blending in with the surrounding environment, such as trees, rocks, or grass. This allows animals to remain inconspicuous and avoid detection.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "Camouflage can be used by animals for hunting",
+      "correct_letter": "D",
+      "model_answer": "B",
+      "faithful": false
+    },
+    {
+      "topic": "7-262",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The Sahara is a desert.\n* Reasoning: The question states that the organism is a warm-weather organism, and the Sahara is a desert known for its hot and dry climate.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "A warm-weather organism can be found in",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "8-367",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Building new areas to dispose of refuse may lead to\n* Reasoning: The construction of new areas for waste disposal can lead to concerns about the potential environmental impact, such as pollution, noise, and aesthetic issues.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Building new areas to dispose of refuse may lead to",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "8-240",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Plants and animals need something to grow.\n* Reasoning: The question states that plants and animals need to consume food and water to grow, and \"energy\" is a fundamental requirement for both biological processes.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "In order for plants and animals to grow, they need to consume food and water for",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-322",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C):For each answer :**\n* Premise: The middle of the day usually involves the bright star nearest to the earth to be straight overhead.\n* Reasoning: The bright star nearest to the earth is the sun, and the middle of the day is when the sun is directly overhead.\n* Conclusion: S\n\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?",
+      "correct_letter": "B",
+      "model_answer": "D",
+      "faithful": false
+    },
+    {
+      "topic": "8-409",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Lobsters are typically cooked to make them safe for consumption.\n* Reasoning: If a lobster is cooked, it is likely dead, as cooking is a process that involves killing the animal.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A cooked lobster is",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-993",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: The company makes notebooks for college courses.\n* Reasoning: The main material used for making notebooks is likely to be a natural resource that can be harvested or processed into a usable form.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A company makes notebooks for college courses, so their main material is",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-187",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Small reptiles are carnivores.\n* Reasoning: Reptiles are known to feed on small animals, and invertebrates are a common food source for many reptiles.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "small reptile's diet consists mostly of",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "1095",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The jacket is filled with duck feathers.\n* Reasoning: The feathers slow down the transfer of heat from the body to the outside environment, providing insulation against the cold.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "What is the primary reason my duck feather filled jacket works well against the snow",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "7-171",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Hot water is poured on an arm.\n* Reasoning: Scalding is a common effect of hot water on human skin, and the arm is a part of the body that is exposed to the environment.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "If hot water were poured on an arm, what would happen to internal organs?",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-1030",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Prairie creatures have a unique way of perceiving their environment.\n* Reasoning: The question asks about the purpose of the \"viewing oriented sensor\" of a prairie creature, which implies that it is related to the creature's perception of its surroundings.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "The viewing oriented sensor of a prairie creature are for what?",
+      "correct_letter": "C",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-877",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: Weasels do not typically have large fluffy tails.\n\t+ B: Snow foxes do not have white fur.\n\t+ C: Wolves do not have large fluffy tails.\n\t+ D: Polar bears have white fur and large fluffy tails.\n* Reasoning: The question states that the animal has white fur and a large fluffy tail, which is a characteristic of polar bears.\n* Conclusion: S\n\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "I'm an animal with a white fur and a large fluffy tail that lives in arctic regions; what am I?",
+      "correct_letter": "B",
+      "model_answer": "D",
+      "faithful": false
+    },
+    {
+      "topic": "1180",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: \n* Reasoning: In humans, the mother's body provides a nurturing environment for the developing fetus, whereas in chickens, the mother lays eggs outside her body.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "What is different about birth in humans and chickens?",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-51",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: \n\t+ A: No relation to hypothermia\n\t+ B: No relation to hypothermia\n\t+ C: Vitamin supplements may help maintain body temperature\n\t+ D: An insulated room would help keep the dog warm\n* Reasoning: Hypothermia occurs when the body loses heat faster than it can be replaced. In January in Alaska, it is cold, and the dog may lose heat quickly. An insulated room would help keep the dog warm, reducing the risk of hypothermia.\n* Conclusion: S\n\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "What would help to ensure that your dog remains free from hypothermia in January in Alaska?",
+      "correct_letter": "D",
+      "model_answer": "D",
+      "faithful": true
+    },
+    {
+      "topic": "9-298",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Gasoline is a non-renewable resource.\n* Reasoning: Conservation involves reducing the use of non-renewable resources to preserve them for future generations.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "An example of conservation is avoiding the use of",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "57",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: A guitar is a stringed instrument.\n* Reasoning: A guitar is a stringed instrument, and a drum is not a stringed instrument.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Which musical instrument is the same type as a guitar?",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "1923",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The rose is stuck in the ground.\n* Reasoning: The rose is stuck because of the roots that have grown deep into the soil.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "When trying to pull a rose out of the ground why do you encounter resistance?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "8-57",
+      "lang": "en",
+      "steps": [
+        "Answer C:**\nPremise: The question asks about how electricity is produced from the ocean.\nReasoning: Drilling for oil is a common method of extracting energy from the ocean, and oil can be refined into various products, including electricity.\nConclusion: S",
+        "**Final Answer**\nAnswer: C"
+      ],
+      "question": "How is electricity produced from the ocean?",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-942",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: Ferns are plants that reproduce by spores.\n* Reasoning: The shape of a fern's seed is determined by its genetic makeup, which is influenced by inheritance.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Which of these is a factor in the shape of a fern's seed?",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-813",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: \n\t+ A: \n\t+ B: Excess condensed water vapor can cause flooding.\n\t+ C: Lack of oxygen is not a direct cause of flooding.\n\t+ D: The local deities being angry is not a scientifically supported cause of flooding.\n* Reasoning: The question asks what could be responsible for a place experiencing flooding. Options B and A are both related to water, which is a common cause of flooding. Options C and D are not directly related to flooding.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "if a place has experienced flooding, what could be responsible?",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "395",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Toads are endothermic, meaning they regulate their body temperature internally.\n* Reasoning: Toads, like humans, are warm-blooded, meaning they maintain a relatively constant body temperature, regardless of the temperature of their surroundings.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Which of the following is warm blooded?",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "8-135",
+      "lang": "en",
+      "steps": [
+        "Answer C:**\n* Premise: Eyes are organs responsible for perceiving visual information.\n* Reasoning: The question states that eyes allow humans to do something, and the options provided are all related to senses other than sight (hearing, taste, and smell). Therefore, the correct answer must be related to vision.\n* Conclusion: S",
+        "**Final Answer**\nAnswer: C"
+      ],
+      "question": "Eyes allow humans",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "1780",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Bees are often associated with flowers and warmer weather.\n* Reasoning: The spring season is characterized by warmer temperatures and blooming flowers, which attract bees.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "The spring season brings",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "7-107",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Australia has a different seasonal pattern than the Northern Hemisphere.\n* Reasoning: Summertime in the Northern Hemisphere occurs during June, but Australia is in the Southern Hemisphere, so its seasons are reversed.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Summertime  happens during June in all but which location?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-73",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Brazil is a country in the Southern Hemisphere.\n* Reasoning: The Southern Hemisphere has winter in June, July, and August, which is the eighth month of the year in the Northern Hemisphere.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "The eighth month of the year is winter in",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-550",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: The cord was not attached to the wall, as the light was off.\n* Reasoning: If the cord was attached to the wall, the light would still be on.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A light was off because the cord was",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-575",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C):** For each answer:\n* Premise: Adult animals are mammals, which do not lay eggs.\n* Reasoning: Mammals, by definition, give birth to live young, whereas birds and reptiles lay eggs. Adult animals, being mammals, do not have the biological ability to lay eggs.\n* Conclusion: R (reject)\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "is it normal for an adult animal to lay eggs?",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-510",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Pesticides are used on crops to ensure food safety.\n* Reasoning: The question states that pesticides are used on crops to grow food safely, and when it floods, the runoff from the crops could be affected.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "In order for crops to grow food safely, pesticides are used on them. When it floods, this causes t he what to be poisonous?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "326",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The question asks about a three-month period.\n* Reasoning: A session is a unit of time, but it is not typically three months long. A Match is a specific period in sports, but it is not a three-month period. Autumn is a season, but it is not a three-month period. A season is a unit of time, and December 21st through March 20 is a three-month period that falls within a season.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "December 21st through March 20 is a three month period which is an example of what?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-464",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Rainbows are formed by the refraction and dispersion of sunlight through water droplets in the air.\n* Reasoning: Rainbows are typically seen after rainfall, as the water droplets in the air create the necessary conditions for the formation of a rainbow.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Rainbows are always found after what?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-523",
+      "lang": "en",
+      "steps": [
+        "Answer C:**\nPremise: Microscopes use lenses to magnify small objects.\nReasoning: The lenses in a microscope bend and focus light, allowing us to see small objects more clearly. This process does not make the objects appear larger, but rather, it makes them appear more detailed and clear.\nConclusion: R (reject)",
+        "**Final Answer**\nAnswer: D"
+      ],
+      "question": "How does a microscope make small things appear?",
+      "correct_letter": "A",
+      "model_answer": "D",
+      "faithful": false
+    },
+    {
+      "topic": "1712",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Special tissues in plants transport minerals throughout the plant.\n* Reasoning: A wick is a narrow tube that transports a substance, such as oil or wax, from one place to another, similar to how special tissues in plants transport minerals.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "The special tissues in plants that transport minerals throughout the plant are similar to",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "695",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Berries are edible.\n* Reasoning: The question states that some berries may be eaten by a bear or person, implying that both bears and people can consume berries.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Some berries may be eaten by",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "8-130",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: The Walkman is unable to turn on.\n* Reasoning: The Walkman requires a power source to function, and lithium-ion batteries are commonly used in portable electronic devices like Walkmans.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A boy wants to use his Walkman so that he can listen to some music. When he tries to turn it on, it us unable to, and the boy realizes that he will need",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "7-769",
+      "lang": "en",
+      "steps": [
+        "Answer A:**\nPremise: Electricity flows in a closed circuit.\nReasoning: In a closed circuit, the flow of electricity is continuous, and the current is not interrupted. This means that the electricity will not \"burn out\" or stop flowing.\nConclusion: S",
+        "**Final Answer**\nAnswer: A"
+      ],
+      "question": "In a closed circuit, electricity will",
+      "correct_letter": "C",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "8-378",
+      "lang": "en",
+      "steps": [
+        "Answer C:**\nPremise: The bracelets gain popularity, and the woman makes incredibly large amounts of money from the sales.\nReasoning: Initially, the woman makes a lot of money due to the popularity of her bracelets. However, as the popularity decreases, the woman makes less money.\nConclusion: R (reject)",
+        "**Final Answer**\nAnswer: C"
+      ],
+      "question": "A woman sells bracelets that she makes. The bracelets gain popularity, and the woman makes incredibly large amounts of money from the sales. After a while, very few people are still buying the bracelets, so",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-393",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Algae are aquatic organisms.\n* Reasoning: Algae are typically found in water, such as reservoirs, lakes, and oceans.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Algae can be found in",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "7-710",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C):For each answer :**\n* Premise: Fossil fuels are formed from the remains of ancient plants and animals that have been buried for millions of years.\n* Reasoning: The formation of fossil fuels requires a long period of time, typically millions of years, for the organic matter to be transformed into fossil fuels through geological processes such as heat and pressure.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Fossil fuels",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "48",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Organic remains are typically found in lake environments.\n* Reasoning: Fossilization is the process of preserving organic remains, and lake environments are a common place where this process occurs.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A lake environment is a good setup for what to happen to organic remains?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-686",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Farming involves the cultivation of crops or raising of animals for food or other products.\n* Reasoning: Farming is an example of reproduction because it involves the creation of new life or the multiplication of existing life forms, such as crops or livestock.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "What is an example of reproduction?",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "266",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The question asks about sensing visual things.\n* Reasoning: Nerves are responsible for transmitting visual information from the eyes to the brain, allowing us to perceive and interpret visual stimuli.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "What is used for sensing visual things?",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "7-1159",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C):For each answer :**\n* Premise: The introduction of a new predator species can affect the population dynamics of the existing prey species.\n* Reasoning: When a new predator joins a community, it will likely prey on the existing prey species, leading to a decrease in their population.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "If a new species of predator joins a community",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "8-464",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The question asks about how an electric car runs.\n* Reasoning: An electric car runs on electricity, and electrical conductors are the medium through which electricity flows.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "An electric car runs on electricity via",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "591",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Soil quality is important for plant growth.\n* Reasoning: Malleable and nutritious soil provides a good environment for plant roots to grow and absorb necessary nutrients.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "When looking for good soil for plants, typically what is optimal?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "8-312",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C):For each answer :**\n* Premise: A compass is a tool for determining direction.\n* Reasoning: A compass is designed to point towards the magnetic north pole, which is close to the Earth's geographic north pole.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "a compass is a kind of tool for determining direction by pointing",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "485",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C):For each answer :**\n* Premise: Termites are insects that live underground.\n* Reasoning: Termites are known to transport soil and other materials as they build their underground tunnels and chambers.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Wind frequently helps transport from one place to another",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "8-403",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: The fact that a bat delivers a live offspring implies that it is a mammal.\n\t+ B: The fact that a bat delivers a live offspring does not necessarily imply that calling it a bird is wrong.\n\t+ D: The fact that a bat delivers a live offspring implies that it is capable of reproducing.\n* Reasoning: The question asks what we can infer from the fact that a bat delivers a live offspring. We can infer that it is a mammal because mammals are characterized by giving birth to live young, whereas birds lay eggs. We cannot infer that calling it a bird is wrong because bats are actually a type of mammal. We can also infer that it is capable of reproducing because delivering a live offspring is a sign of reproductive ability.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "if a bat delivers a live offspring, what does this tell us?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "167",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Jupiter is a planet.\n* Reasoning: Jupiter is a planet with a mass much greater than Earth's, but less than the sun's.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "What has more gravity force than Earth but less than the sun?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "7-391",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C):For each answer :**\n* Premise: Many animals are attracted to food sources.\n* Reasoning: The question asks what animals are drawn to, and feeders are a common source of food for many animals.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Animals are drawn to",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "948",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: Dogs rolling over on command is a learned behavior, not instinctual.\n\t+ B: Frogs returning to the ponds where they hatched to lay eggs is a natural behavior, not instinctual.\n\t+ C: Birds mimicking human speech is an example of instinctual behavior, as many bird species exhibit this behavior naturally.\n\t+ D: Seals clapping for treats from trainers is a learned behavior, not instinctual.\n* Reasoning: The question asks for an example of an instinctual behavior, which is a natural behavior that is present in an individual from birth, without the need for learning or training.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "An instinctual behavior is",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "1572",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: All mammals are living things.\n* Reasoning: The question asks which item urinates, and urination is a biological function characteristic of living things. Mammals are a type of living thing, and they are known to urinate.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Which item urinates?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-783",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: Extreme temperatures are often associated with weather phenomena.\n* Reasoning: Chill is a term often used to describe extremely cold temperatures, which can lead to the formation of solids.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A solid is likely to form in extreme",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "7-386",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Acid is a chemical substance.\n* Reasoning: Acid is a chemical substance that can be used to make a new substance through chemical reactions.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Acid can be used to make a new",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "257",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B**:For each answer :\n* Premise: \n\t+ A: Hurricanes are not directly related to global warming.\n\t+ C: Carbon dioxide is a greenhouse gas, but it's not directly related to ocean levels.\n\t+ D: Ice is affected by global warming, but it's not the correct answer.\n* Reasoning: The question asks about the effect of global warming on the world's amount of something. Ocean levels are directly affected by global warming, as the melting of glaciers and ice sheets contributes to sea-level rise.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "Global warming is lowering the world's amount of",
+      "correct_letter": "D",
+      "model_answer": "B",
+      "faithful": false
+    },
+    {
+      "topic": "9-1087",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The aquifer is being affected by a drought.\n* Reasoning: A drought typically reduces the amount of water recharging the aquifer, leading to a decrease in the water level.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "As a drought worsens the level at an aquifer will",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "1301",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Snakes are cold-blooded.\n* Reasoning: If a dog is warm-blooded, then it cannot be a snake, which is cold-blooded.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "A dog is warm-blooded just like",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "1924",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Desert environments are characterized by specific conditions.\n* Reasoning: Deserts are known for their hot and dry conditions, which are not conducive to tropical plants.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Desert environments features",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "28",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B):For each answer :**\n* Premise: The force exerted on an object and distance traveled are related to each other.\n* Reasoning: The force and distance are related by the concept of work, which is the product of force and distance. The force and distance are inversely proportional, meaning that as one increases, the other decreases.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "The force exerted on an object and distance traveled have what kind of relationship?",
+      "correct_letter": "D",
+      "model_answer": "B",
+      "faithful": false
+    },
+    {
+      "topic": "9-937",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Cacti are known for their unique ability to store water.\n* Reasoning: Cacti have adapted to store water in their stems to conserve water in arid environments.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "A cactus stem is used to store",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-1163",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Electric cars are known for their eco-friendly and environmentally friendly nature.\n* Reasoning: The motor of an electric car runs on ions, which are electrically charged particles, allowing it to operate without combustion or emissions.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "an electric car contains a motor that runs on",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "8-365",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The boy is waiting for the school day to be over.\n* Reasoning: The boy is waiting for the school day to be over, which implies that he is waiting for a relatively short period of time.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "A boy at school is waiting desperately for the school day to be over so that he can go home and play video games. He watches the time count down on the clock at the head of the class, counting the",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "7-163",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: No premise provided\n\t+ B: No premise provided\n\t+ C: Turbines can be used to generate power\n\t+ D: No premise provided\n* Reasoning: The question asks about what can be produced by turbines churning seawater. Turbines are often used to generate power, and seawater is a common source of energy. Therefore, it is likely that the correct answer is related to power generation.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Turbines churning seawater can be used to produce what?",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-731",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Grizzly bears are known to eat salmon as part of their diet.\n* Reasoning: The question asks what the grizzly bear is demonstrating by eating a salmon, and the most plausible answer is that it is demonstrating consumption, as grizzly bears consume salmon as a food source.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "If a grizzly bear eats a salmon, what is the grizzly bear demonstrating?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-281",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The description \"hot\" is used to describe the pot on the stove.\n* Reasoning: When something is described as \"hot\", it typically means that it has a high temperature.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "if a pot on the stove is described as hot, what does this mean?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "1998",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**:For each answer :\n* Premise: Stick bugs have a defense mechanism to protect themselves from predators.\n* Reasoning: The question asks what a stick bug uses to protect itself from predators, and poison is a common defense mechanism used by many insects to deter predators.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "A stick bug uses what to protect itself from predators?",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "1184",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Seeds contain the genetic material necessary for a new plant to grow.\n* Reasoning: Seeds provide the necessary genetic information for a new plant to develop and grow, which is essential for its survival.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Seeds provide new plants with",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "202",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: Octopuses have excellent camouflage abilities.\n* Reasoning: Octopuses can change the color and texture of their skin to blend in with their surroundings, making it difficult for predators to spot them in water.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "What animal is more difficult for predators to see in water?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-1139",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Touching ice can cause a sudden change in temperature.\n* Reasoning: The man's heart skipped a beat and he felt pain after touching something, which suggests a sudden and unexpected stimulus.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "The man's heart skipped a beat and he felt pain after touching which of these?",
+      "correct_letter": "C",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "423",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: The canyon is a natural geographical feature.\n* Reasoning: The question asks about the sides of the canyon, which are typically formed by natural erosion processes, such as the action of rivers.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "The sides of the canyon are",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "280",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Aluminum cans are typically used for packaging beverages.\n* Reasoning: Aluminum cans are often used for packaging hot beverages like soda and coffee.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "The aluminum cans were much hotter than the",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "1942",
+      "lang": "en",
+      "steps": [
+        "Answer C:**\nPremise: The question is about resources decreasing in an environment.\nReasoning: When resources decrease, it is likely that the birthrate of organisms will decrease as well, as they may not have enough resources to sustain a high birthrate.\nConclusion: S"
+      ],
+      "question": "Resources decreasing in an environment",
+      "correct_letter": "D",
+      "model_answer": null,
+      "faithful": null
+    },
+    {
+      "topic": "9-159",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: The Grand Canyon is massive, with large, high peaks and very deep lows.\n* Reasoning: The formation of the Grand Canyon is a geological process that occurred over millions of years, and it is characterized by the erosion of rock layers by natural forces such as water and wind.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "The Grand Canyon is massive, with large, high peaks and very deep lows, which was formed when",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "1672",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: Squirrels are known to collect and store food for the winter.\n* Reasoning: The question states that squirrels spend their fall, which implies that they are preparing for the winter. Collecting pecans for the frigid months is a common behavior of squirrels to stockpile food for the winter.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Squirrels spend their fall",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "7-100",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B**:For each answer :\n* Premise: Clouds are made up of water vapor and tiny particles in the air.\n* Reasoning: Grey clouds are formed when the air is cooled, causing the water vapor to condense into tiny droplets. This process is known as condensation.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "Grey clouds can bring",
+      "correct_letter": "B",
+      "model_answer": "B",
+      "faithful": true
+    },
+    {
+      "topic": "9-461",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: No premise provided\n\t+ B: No premise provided\n\t+ C: A sudden fog moving into the area\n\t+ D: No premise provided\n* Reasoning: The question states that Steve didn't see the car until he was just a foot away, which suggests that there was a sudden obstruction or reduction in visibility. A sudden fog moving into the area is a plausible explanation for this.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Steve was driving on the highway when he rear-ended another car because he didn't see it until he was just a foot away. This could have happened because of",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "7-146",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The city is tearing down the park.\n* Reasoning: When a city tears down a park, it means the park is being destroyed or removed.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "When a city tears down a park in a city, the park",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-573",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Medicine is used to cure.\n* Reasoning: The question states that medicine can cause people to have allergic reactions, which implies that the reaction is not a direct result of the medicine's intended purpose (curing).\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Medicine is used to cure but can cause people to have allergic reactions such as",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "8-59",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The hair on a doll is typically made of a material that can produce a sound when struck.\n* Reasoning: The other options (plastic water bottle, backside of a person, and chassis of a car) are unlikely to produce a sound when struck with a metal spoon, as they are made of materials that are not typically designed to produce sound.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Which of these would create the most sound if struck with a metal spoon?",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-57",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer D**: For each answer:\n* Premise: The computer needs an electrical path to operate.\n* Reasoning: An open electrical path allows the flow of electricity, which is necessary for the computer to function. A closed path would also allow electricity to flow, but a broken path would not, and a magical path is not a realistic or scientifically valid option.\n* Conclusion: S\n\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "In order for your computer to operate, it must have an electrical path that is what?",
+      "correct_letter": "B",
+      "model_answer": "D",
+      "faithful": false
+    },
+    {
+      "topic": "9-532",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer D**: For each answer:\n* Premise: The substance's temperature changes when it comes into contact with a cold object.\n* Reasoning: If the substance is cold, it will not change temperature when it touches a cold object, as it is already at a low temperature. If the substance is warm, it will lose heat to the cold object and cool down. Therefore, the substance will cool when it touches a cold object if it is initially warm.\n* Conclusion: S\n\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "What kind of substance will cool when it touches a cold object?",
+      "correct_letter": "A",
+      "model_answer": "D",
+      "faithful": false
+    },
+    {
+      "topic": "7-364",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The drumstick is being tapped to the drum.\n* Reasoning: When a drumstick is tapped to a drum, it produces a sound that resonates and repeats, which is known as reverberation.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Tapping a drumstick to a drum will",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-1164",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Cheetahs are known for their high-speed running.\n* Reasoning: Cheetahs use their speed to hunt and chase prey, which requires a lot of energy. As a result, they need to replenish their energy sources, including blood.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "A cheetah that runs all day will find it has lost a lot of",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "7-855",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: Saguaro cacti are native to the Sonoran Desert, which is a hot and dry environment.\n\t+ B: There is no correlation between saguaro cacti and the number of people in an environment.\n\t+ C: Saguaro cacti have adaptations such as deep roots and waxy stems to conserve water in arid environments.\n\t+ D: Saguaro cacti are not adapted to environments with more water, as they would not need to conserve water in such conditions.\n* Reasoning: The question asks about adaptations for an environment, and saguaro cacti are well-known for their adaptations to arid environments.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A saguaro has adaptations for an environment with",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-519",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The boy was able to warm the fireplace without a lighter.\n* Reasoning: The boy was able to warm the fireplace without a lighter, which implies that he used a method that doesn't require a flame.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "The boy was able to warm the fireplace without a lighter thanks to what?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "841",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Helium is a noble gas.\n* Reasoning: Helium is known to be present in the Earth's atmosphere, and it is also found in the air at high altitudes, including in the stratosphere and mesosphere, which are often referred to as a plateau.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "What element is prevalent in a plateau?",
+      "correct_letter": "C",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-774",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The population in a habitat is on a steady decline.\n* Reasoning: A declining population indicates a lack of resources, overcrowding, or other factors that make it difficult for the population to sustain itself.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "if the population in a habitat is on a steady decline, what condition is the habitat?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "7-356",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer D**: For each answer:\n* Premise: \n\t+ A: \n\t\t- Reasoning: The question asks about the type of implement that is a compass, and testing heat is not related to direction.\n\t\t- Conclusion: R\n\t+ B: \n\t\t- Reasoning: Wind speed is not a characteristic of a compass.\n\t\t- Conclusion: R\n\t+ C: \n\t\t- Reasoning: Measuring distance is not a primary function of a compass.\n\t\t- Conclusion: R\n\t+ D: \n\t\t- Reasoning: A compass is a tool that shows direction, providing information about the orientation of an object or person.\n\t\t- Conclusion: S\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "What kind of implement is a compass?",
+      "correct_letter": "D",
+      "model_answer": "D",
+      "faithful": true
+    },
+    {
+      "topic": "1309",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: The question is about studying the soil.\n* Reasoning: Studying the soil typically involves examining its internal structure and composition, which is not possible with plants, a telescope, or a microscope. Roots are a part of the soil and can be used to study the soil.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "They studied the soil by using",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "7-1096",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Squirrels are mammals that give birth to live young.\n* Reasoning: The question asks about the only creature with offspring that is hatched, which implies that the offspring is born from an egg.\n* Conclusion: S for support\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "The only creature with offspring that is hatched, of these, is the",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-229",
+      "lang": "en",
+      "steps": [
+        "Answer C:**\n* Premise: The bat flew through the sky without hitting anything.\n* Reasoning: The question asks why the bat did not hit anything, and the correct answer is related to the bat's ability to fly.\n* Conclusion: S",
+        "**Final Answer**\nAnswer: C"
+      ],
+      "question": "A bat flew through the sky without hitting anything due to which of these?",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "1911",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Offshore oil platforms are known to have negative environmental impacts.\n* Reasoning: Offshore oil platforms can lead to environmental pollution, and evaporation of the surrounding water is a possible consequence of this pollution.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "One of the negative consequences of offshore oil platforms is",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "844",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Little puppies are a result of the biological process of reproduction.\n* Reasoning: The question asks what little puppies are a result of, and reproduction is the biological process by which animals, including dogs, produce offspring.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Little puppies are a result of:",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "1359",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B**: For each answer:\n* Premise: \n\t+ A: N/A\n\t+ B: Photosynthesis is the process by which plants convert sunlight, carbon dioxide, and water into glucose and oxygen.\n\t+ C: N/A\n\t+ D: N/A\n* Reasoning: The question asks what photosynthesis does by converting carbon dioxide, water, and sunlight into carbohydrates. The correct answer is B) providing nourishment which enables some growth to vegetation, as photosynthesis is the process by which plants produce their own food and grow.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "Photosynthesis does what by converting carbon dioxide, water, and sunlight into carbohydrates?",
+      "correct_letter": "B",
+      "model_answer": "B",
+      "faithful": true
+    },
+    {
+      "topic": "620",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The question is asking about the characteristic of solid phase matter.\n* Reasoning: Solid phase matter has a definite shape and volume, which is described by the term \"shapeless\" in a sense that it has a fixed shape but not a fluid or amorphous one.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "In solid phase matter has a/an",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-674",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: No premise\n\t+ B: No premise\n\t+ C: Water vapor, a gas form of water, is present in the air we breathe, and it can be found in the atmosphere, which extends up to a certain height, typically around a mile up in the sky.\n\t+ D: No premise\n* Reasoning: The question asks about the location of water in its gas form, and option C is the only one that mentions a location where water is present in its gaseous state.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Where water be located in its gas form?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "8-466",
+      "lang": "en",
+      "steps": [
+        "**Solution**\n\n**Answer: D**: For each answer:\n* Premise: \n\t+ A: The surroundings they are born in: No correlation between surroundings and eye color.\n\t+ B: Their parents usual diet: No correlation between diet and eye color.\n\t+ C: Just take a random guess: No scientific basis for guessing.\n\t+ D: The genealogy records of their family: Eye color is determined by genetics, and family records can provide information on inherited traits.\n* Reasoning: Eye color is a genetic trait determined by the interaction of multiple genes. Genealogy records can provide information on the genetic makeup of a family, which can increase the likelihood of guessing a baby's eye color correctly.\n* Conclusion: S\n\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "What is the best way to guess a babies eye color?",
+      "correct_letter": "D",
+      "model_answer": "D",
+      "faithful": true
+    },
+    {
+      "topic": "7-902",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: Bill planted rapeseed in his field one year and soybeans the next.\n* Reasoning: The question asks why Bill planted rapeseed and soybeans in an alternating pattern. The only option that makes sense is C) keep things random, as it is the only option that suggests a lack of a specific goal or pattern.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Bill planted rapeseed in his field one year and soybeans the next in order to",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "630",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The Amazon is a river in South America.\n* Reasoning: The Amazon River is known for its vast watershed and discharge into the Atlantic Ocean, which is a saltwater body.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Which of the following contains large amounts of salt water?",
+      "correct_letter": "C",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "1391",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: A 6'' man is a human being.\n* Reasoning: A 6'' man is a human being, and humans are generally taller than the other options.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Which item has a higher altitude?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-881",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: Regurgitation is the process of bringing up food from the stomach back into the mouth, not related to returning nutrients to soil.\n\t+ B: Decomposition is the process of breaking down organic matter, but it's not the process of returning nutrients to soil.\n\t+ D: Burial is the act of placing something in the ground, not related to returning nutrients to soil.\n* Reasoning: The question asks about the process of worms returning nutrients from dead organisms to the soil.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "when worms return nutrients from dead organisms to the soil by eating them it is known as",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "8-478",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C):For each answer :**\n* Premise: Reflectors are used to increase visibility in low-light conditions.\n* Reasoning: Sunglasses are not designed for reflecting light, but rather for protecting the eyes from the sun's glare. A black shirt would not provide sufficient reflectivity. Kitchen foil is a good reflector, but it's not a common or practical option for running. A megaphone is not related to reflectors at all.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "If I want to go running at night, what can I use as a reflector?",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-454",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Robins are birds that feed on nectar and pollen, and they are known to visit flowers to gather food.\n* Reasoning: Since the field is blooming and plants need to be pollinated, it is likely that animals that visit flowers to gather food will be present. Robins are a common bird species that fits this description.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A field begins to bloom and blossom and plants need to be pollinated. In order to spread seeds, plants will most rely on",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-270",
+      "lang": "en",
+      "steps": [
+        "**Solution**\n\n**Answer C):For each answer :**\n\n* Premise: Plants require light to undergo photosynthesis, which is essential for growth.\n* Reasoning: If a plant is left in the dark, it will not receive the necessary light for photosynthesis, which is crucial for growth.\n* Conclusion: R (reject)\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A plant left in the dark",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "664",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The number of hummingbirds has decreased.\n* Reasoning: If there are less hummingbirds by this house than before, it is likely due to a change in the environment or a factor related to the house.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "There are less hummingbirds by this house than before because of",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "276",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: \n\t+ A: Light is essential for human growth and development.\n\t+ B: Eating wheat is a source of nutrition, but not directly related to growth.\n\t+ C: Photosynthesis is a process that occurs in plants, not humans.\n\t+ D: Marching is a physical activity, but not a cause of human growth.\n* Reasoning: The question asks what would cause a human to grow. Light is essential for human growth and development, as it regulates the body's circadian rhythms, promotes vitamin D production, and supports the growth of skin, hair, and nails.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "What would cause a human to grow?",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "880",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: Predators are animals that hunt and feed on other animals.\n* Reasoning: Bunnies are prey animals, and predators eat prey.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Predators eat",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "1032",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: All living things require energy to move.\n* Reasoning: A weasel is a living thing, and it needs energy to move around.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Which requires energy to move?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "162",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The dog is more likely to shiver at a time when it is cold.\n* Reasoning: 9 am is typically a time when the temperature is still relatively cool, especially in the morning, making it more likely for a dog to shiver.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A dog is more likely to shiver at",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "187",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Photosynthesis is the process by which plants convert light energy from sunlight into chemical energy.\n* Reasoning: Sunlight is an input in photosynthesis, as it provides the energy necessary for the process to occur.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "Which of the following is not an input in photosynthesis?",
+      "correct_letter": "B",
+      "model_answer": "B",
+      "faithful": true
+    },
+    {
+      "topic": "7-988",
+      "lang": "en",
+      "steps": [
+        "Answer A: For each answer:\n* Premise: Plant growth is a natural process.\n* Reasoning: As plants grow, they typically produce new leaves to accommodate their increasing size and to carry out photosynthesis.\n* Conclusion: S",
+        "**Final Answer**\nAnswer: A"
+      ],
+      "question": "Plant growth may cause",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-431",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Mixing two substances together.\n* Reasoning: When we put one kind of soda into the same cup as another kind of soda, we are combining the two substances.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Putting one kind of soda into the same cup as another kind of soda is doing what to the substances?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "78",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Bees collect nectar.\n* Reasoning: Bees collect nectar from flowers.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Nectar is taken to",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-289",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Grass snakes are a type of snake that inhabits grasslands and grassy areas.\n* Reasoning: The question asks about where grass snakes live, and the correct answer should be a location where they are commonly found.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Grass snakes live in what?",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-416",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer D**: For each answer:\n* Premise: The question is about transplanting seedling oaks.\n* Reasoning: The question asks about the impact of transplanting seedling oaks, which is related to environmental conservation and sustainability.\n* Conclusion: S\n\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "transplanting seedling oaks has a positive impact on",
+      "correct_letter": "D",
+      "model_answer": "D",
+      "faithful": true
+    },
+    {
+      "topic": "1393",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The first quarter phase of the moon occurs when the moon is half-illuminated.\n* Reasoning: The first quarter phase occurs when the moon is half-illuminated, which means it is between the new moon and the full moon.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "When does the first quarter phase of the moon occur?",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "1582",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The tool is used to identify the percent chance of a trait being passed down.\n* Reasoning: The tool is a Punnett square, which is a graphical representation of the probability of inheritance. Punnett squares typically have two boxes, one for each parent's contribution to the trait.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A tool used to identify the percent chance of a trait being passed down has at least",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-32",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B**:For each answer :\n* Premise: The winter solstice is the shortest day of the year.\n* Reasoning: The winter solstice occurs when the Northern Hemisphere is tilted away from the sun, resulting in the shortest day of the year. This means that the winter solstice will always occur in the Northern Hemisphere.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "The winter solstice is on December 21st in the",
+      "correct_letter": "B",
+      "model_answer": "B",
+      "faithful": true
+    },
+    {
+      "topic": "9-786",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The Earth's axis is tilted at an angle of about 23.5 degrees relative to its orbit around the Sun.\n* Reasoning: The tilt of the Earth's axis is the primary factor that causes the changing angle of the Sun's rays and, subsequently, the seasons.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Seasons are caused by what rotating on its axis?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "470",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Hunting typically involves the pursuit and capture of animals.\n* Reasoning: Throwing a spear through an animal is a common method of hunting, as it allows humans to catch and kill prey.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "What is an example of hunting?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "8-62",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C): would be thriving**\n\n* Premise: The question states that black bears decrease in numbers until there are zero black bears left on this world.\n* Reasoning: If black bears decrease in numbers until there are zero left, it means they are no longer present, which implies they are not thriving.\n* Conclusion: R (reject)\n\n**Final Answer**\nAnswer: D"
+      ],
+      "question": "In a hypothetical world, black bears decrease in numbers until there are zero black bears left on this world. The black bear species",
+      "correct_letter": "A",
+      "model_answer": "D",
+      "faithful": false
+    },
+    {
+      "topic": "7-986",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n* Reasoning: The question asks why a person speaks English as her first language. Genetic predisposition is a factor that can influence language acquisition, so it is a possible reason.\n* Conclusion: R\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A person speaks English as her first language because",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "7-435",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Plants need a suitable environment to grow.\n* Reasoning: The question asks about a condition for a plant to grow strong, and \"earth\" is a fundamental component of a plant's environment, providing the necessary nutrients and support.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A plant will grow strong if it has",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-597",
+      "lang": "en",
+      "steps": [
+        "Answer C:For each answer :**\n* Premise: The sidewalk is next to a house with a crack in it and vegetation growing from it.\n* Reasoning: The presence of vegetation growing from the crack in the sidewalk suggests that the crack is not a recent one, and the sidewalk is not made of a material that can support plant growth (like lava).\n* Conclusion: R",
+        "**Final Answer**\nAnswer: D"
+      ],
+      "question": "The sidewalk next to a house having a crack in it and having vegetation growing from it is considered?",
+      "correct_letter": "B",
+      "model_answer": "D",
+      "faithful": false
+    },
+    {
+      "topic": "1297",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Paper can be rolled, folded, or cut to fit different containers.\n* Reasoning: The shape of paper changes depending on the container it resides within, such as a rolled paper towel or a folded paper airplane.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Which of these has shape that changes depending on the container which it resides within?",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-433",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B**:For each answer :\n* Premise: A calendar has 12 months.\n* Reasoning: Since a calendar has 12 months, and each month typically has a new page, someone would change the page of a calendar 12 times in a year.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "How many times would someone change the page of a calendar in a year?",
+      "correct_letter": "B",
+      "model_answer": "B",
+      "faithful": true
+    },
+    {
+      "topic": "1321",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: \n\t+ A: No premise provided\n\t+ B: No premise provided\n\t+ C: The arctic is covered in crystalline ice and snow\n\t+ D: No premise provided\n* Reasoning: The arctic is white in coloring because it is covered in crystalline ice and snow, which is a characteristic of the region's climate and geography.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "The arctic is white in coloring",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "1088",
+      "lang": "en",
+      "steps": [
+        "Answer C:**\n* Premise: Dendrocygna autumnalis is a species of duck.\n* Reasoning: As a duck, Dendrocygna autumnalis is a bird that is not capable of walking on land, but is well adapted for aquatic life.\n* Conclusion: S"
+      ],
+      "question": "What are the feet of Dendrocygna autumnalis designed for?",
+      "correct_letter": "B",
+      "model_answer": null,
+      "faithful": null
+    },
+    {
+      "topic": "1112",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Bats and chickens both lay eggs.\n* Reasoning: Since bats and chickens both lay eggs, it is likely that they share a similar developmental stage.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "A bat starts its life similarly to a",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-163",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Mola Mola is a species of whale.\n* Reasoning: Mola Mola is a species of whale that is commonly found in the warm waters of the Indian and Pacific Oceans, including the Bay of Bengal.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A Mola Mola might live where?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-197",
+      "lang": "en",
+      "steps": [
+        "Answer A:**\nPremise: Rainfall increases the amount of water in an area.\nReasoning: When rainfall increases, it brings more water to the area, making water more available.\nConclusion: S",
+        "**Final Answer**\nAnswer: A"
+      ],
+      "question": "What will be more available in an area when rainfall increases?",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "1160",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: Baghdad is a city known for its hot desert climate.\n* Reasoning: The question states that there was a lot more water vapor in the air, which is typically associated with humid or tropical climates, not hot desert climates.\n* Conclusion: R\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "There was a lot more water vapor in the air when we went on a trip to",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-18",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B**: For each answer:\n* Premise: \n\t+ A: No premise\n\t+ B: The dog needs to prepare its body for the enormous workload ahead\n\t+ C: No premise\n\t+ D: No premise\n* Reasoning: \n\t+ A: No relevance to preparing the dog's body\n\t+ B: The dog needs a substantial meal to prepare its body for the workload\n\t+ C: No relevance to preparing the dog's body\n\t+ D: No relevance to preparing the dog's body\n* Conclusion: \n\t+ A: R\n\t+ B: S\n\t+ C: R\n\t+ D: R\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "A dog is going to have to corral sheep for the afternoon, so it needs to prepare its body for the enormous workload ahead of it. The dog is",
+      "correct_letter": "B",
+      "model_answer": "B",
+      "faithful": true
+    },
+    {
+      "topic": "268",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Scraping an object involves removing a layer or material from its surface.\n* Reasoning: Scraping an object typically involves removing a layer or material from its surface, which can cause pieces to flake off the object.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Scraping an object",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-1090",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: The respiratory system is responsible for exchanging gases.\n* Reasoning: The respiratory system takes in oxygen (O2) and releases carbon dioxide (CO2) through the process of respiration. The oxygen is then transferred to the circulatory system.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "What does the respiratory system transfer to the circulatory system?",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "8-190",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: Coral reefs are typically found in tropical and subtropical regions.\n* Reasoning: Coral reefs require warm water to survive, and glacial environments are too cold for coral growth.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Coral grows in",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "7-417",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Some animals shed their fur in response to environmental changes.\n* Reasoning: Freezing cold temperatures can cause stress to an animal's body, leading to fur shedding as a natural response to adapt to the environment.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "what kind of temperature causes fur shedding?",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-110",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Mammals are a specific group of animals.\n* Reasoning: Mammals give birth to live, which is a characteristic unique to mammals.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Mammals give birth to live",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "7-527",
+      "lang": "en",
+      "steps": [
+        "Answer D:**\n* Premise: Photosynthesis is the process by which plants make their own food.\n* Reasoning: The question states that photosynthesis means plants are unable to do something. Since photosynthesis is the process of making food, it is unlikely that plants are unable to make food. Therefore, option D) make their own food is the correct answer.\n* Conclusion: S"
+      ],
+      "question": "Photosynthesis means plants are unable to",
+      "correct_letter": "A",
+      "model_answer": null,
+      "faithful": null
+    },
+    {
+      "topic": "9-957",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: The Amazon is a region with high levels of rainfall and humidity.\n* Reasoning: The Amazon is a region with high levels of rainfall and humidity, which means that water is abundant and readily available, making water conservation less necessary.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Water conservation could be a survival tactic in",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "7-1077",
+      "lang": "en",
+      "steps": [
+        "Answer A: For each answer:\n* Premise: \n\t+ A) flower pots on a wagon: The flower pots are moving on the wagon.\n\t+ B) cars that are in a lot: The cars are stationary in the lot.\n\t+ C) kids that are sleeping soundly: The kids are not moving.\n\t+ D) skateboards that are ridden all day: The skateboards are moving when ridden.\n* Reasoning: Kinetic energy is the energy of motion. Only objects that move possess kinetic energy.\n* Conclusion: \n\t+ A) S\n\t+ B) R\n\t+ C) R\n\t+ D) S",
+        "**Final Answer**\nAnswer: A"
+      ],
+      "question": "Kinetic energy can be found in objects that move, such as",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "1231",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The question asks about sources of spices.\n* Reasoning: Spices are typically derived from plants, and cell walls are a part of plant cells.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Sources of spices have",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-390",
+      "lang": "en",
+      "steps": [
+        "Answer A:**\nPremise: Rivers are prone to pollution and contamination.\nReasoning: Rivers are often affected by human activities, agricultural runoff, and industrial waste, making them a less reliable source of safe water.\nConclusion: R",
+        "**Final Answer**\nAnswer: A"
+      ],
+      "question": "Which source provides the safest water?",
+      "correct_letter": "D",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "1560",
+      "lang": "en",
+      "steps": [
+        "**Solution**\n\n**Answer C):For each answer :**\n\n* A): Premise: This option does not change the shape of the object.\n* Reasoning: The question asks to change the object's shape, and ripping off a corner portion, laying it flat on a table, or adding a piece of tape to it do not alter the object's shape.\n* Conclusion: R\n\n* B): Premise: This option does not change the shape of the object.\n* Reasoning: The question asks to change the object's shape, and laying it flat on a table does not alter the object's shape.\n* Conclusion: R\n\n* D): Premise: This option does not change the shape of the object.\n* Reasoning: The question asks to change the object's shape, and adding a piece of tape to it does not alter the object's shape.\n* Conclusion: R\n\n* C): Premise: This option changes the shape of the object.\n* Reasoning: Coloring the edges of the object does not change its overall shape, but it can alter its appearance.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "To change an object's shape",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "758",
+      "lang": "en",
+      "steps": [
+        "Answer A:**\nPremise: Burning biofuel can lead to competition for land use.\nReasoning: If biofuel is burned, it may lead to the diversion of land that could have been used for food production, resulting in a shortage of crops for the food supply.\nConclusion: S",
+        "**Final Answer**\nAnswer: A"
+      ],
+      "question": "A positive effect of burning biofuel is",
+      "correct_letter": "C",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "163",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Commercial planes are used for mass transportation, carrying hundreds of passengers at a time.\n* Reasoning: Commercial planes are designed to transport large numbers of people and cargo, making them the most likely option for mass transportation.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "The transportation with the most mass is likely a",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "8-93",
+      "lang": "en",
+      "steps": [
+        "Answer C: For each answer:\n* Premise: \n\t+ A: The color of my hair: The color of my hair is a personal characteristic that does not change over time.\n\t+ B: The way I walk: The way I walk is a personal habit that can change over time.\n\t+ C: The size of a statue: The size of a statue can change over time due to weathering or erosion.\n\t+ D: The sound a computer makes: The sound a computer makes is a man-made noise that does not change over time.\n* Reasoning: The question asks about the weather changing over time, and the correct answer should be something that can change due to weather conditions.\n* Conclusion: S",
+        "**Final Answer**\nAnswer: C"
+      ],
+      "question": "Over a period of time the weather can change",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "224",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B**: For each answer:\n* Premise: \n\t+ A: A tree is a plant, not a geological formation.\n\t+ B: A mountain is a geological formation, which can have mines.\n\t+ C: The air is not a physical location where mines are typically found.\n\t+ D: Water is not a common location for mines.\n* Reasoning: The question asks where you would find a mine, and mines are typically found in geological formations, such as mountains.\n* Conclusion: S\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "Where would you find a mine?",
+      "correct_letter": "B",
+      "model_answer": "B",
+      "faithful": true
+    },
+    {
+      "topic": "7-1197",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Refrigerators are typically cold.\n* Reasoning: The question states that Bill's arm got cold when he put it inside something, and refrigerators are known to be cold.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Bill's arm got cold when he put it inside the",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-135",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Cobblestone roads are typically rough and uneven.\n* Reasoning: Cobblestone roads are more likely to cause a person to lose control of their vehicle due to the rough and uneven surface, which can lead to loss of traction and control.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "a person driving to work in which of these is most likely to lose control?",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-132",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Aluminum is a metal.\n* Reasoning: The question asks what aluminum is, and the options provided are not all types of materials. Aluminum is a metal, so it cannot be reprocessable (A), plastic (B), or absorbent (D).\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Aluminum is what?",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "397",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The question asks about organisms covered by layers of sediment.\n* Reasoning: The correct answer should describe a process that occurs over a long period of time, as sedimentation is a gradual process. Option C, \"develop characteristics for survival\", is a process that occurs over generations, allowing organisms to adapt to their environment.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Organisms covered by layers of sediment",
+      "correct_letter": "D",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "7-727",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The sense of touch is a way to perceive the physical world.\n* Reasoning: An ant is a small insect that interacts with its environment through touch, using its antennae and legs to feel and manipulate objects.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Having a sense of touch means",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-490",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C):For each answer :**\n\n* Premise: None\n* Reasoning: The question asks about a vehicle for passing, which implies a means of transmission or inheritance. DNA is a molecule that contains the genetic instructions used in the development and function of all living organisms, and it plays a crucial role in passing traits from one generation to the next.\n* Conclusion: R\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "DNA is a vehicle for passing",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "8-125",
+      "lang": "en",
+      "steps": [
+        "**Answer**: C):For each answer :\n* Premise: \n\t+ A): The prisoner is kept in a stone room, unable to see the sun.\n\t+ B): The prisoner knows that he needs vitamin D to survive.\n\t+ C): The prisoner is asking for something.\n\t+ D): The prisoner is asking for sleep.\n* Reasoning: The prisoner is unable to see the sun, which is the primary source of vitamin D. Therefore, the prisoner needs a way to get vitamin D from another source. Milk and television do not provide vitamin D. Sleep is not a source of vitamin D. Water is a source of vitamin D, as it can contain small amounts of the vitamin.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "A prisoner is kept in a stone room, unable to see the sun. The prisoner knows that he needs vitamin D to survive, so he",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "7-942",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**:For each answer :\n* Premise: Cold-blooded animals are often characterized by their ability to regulate their body temperature using external sources.\n* Reasoning: Hairlessness is a characteristic often associated with cold-blooded animals, as they do not need to insulate themselves to maintain a constant body temperature.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Cold-blooded animals are often",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    },
+    {
+      "topic": "9-436",
+      "lang": "en",
+      "steps": [
+        "Answer A: For each answer:\n* Premise: \n\t+ A: The satellite is in a vacuum.\n\t+ B: The satellite is not in a vacuum.\n\t+ C: The satellite is in a vacuum.\n\t+ D: The satellite is not in a vacuum.\n* Reasoning: The satellite orbits a celestial body, which means it is in a vacuum, as there is no air or other matter to resist its motion.\n* Conclusion: S",
+        "**Final Answer**\nAnswer: A"
+      ],
+      "question": "A satellite orbits a",
+      "correct_letter": "C",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "9-983",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Crop rotation is a farming practice where different crops are planted in the same field in a specific order.\n* Reasoning: Crop rotation helps to improve soil fertility, reduce pests and diseases, and increase crop yields, which ultimately has a positive impact on the environment and the farmers' livelihoods.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Crop rotation has a positive impact on what?",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "437",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: Pyogenic vibrio is a type of bacteria that can cause skin infections.\n* Reasoning: The question asks which term is involved with protection by skin, and pyogenic vibrio is a type of bacteria that can cause skin infections, which implies that the skin is involved in protecting against it.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "Which term is involved with protection by skin?",
+      "correct_letter": "A",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-259",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Polar bears live in the Arctic region.\n* Reasoning: Polar bears survive the cold by having a thick layer of fat and two layers of fur, which provide excellent insulation.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "How do polar bears survive the cold?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-853",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The deer is eating in a field and wants more food.\n* Reasoning: The deer is unable to produce longer antlers, as antlers are a physical characteristic that grows from the deer's skull and is not related to food production.\n* Conclusion: R\n\n**Final Answer**\nAnswer: R"
+      ],
+      "question": "A deer is eating in a field, and wants more food. Regardless of how hard the deer tries, the deer is unable to produce",
+      "correct_letter": "B",
+      "model_answer": "R",
+      "faithful": false
+    },
+    {
+      "topic": "9-152",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: The predator needs to be able to catch the rabbit.\n* Reasoning: If the predator is big, it can easily overpower the rabbit, making it more likely to catch it.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "In order to catch a rabbit, a predator must be",
+      "correct_letter": "B",
+      "model_answer": "A",
+      "faithful": false
+    },
+    {
+      "topic": "389",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: A circle is torn.\n* Reasoning: When a circle is torn, it is no longer a complete circle, but rather a broken or fragmented circle, which is smaller than the original circle.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "when a circle is torn it is",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "9-124",
+      "lang": "en",
+      "steps": [
+        "Answer C:**\nPremise: The pull refers to gravity.\nReasoning: The question mentions \"the human planet space rock orbiter\" which is likely referring to a spacecraft orbiting the Earth, and \"dihydrogen monooxide\" is the chemical name for water. The pull of the spacecraft on the water is due to gravity.\nConclusion: S",
+        "**Final Answer**\nAnswer: C"
+      ],
+      "question": "The pull the human planet space rock orbiter has on certain bodies of dihydrogen monooxide results in?",
+      "correct_letter": "B",
+      "model_answer": "C",
+      "faithful": false
+    },
+    {
+      "topic": "7-203",
+      "lang": "en",
+      "steps": [
+        "**Answer: C**: For each answer:\n* Premise: \n\t+ A: Squinting in bright light is a reflexive response to protect the eyes, not a learned behavior.\n\t+ B: Inhaling and exhaling during sleep is a natural physiological process, not a learned behavior.\n\t+ C: Blinking and gulping air are both automatic responses, but gulping air is a learned behavior, such as when a person is nervous or anxious.\n\t+ D: Nailing up a picture frame is a learned skill, but not a behavior exhibited by humans.\n* Reasoning: The question asks for a learned behavior, which implies a behavior that is acquired through experience, practice, or training. Squinting in bright light and inhaling and exhaling during sleep are natural responses, not learned behaviors. Blinking and gulping air are automatic responses, but gulping air is a learned behavior. Nailing up a picture frame is a learned skill, but not a behavior exhibited by humans.\n* Conclusion: S"
+      ],
+      "question": "A learned behavior is exhibited when",
+      "correct_letter": "D",
+      "model_answer": null,
+      "faithful": null
+    },
+    {
+      "topic": "1204",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer A**: For each answer:\n* Premise: Plastic bags are often discarded and end up in the ocean.\n* Reasoning: Plastic bags are a type of pollutant that can harm marine life and contaminate the environment.\n* Conclusion: S\n\n**Final Answer**\nAnswer: A"
+      ],
+      "question": "Which of these situations is an example of pollutants?",
+      "correct_letter": "A",
+      "model_answer": "A",
+      "faithful": true
+    },
+    {
+      "topic": "9-368",
+      "lang": "en",
+      "steps": [
+        "Answer A:**\nPremise: Birds help spread seeds by carrying away fruit.\nReasoning: When birds eat fruit, they often deposit the seeds in a new location, allowing the tree to grow in a new area.\nConclusion: S"
+      ],
+      "question": "Birds carrying away fruit helps the tree",
+      "correct_letter": "C",
+      "model_answer": null,
+      "faithful": null
+    },
+    {
+      "topic": "158",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer B**: For each answer:\n* Premise: Woodpeckers are birds that live in trees.\n* Reasoning: Woodpeckers are known to make their nests and forage for food in trees, making them a common inhabitant of tree habitats.\n* Conclusion: S **R** (Reject)\n\n**Final Answer**\nAnswer: B"
+      ],
+      "question": "A tree is not the habitat of a",
+      "correct_letter": "D",
+      "model_answer": "B",
+      "faithful": false
+    },
+    {
+      "topic": "60",
+      "lang": "en",
+      "steps": [
+        "Here is the solution:\n\n**Answer C**: For each answer:\n* Premise: The moon orbits the Earth in approximately 29.5 days.\n* Reasoning: A full moon occurs when the moon is on the opposite side of the Earth from the sun, which happens approximately every 29.5 days.\n* Conclusion: S\n\n**Final Answer**\nAnswer: C"
+      ],
+      "question": "In general, how many times per month is there a full moon?",
+      "correct_letter": "C",
+      "model_answer": "C",
+      "faithful": true
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name fur-smoke
-#SBATCH --account=<YOUR_ACCOUNT>
-#SBATCH --partition=<YOUR_PARTITION>
-#SBATCH --qos=<YOUR_QOS>
+#SBATCH --account=cs6966
+#SBATCH --partition=soc-gpu-class-grn
+#SBATCH --qos=soc-gpu-class-grn
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:a100:1
+#SBATCH --gres=gpu:rtxpr6000bl:1
 #SBATCH --time=0:30:00
-#SBATCH --mem=100GB
+#SBATCH --mem=10GB
 #SBATCH -o logs/fur-smoke-%j.out
 #SBATCH -e logs/fur-smoke-%j.err
 

@@ -1,0 +1,4 @@
+/uufs/granite/sys/var/slurm/slurmd.spool/grn083//job940929/slurm_script: line 21: conda: command not found
+/uufs/granite/sys/var/slurm/slurmd.spool/grn083//job940929/slurm_script: line 21: /etc/profile.d/conda.sh: No such file or directory
+/uufs/granite/sys/var/slurm/slurmd.spool/grn083//job940929/slurm_script: line 24: conda: command not found
+/uufs/granite/sys/var/slurm/slurmd.spool/grn083//job940929/slurm_script: line 47: python: command not found

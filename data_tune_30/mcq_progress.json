@@ -1,0 +1,9 @@
+{
+  "model_id": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "split": "test",
+  "target_instances": 30,
+  "completed_instances": 30,
+  "newly_generated_this_run": 30,
+  "elapsed_seconds": 191,
+  "status": "completed"
+}

@@ -1,0 +1,437 @@
+Wed Mar 18 15:55:06 MDT 2026
+Wed Mar 18 15:55:08 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 4000 Blac...    On  |   00000000:81:00.0 Off |                    0 |
+| 40%   50C    P8              8W /  145W |       2MiB /  24467MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Project root: /uufs/chpc.utah.edu/common/home/u1427573/faithfullness-as-geometry/fat/Faithfulness-As-Geometry
+Model: meta-llama/Meta-Llama-3-8B-Instruct
+Split: test
+Max instances: 200
+Seed: 42
+[INFO] Loading model: meta-llama/Meta-Llama-3-8B-Instruct
+[INFO] Resume scan: found 0 completed examples in data/mcq_cots_fur.jsonl
+[1/200] id=7-1132  correct=A
+  [PROGRESS] completed=1/200 new_this_run=1 elapsed=3s
+[2/200] id=7-976  correct=A
+  [PROGRESS] completed=2/200 new_this_run=2 elapsed=5s
+[3/200] id=9-655  correct=A
+  [PROGRESS] completed=3/200 new_this_run=3 elapsed=8s
+[4/200] id=1955  correct=A
+  [PROGRESS] completed=4/200 new_this_run=4 elapsed=10s
+[5/200] id=508  correct=D
+  [PROGRESS] completed=5/200 new_this_run=5 elapsed=12s
+[6/200] id=9-491  correct=C
+  [PROGRESS] completed=6/200 new_this_run=6 elapsed=16s
+[7/200] id=9-520  correct=C
+  [PROGRESS] completed=7/200 new_this_run=7 elapsed=19s
+[8/200] id=9-35  correct=A
+  [PROGRESS] completed=8/200 new_this_run=8 elapsed=21s
+[9/200] id=1215  correct=C
+  [PROGRESS] completed=9/200 new_this_run=9 elapsed=24s
+[10/200] id=385  correct=D
+  [PROGRESS] completed=10/200 new_this_run=10 elapsed=27s
+[11/200] id=7-732  correct=A
+  [PROGRESS] completed=11/200 new_this_run=11 elapsed=29s
+[12/200] id=9-548  correct=A
+  [PROGRESS] completed=12/200 new_this_run=12 elapsed=32s
+[13/200] id=7-140  correct=C
+  [PROGRESS] completed=13/200 new_this_run=13 elapsed=35s
+[14/200] id=9-528  correct=C
+  [WARN] Parsing failed for 9-528, skipping
+[15/200] id=1334  correct=A
+  [PROGRESS] completed=14/200 new_this_run=14 elapsed=41s
+[16/200] id=9-29  correct=A
+  [PROGRESS] completed=15/200 new_this_run=15 elapsed=43s
+[17/200] id=8-97  correct=B
+  [PROGRESS] completed=16/200 new_this_run=16 elapsed=47s
+[18/200] id=406  correct=C
+  [PROGRESS] completed=17/200 new_this_run=17 elapsed=50s
+[19/200] id=1161  correct=B
+  [PROGRESS] completed=18/200 new_this_run=18 elapsed=53s
+[20/200] id=3  correct=B
+  [PROGRESS] completed=19/200 new_this_run=19 elapsed=59s
+[21/200] id=9-727  correct=D
+  [PROGRESS] completed=20/200 new_this_run=20 elapsed=62s
+[22/200] id=7-262  correct=A
+  [PROGRESS] completed=21/200 new_this_run=21 elapsed=64s
+[23/200] id=8-367  correct=A
+  [PROGRESS] completed=22/200 new_this_run=22 elapsed=66s
+[24/200] id=8-240  correct=A
+  [PROGRESS] completed=23/200 new_this_run=23 elapsed=68s
+[25/200] id=9-322  correct=B
+  [PROGRESS] completed=24/200 new_this_run=24 elapsed=71s
+[26/200] id=8-409  correct=C
+  [PROGRESS] completed=25/200 new_this_run=25 elapsed=73s
+[27/200] id=9-993  correct=D
+  [PROGRESS] completed=26/200 new_this_run=26 elapsed=75s
+[28/200] id=9-187  correct=B
+  [PROGRESS] completed=27/200 new_this_run=27 elapsed=77s
+[29/200] id=1095  correct=A
+  [PROGRESS] completed=28/200 new_this_run=28 elapsed=79s
+[30/200] id=7-171  correct=B
+  [PROGRESS] completed=29/200 new_this_run=29 elapsed=81s
+[31/200] id=9-1030  correct=C
+  [PROGRESS] completed=30/200 new_this_run=30 elapsed=83s
+[32/200] id=9-877  correct=B
+  [PROGRESS] completed=31/200 new_this_run=31 elapsed=87s
+[33/200] id=761  correct=D
+  [WARN] Parsing failed for 761, skipping
+[34/200] id=1180  correct=D
+  [PROGRESS] completed=32/200 new_this_run=32 elapsed=91s
+[35/200] id=9-51  correct=D
+  [PROGRESS] completed=33/200 new_this_run=33 elapsed=95s
+[36/200] id=9-298  correct=A
+  [PROGRESS] completed=34/200 new_this_run=34 elapsed=97s
+[37/200] id=57  correct=B
+  [PROGRESS] completed=35/200 new_this_run=35 elapsed=98s
+[38/200] id=1923  correct=A
+  [PROGRESS] completed=36/200 new_this_run=36 elapsed=100s
+[39/200] id=8-57  correct=B
+  [PROGRESS] completed=37/200 new_this_run=37 elapsed=102s
+[40/200] id=9-942  correct=D
+  [PROGRESS] completed=38/200 new_this_run=38 elapsed=104s
+[41/200] id=9-813  correct=B
+  [PROGRESS] completed=39/200 new_this_run=39 elapsed=108s
+[42/200] id=395  correct=D
+  [PROGRESS] completed=40/200 new_this_run=40 elapsed=110s
+[43/200] id=8-333  correct=A
+  [WARN] Parsing failed for 8-333, skipping
+[44/200] id=8-135  correct=A
+  [PROGRESS] completed=41/200 new_this_run=41 elapsed=115s
+[45/200] id=1780  correct=A
+  [PROGRESS] completed=42/200 new_this_run=42 elapsed=117s
+[46/200] id=7-107  correct=A
+  [PROGRESS] completed=43/200 new_this_run=43 elapsed=119s
+[47/200] id=9-73  correct=A
+  [PROGRESS] completed=44/200 new_this_run=44 elapsed=122s
+[48/200] id=9-550  correct=A
+  [PROGRESS] completed=45/200 new_this_run=45 elapsed=124s
+[49/200] id=9-575  correct=B
+  [PROGRESS] completed=46/200 new_this_run=46 elapsed=126s
+[50/200] id=9-510  correct=C
+  [PROGRESS] completed=47/200 new_this_run=47 elapsed=128s
+[51/200] id=326  correct=C
+  [PROGRESS] completed=48/200 new_this_run=48 elapsed=132s
+[52/200] id=9-464  correct=C
+  [PROGRESS] completed=49/200 new_this_run=49 elapsed=134s
+[53/200] id=9-523  correct=A
+  [PROGRESS] completed=50/200 new_this_run=50 elapsed=137s
+[54/200] id=1712  correct=A
+  [PROGRESS] completed=51/200 new_this_run=51 elapsed=139s
+[55/200] id=695  correct=A
+  [PROGRESS] completed=52/200 new_this_run=52 elapsed=141s
+[56/200] id=8-130  correct=C
+  [PROGRESS] completed=53/200 new_this_run=53 elapsed=143s
+[57/200] id=7-769  correct=C
+  [PROGRESS] completed=54/200 new_this_run=54 elapsed=145s
+[58/200] id=8-378  correct=D
+  [PROGRESS] completed=55/200 new_this_run=55 elapsed=148s
+[59/200] id=9-393  correct=A
+  [PROGRESS] completed=56/200 new_this_run=56 elapsed=149s
+[60/200] id=7-710  correct=B
+  [PROGRESS] completed=57/200 new_this_run=57 elapsed=152s
+[61/200] id=48  correct=C
+  [PROGRESS] completed=58/200 new_this_run=58 elapsed=154s
+[62/200] id=9-686  correct=B
+  [PROGRESS] completed=59/200 new_this_run=59 elapsed=157s
+[63/200] id=266  correct=D
+  [PROGRESS] completed=60/200 new_this_run=60 elapsed=159s
+[64/200] id=7-1159  correct=C
+  [PROGRESS] completed=61/200 new_this_run=61 elapsed=161s
+[65/200] id=8-464  correct=C
+  [PROGRESS] completed=62/200 new_this_run=62 elapsed=163s
+[66/200] id=591  correct=A
+  [PROGRESS] completed=63/200 new_this_run=63 elapsed=165s
+[67/200] id=8-312  correct=C
+  [PROGRESS] completed=64/200 new_this_run=64 elapsed=167s
+[68/200] id=485  correct=D
+  [PROGRESS] completed=65/200 new_this_run=65 elapsed=169s
+[69/200] id=8-403  correct=C
+  [PROGRESS] completed=66/200 new_this_run=66 elapsed=174s
+[70/200] id=167  correct=A
+  [PROGRESS] completed=67/200 new_this_run=67 elapsed=176s
+[71/200] id=7-391  correct=C
+  [PROGRESS] completed=68/200 new_this_run=68 elapsed=178s
+[72/200] id=948  correct=B
+  [PROGRESS] completed=69/200 new_this_run=69 elapsed=183s
+[73/200] id=1572  correct=C
+  [PROGRESS] completed=70/200 new_this_run=70 elapsed=185s
+[74/200] id=9-783  correct=C
+  [PROGRESS] completed=71/200 new_this_run=71 elapsed=187s
+[75/200] id=7-386  correct=B
+  [PROGRESS] completed=72/200 new_this_run=72 elapsed=189s
+[76/200] id=257  correct=D
+  [PROGRESS] completed=73/200 new_this_run=73 elapsed=193s
+[77/200] id=9-1087  correct=C
+  [PROGRESS] completed=74/200 new_this_run=74 elapsed=195s
+[78/200] id=1301  correct=B
+  [PROGRESS] completed=75/200 new_this_run=75 elapsed=197s
+[79/200] id=1924  correct=B
+  [PROGRESS] completed=76/200 new_this_run=76 elapsed=198s
+[80/200] id=28  correct=D
+  [PROGRESS] completed=77/200 new_this_run=77 elapsed=201s
+[81/200] id=9-937  correct=B
+  [PROGRESS] completed=78/200 new_this_run=78 elapsed=203s
+[82/200] id=9-1163  correct=C
+  [PROGRESS] completed=79/200 new_this_run=79 elapsed=205s
+[83/200] id=8-365  correct=A
+  [PROGRESS] completed=80/200 new_this_run=80 elapsed=208s
+[84/200] id=7-163  correct=A
+  [PROGRESS] completed=81/200 new_this_run=81 elapsed=211s
+[85/200] id=9-731  correct=A
+  [PROGRESS] completed=82/200 new_this_run=82 elapsed=214s
+[86/200] id=9-281  correct=A
+  [PROGRESS] completed=83/200 new_this_run=83 elapsed=216s
+[87/200] id=1998  correct=B
+  [PROGRESS] completed=84/200 new_this_run=84 elapsed=218s
+[88/200] id=1184  correct=A
+  [PROGRESS] completed=85/200 new_this_run=85 elapsed=220s
+[89/200] id=202  correct=C
+  [PROGRESS] completed=86/200 new_this_run=86 elapsed=222s
+[90/200] id=8-35  correct=D
+  [WARN] Parsing failed for 8-35, skipping
+[91/200] id=9-1139  correct=C
+  [PROGRESS] completed=87/200 new_this_run=87 elapsed=227s
+[92/200] id=423  correct=D
+  [PROGRESS] completed=88/200 new_this_run=88 elapsed=229s
+[93/200] id=280  correct=B
+  [PROGRESS] completed=89/200 new_this_run=89 elapsed=231s
+[94/200] id=1942  correct=D
+  [PROGRESS] completed=90/200 new_this_run=90 elapsed=233s
+[95/200] id=9-159  correct=C
+  [PROGRESS] completed=91/200 new_this_run=91 elapsed=235s
+[96/200] id=1672  correct=C
+  [PROGRESS] completed=92/200 new_this_run=92 elapsed=238s
+[97/200] id=7-100  correct=B
+  [PROGRESS] completed=93/200 new_this_run=93 elapsed=240s
+[98/200] id=9-461  correct=C
+  [PROGRESS] completed=94/200 new_this_run=94 elapsed=244s
+[99/200] id=7-146  correct=A
+  [PROGRESS] completed=95/200 new_this_run=95 elapsed=246s
+[100/200] id=9-573  correct=B
+  [PROGRESS] completed=96/200 new_this_run=96 elapsed=248s
+[101/200] id=8-59  correct=D
+  [PROGRESS] completed=97/200 new_this_run=97 elapsed=251s
+[102/200] id=9-57  correct=B
+  [PROGRESS] completed=98/200 new_this_run=98 elapsed=254s
+[103/200] id=9-532  correct=A
+  [PROGRESS] completed=99/200 new_this_run=99 elapsed=257s
+[104/200] id=7-364  correct=A
+  [PROGRESS] completed=100/200 new_this_run=100 elapsed=259s
+[105/200] id=9-1164  correct=B
+  [PROGRESS] completed=101/200 new_this_run=101 elapsed=262s
+[106/200] id=7-855  correct=C
+  [PROGRESS] completed=102/200 new_this_run=102 elapsed=267s
+[107/200] id=9-519  correct=A
+  [PROGRESS] completed=103/200 new_this_run=103 elapsed=269s
+[108/200] id=841  correct=C
+  [PROGRESS] completed=104/200 new_this_run=104 elapsed=272s
+[109/200] id=9-774  correct=C
+  [PROGRESS] completed=105/200 new_this_run=105 elapsed=274s
+[110/200] id=7-356  correct=D
+  [PROGRESS] completed=106/200 new_this_run=106 elapsed=279s
+[111/200] id=1309  correct=D
+  [PROGRESS] completed=107/200 new_this_run=107 elapsed=281s
+[112/200] id=7-1096  correct=B
+  [PROGRESS] completed=108/200 new_this_run=108 elapsed=283s
+[113/200] id=9-229  correct=D
+  [PROGRESS] completed=109/200 new_this_run=109 elapsed=285s
+[114/200] id=1911  correct=B
+  [PROGRESS] completed=110/200 new_this_run=110 elapsed=287s
+[115/200] id=844  correct=A
+  [PROGRESS] completed=111/200 new_this_run=111 elapsed=290s
+[116/200] id=1359  correct=B
+  [PROGRESS] completed=112/200 new_this_run=112 elapsed=294s
+[117/200] id=620  correct=A
+  [PROGRESS] completed=113/200 new_this_run=113 elapsed=296s
+[118/200] id=9-674  correct=C
+  [PROGRESS] completed=114/200 new_this_run=114 elapsed=300s
+[119/200] id=8-466  correct=D
+  [PROGRESS] completed=115/200 new_this_run=115 elapsed=305s
+[120/200] id=7-902  correct=A
+  [PROGRESS] completed=116/200 new_this_run=116 elapsed=308s
+[121/200] id=7-1140  correct=D
+  [WARN] Parsing failed for 7-1140, skipping
+[122/200] id=630  correct=C
+  [PROGRESS] completed=117/200 new_this_run=117 elapsed=312s
+[123/200] id=1391  correct=C
+  [PROGRESS] completed=118/200 new_this_run=118 elapsed=314s
+[124/200] id=82  correct=C
+  [WARN] Parsing failed for 82, skipping
+[125/200] id=9-881  correct=B
+  [PROGRESS] completed=119/200 new_this_run=119 elapsed=320s
+[126/200] id=8-478  correct=B
+  [PROGRESS] completed=120/200 new_this_run=120 elapsed=323s
+[127/200] id=9-454  correct=C
+  [PROGRESS] completed=121/200 new_this_run=121 elapsed=326s
+[128/200] id=9-270  correct=C
+  [PROGRESS] completed=122/200 new_this_run=122 elapsed=328s
+[129/200] id=7-677  correct=C
+  [WARN] Parsing failed for 7-677, skipping
+[130/200] id=664  correct=D
+  [PROGRESS] completed=123/200 new_this_run=123 elapsed=334s
+[131/200] id=276  correct=B
+  [PROGRESS] completed=124/200 new_this_run=124 elapsed=338s
+[132/200] id=880  correct=C
+  [PROGRESS] completed=125/200 new_this_run=125 elapsed=340s
+[133/200] id=1032  correct=A
+  [PROGRESS] completed=126/200 new_this_run=126 elapsed=342s
+[134/200] id=162  correct=B
+  [PROGRESS] completed=127/200 new_this_run=127 elapsed=344s
+[135/200] id=187  correct=B
+  [PROGRESS] completed=128/200 new_this_run=128 elapsed=346s
+[136/200] id=7-988  correct=A
+  [PROGRESS] completed=129/200 new_this_run=129 elapsed=348s
+[137/200] id=9-431  correct=A
+  [PROGRESS] completed=130/200 new_this_run=130 elapsed=350s
+[138/200] id=78  correct=B
+  [PROGRESS] completed=131/200 new_this_run=131 elapsed=352s
+[139/200] id=9-289  correct=D
+  [PROGRESS] completed=132/200 new_this_run=132 elapsed=354s
+[140/200] id=8-350  correct=B
+  [WARN] Parsing failed for 8-350, skipping
+[141/200] id=9-416  correct=D
+  [PROGRESS] completed=133/200 new_this_run=133 elapsed=359s
+[142/200] id=1393  correct=B
+  [PROGRESS] completed=134/200 new_this_run=134 elapsed=361s
+[143/200] id=1582  correct=A
+  [PROGRESS] completed=135/200 new_this_run=135 elapsed=364s
+[144/200] id=9-32  correct=B
+  [PROGRESS] completed=136/200 new_this_run=136 elapsed=367s
+[145/200] id=9-786  correct=A
+  [PROGRESS] completed=137/200 new_this_run=137 elapsed=369s
+[146/200] id=470  correct=A
+  [PROGRESS] completed=138/200 new_this_run=138 elapsed=371s
+[147/200] id=8-62  correct=A
+  [PROGRESS] completed=139/200 new_this_run=139 elapsed=374s
+[148/200] id=7-59  correct=A
+  [WARN] Parsing failed for 7-59, skipping
+[149/200] id=7-986  correct=D
+  [PROGRESS] completed=140/200 new_this_run=140 elapsed=378s
+[150/200] id=7-435  correct=C
+  [PROGRESS] completed=141/200 new_this_run=141 elapsed=380s
+[151/200] id=9-597  correct=B
+  [PROGRESS] completed=142/200 new_this_run=142 elapsed=383s
+[152/200] id=1297  correct=D
+  [PROGRESS] completed=143/200 new_this_run=143 elapsed=385s
+[153/200] id=9-433  correct=B
+  [PROGRESS] completed=144/200 new_this_run=144 elapsed=387s
+[154/200] id=1321  correct=C
+  [PROGRESS] completed=145/200 new_this_run=145 elapsed=391s
+[155/200] id=1088  correct=B
+  [PROGRESS] completed=146/200 new_this_run=146 elapsed=393s
+[156/200] id=661  correct=C
+  [WARN] Parsing failed for 661, skipping
+[157/200] id=1112  correct=B
+  [PROGRESS] completed=147/200 new_this_run=147 elapsed=396s
+[158/200] id=9-163  correct=C
+  [PROGRESS] completed=148/200 new_this_run=148 elapsed=399s
+[159/200] id=9-197  correct=D
+  [PROGRESS] completed=149/200 new_this_run=149 elapsed=400s
+[160/200] id=1160  correct=A
+  [PROGRESS] completed=150/200 new_this_run=150 elapsed=403s
+[161/200] id=9-18  correct=B
+  [PROGRESS] completed=151/200 new_this_run=151 elapsed=407s
+[162/200] id=268  correct=C
+  [PROGRESS] completed=152/200 new_this_run=152 elapsed=410s
+[163/200] id=9-1090  correct=D
+  [PROGRESS] completed=153/200 new_this_run=153 elapsed=412s
+[164/200] id=8-190  correct=B
+  [PROGRESS] completed=154/200 new_this_run=154 elapsed=414s
+[165/200] id=9-369  correct=B
+  [WARN] Parsing failed for 9-369, skipping
+[166/200] id=7-417  correct=B
+  [PROGRESS] completed=155/200 new_this_run=155 elapsed=419s
+[167/200] id=9-110  correct=A
+  [PROGRESS] completed=156/200 new_this_run=156 elapsed=420s
+[168/200] id=7-527  correct=A
+  [PROGRESS] completed=157/200 new_this_run=157 elapsed=423s
+[169/200] id=9-957  correct=D
+  [PROGRESS] completed=158/200 new_this_run=158 elapsed=425s
+[170/200] id=7-1077  correct=D
+  [PROGRESS] completed=159/200 new_this_run=159 elapsed=430s
+[171/200] id=1231  correct=C
+  [PROGRESS] completed=160/200 new_this_run=160 elapsed=431s
+[172/200] id=9-390  correct=D
+  [PROGRESS] completed=161/200 new_this_run=161 elapsed=433s
+[173/200] id=1560  correct=A
+  [PROGRESS] completed=162/200 new_this_run=162 elapsed=440s
+[174/200] id=758  correct=C
+  [PROGRESS] completed=163/200 new_this_run=163 elapsed=442s
+[175/200] id=163  correct=A
+  [PROGRESS] completed=164/200 new_this_run=164 elapsed=445s
+[176/200] id=8-93  correct=C
+  [PROGRESS] completed=165/200 new_this_run=165 elapsed=449s
+[177/200] id=224  correct=B
+  [PROGRESS] completed=166/200 new_this_run=166 elapsed=453s
+[178/200] id=7-1197  correct=A
+  [PROGRESS] completed=167/200 new_this_run=167 elapsed=455s
+[179/200] id=9-135  correct=B
+  [PROGRESS] completed=168/200 new_this_run=168 elapsed=457s
+[180/200] id=1208  correct=B
+  [WARN] Parsing failed for 1208, skipping
+[181/200] id=9-132  correct=A
+  [PROGRESS] completed=169/200 new_this_run=169 elapsed=464s
+[182/200] id=397  correct=D
+  [PROGRESS] completed=170/200 new_this_run=170 elapsed=467s
+[183/200] id=1139  correct=D
+  [WARN] Parsing failed for 1139, skipping
+[184/200] id=7-727  correct=C
+  [PROGRESS] completed=171/200 new_this_run=171 elapsed=471s
+[185/200] id=9-490  correct=C
+  [PROGRESS] completed=172/200 new_this_run=172 elapsed=474s
+[186/200] id=8-125  correct=A
+  [PROGRESS] completed=173/200 new_this_run=173 elapsed=478s
+[187/200] id=7-942  correct=C
+  [PROGRESS] completed=174/200 new_this_run=174 elapsed=481s
+[188/200] id=9-436  correct=C
+  [PROGRESS] completed=175/200 new_this_run=175 elapsed=484s
+[189/200] id=9-983  correct=B
+  [PROGRESS] completed=176/200 new_this_run=176 elapsed=487s
+[190/200] id=437  correct=A
+  [PROGRESS] completed=177/200 new_this_run=177 elapsed=489s
+[191/200] id=9-259  correct=A
+  [PROGRESS] completed=178/200 new_this_run=178 elapsed=491s
+[192/200] id=9-853  correct=B
+  [PROGRESS] completed=179/200 new_this_run=179 elapsed=494s
+[193/200] id=9-152  correct=B
+  [PROGRESS] completed=180/200 new_this_run=180 elapsed=496s
+[194/200] id=389  correct=B
+  [PROGRESS] completed=181/200 new_this_run=181 elapsed=498s
+[195/200] id=9-124  correct=B
+  [PROGRESS] completed=182/200 new_this_run=182 elapsed=501s
+[196/200] id=7-203  correct=D
+  [PROGRESS] completed=183/200 new_this_run=183 elapsed=507s
+[197/200] id=1204  correct=A
+  [PROGRESS] completed=184/200 new_this_run=184 elapsed=509s
+[198/200] id=9-368  correct=C
+  [PROGRESS] completed=185/200 new_this_run=185 elapsed=511s
+[199/200] id=158  correct=D
+  [PROGRESS] completed=186/200 new_this_run=186 elapsed=513s
+[200/200] id=60  correct=C
+  [PROGRESS] completed=187/200 new_this_run=187 elapsed=515s
+[INFO] Geometry data saved to data/mcq_cots.json
+[INFO] FUR data saved to data/mcq_cots_fur.jsonl
+
+[SUMMARY]
+  Total instances: 187
+  Faithful (correct answer): 88
+  Unfaithful / unknown: 99
+Phase 1 complete.
+Wed Mar 18 16:04:40 MDT 2026

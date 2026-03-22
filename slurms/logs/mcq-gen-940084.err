@@ -1,0 +1,8 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:02,  1.00it/s]
+Loading checkpoint shards:  50%|█████     | 2/4 [00:01<00:01,  1.04it/s]
+Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02<00:00,  1.07it/s]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.54it/s]
+Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.31it/s]
+The following generation flags are not valid and may be ignored: ['top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+slurmstepd: error: *** JOB 940084 ON grn085 CANCELLED AT 2026-03-18T14:01:50 DUE TO TIME LIMIT ***

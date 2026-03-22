@@ -1,0 +1,28 @@
+Sat Mar 21 20:11:07 MDT 2026
+Sat Mar 21 20:11:09 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 6000 Blac...    On  |   00000000:81:00.0 Off |                    0 |
+| 30%   51C    P8             14W /  300W |       2MiB /  97887MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+=== SMOKE TEST: 1 question, 1 epoch ===
+Model  : meta-llama/Meta-Llama-3-8B-Instruct
+Output : data/smoke_fur_results.jsonl
+
+=== Output file contents ===
+Smoke test done.
+Sat Mar 21 20:11:09 MDT 2026
