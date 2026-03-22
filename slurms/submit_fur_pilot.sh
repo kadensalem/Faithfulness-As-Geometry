@@ -42,7 +42,7 @@ MODEL_NAME="meta-llama/Meta-Llama-3-8B-Instruct"
 FUR_FILE="data_tune_30/mcq_cots_fur.jsonl"
 OUTPUT_FILE="data/pilot_fur_results.jsonl"
 EPOCHS=5
-LR="1e-5"
+LR="5e-5"
 SEED=42
 
 echo "Project root : $PROJECT_ROOT"

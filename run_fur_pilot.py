@@ -145,8 +145,9 @@ def main():
 
     tokenizer = TOK.from_pretrained(args.model_name)
     tokenizer.pad_token = tokenizer.eos_token
-
-    DH = DATASETS["openbook"]
+    
+    from mcq_dataload import MCQDataHandler
+    DH = MCQDataHandler() 
     fur_args = build_fur_args(args)
 
     # ------------------------------------------------------------------
