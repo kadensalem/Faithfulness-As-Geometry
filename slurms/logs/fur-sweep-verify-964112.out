@@ -1,0 +1,85 @@
+Sun Mar 22 17:43:00 MDT 2026
+Sun Mar 22 17:43:02 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 6000 Blac...    On  |   00000000:A1:00.0 Off |                    0 |
+| 31%   50C    P8             11W /  300W |       2MiB /  97887MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+=== Verification run: sweep_1 params, openbook_1955, step 0, epochs=1 ===
+============================================================
+Loading model for prob computation: meta-llama/Meta-Llama-3-8B-Instruct
+  30 records in data_tune_30/mcq_cots_fur.jsonl
+Model unloaded after prob computation.
+
+cots_train: 30  cots_verify: 20
+  Target found: openbook_1955  correct=A
+
+Resuming: 0 (question, step) pair(s) already done.
+
+============================================================
+Question 1/1: openbook_1955  (5 steps)
+
+  Step 0/4: 'Answer A: For each answer:\n* Premise: Lightning is a natural phenomenon that can'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+tensor(24)
+Num targets: 24
+Answer A: For each answer:
+* Premise: Lightning is a natural phenomenon that can cause damage to the environment.
+* Reasoning: Lightning can cause fires, which can damage local foliage.
+* Conclusion: S
+Training, #E=1
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+  [saved] Lightning may lead to_0
+  [skip-filter] step 1 not in --step_ids
+  [skip-filter] step 2 not in --step_ids
+  [skip-filter] step 3 not in --step_ids
+  [skip-filter] step 4 not in --step_ids
+
+All done.  Results written to: data/sweep_verify.jsonl
+
+=== Verification checks ===
+[OK] Output written: 1 record(s)
+[OK] new_cot at epoch 0 is structured (4 blocks, 4 Reasoning, 4 Conclusion)
+[OK] probs at epoch 0 match pilot: [0.9692, 0.0084, 0.0045, 0.0178]
+
+=== Running select_best_conditions.py on verify output ===
+Loading sweep files:
+  [loaded] data/sweep_verify.jsonl: 1 record(s)
+
+1 unique question(s) found across all conditions.
+
+Saved: data/best_conditions.json
+
+---------------------------------------------------------------------------------------
+Question              Condition   Epoch   FF-HARD   FF-SOFT    StructBlks  SpecDelta   
+---------------------------------------------------------------------------------------
+openbook_1955         sweep_verify  1       YES       0.9692     0           2             ← structure filter: no pair passed — using earliest flip
+---------------------------------------------------------------------------------------
+
+1/1 questions achieved FF-HARD flip.
+
+Verification complete.
+Sun Mar 22 17:44:14 MDT 2026

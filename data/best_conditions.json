@@ -1,0 +1,12 @@
+{
+  "openbook_1955": {
+    "condition": "sweep_verify",
+    "epoch": 1,
+    "ff_hard": true,
+    "ff_soft": 0.9692,
+    "structure_checks_passed": 0,
+    "specificity_delta": 2,
+    "new_cot_preview": "Answer A: / * Premise: 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1 / * Reasoning: 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.  / * Conclusion: 1.  / Answer B: / * Premise: 1. 1. 1. 1. 1. 1. 1. 1. 1",
+    "note": "structure filter: no pair passed \u2014 using earliest flip"
+  }
+}

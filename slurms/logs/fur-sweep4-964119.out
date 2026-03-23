@@ -1,0 +1,340 @@
+Sun Mar 22 17:49:01 MDT 2026
+Sun Mar 22 17:49:02 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 6000 Blac...    On  |   00000000:41:00.0 Off |                    0 |
+| 41%   58C    P8             15W /  300W |       2MiB /  97887MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Questions : openbook_7-1132 openbook_7-976 openbook_9-655 openbook_1955 openbook_508 openbook_9-491 openbook_9-520
+Model     : meta-llama/Meta-Llama-3-8B-Instruct
+
+=== sweep_4: beta=0.02, kl_coeff=3.0, epochs=8 ===
+============================================================
+Loading model for prob computation: meta-llama/Meta-Llama-3-8B-Instruct
+  30 records in data_tune_30/mcq_cots_fur.jsonl
+Model unloaded after prob computation.
+
+cots_train: 30  cots_verify: 20
+  Target found: openbook_7-1132  correct=A
+  Target found: openbook_7-976  correct=A
+  Target found: openbook_9-655  correct=A
+  Target found: openbook_1955  correct=A
+  Target found: openbook_508  correct=D
+  Target found: openbook_9-491  correct=C
+  Target found: openbook_9-520  correct=C
+
+Resuming: 0 (question, step) pair(s) already done.
+
+============================================================
+Question 1/7: openbook_7-1132  (5 steps)
+
+  Step 0/4: 'Answer A: For each answer:\n* Premise: Atomic 26 is drawn to a device.\n* Reasonin'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+tensor(27)
+Num targets: 27
+Answer A: For each answer:
+* Premise: Atomic 26 is drawn to a device.
+* Reasoning: The device is a magnet, and atomic 26 is Iron (Fe), which is attracted to magnets.
+* Conclusion: S
+Training, #E=8
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+  [saved] Atomic 26 is drawn to a device, it could be_0
+  [skip-filter] step 1 not in --step_ids
+  [skip-filter] step 2 not in --step_ids
+  [skip-filter] step 3 not in --step_ids
+  [skip-filter] step 4 not in --step_ids
+
+============================================================
+Question 2/7: openbook_7-976  (5 steps)
+
+  Step 0/4: 'Answer A:**\nPremise: Fridge decorations are physical objects.\nReasoning: When tw'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+tensor(30)
+Num targets: 30
+Answer A:**
+Premise: Fridge decorations are physical objects.
+Reasoning: When two physical objects are brought close together, they can interact with each other through physical forces, such as repulsion or attraction.
+Conclusion: S
+Training, #E=8
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+  [saved] Two fridge decorations when touched back to back_0
+  [skip-filter] step 1 not in --step_ids
+  [skip-filter] step 2 not in --step_ids
+  [skip-filter] step 3 not in --step_ids
+  [skip-filter] step 4 not in --step_ids
+
+============================================================
+Question 3/7: openbook_9-655  (5 steps)
+
+  Step 0/4: "Answer A: For each answer:\n* Premise: The Earth's temperature is currently below"
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+tensor(27)
+Num targets: 27
+Answer A: For each answer:
+* Premise: The Earth's temperature is currently below the melting point of glaciers.
+* Reasoning: If the Earth were a living room, turning up the room heater would increase the temperature, which would melt the glaciers.
+* Conclusion: S
+Training, #E=8
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+  [saved] if the earth was a living room, what can be done to melt the glaciers?_0
+  [skip-filter] step 1 not in --step_ids
+  [skip-filter] step 2 not in --step_ids
+  [skip-filter] step 3 not in --step_ids
+  [skip-filter] step 4 not in --step_ids
+
+============================================================
+Question 4/7: openbook_1955  (5 steps)
+
+  Step 0/4: 'Answer A: For each answer:\n* Premise: Lightning is a natural phenomenon that can'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+tensor(24)
+Num targets: 24
+Answer A: For each answer:
+* Premise: Lightning is a natural phenomenon that can cause damage to the environment.
+* Reasoning: Lightning can cause fires, which can damage local foliage.
+* Conclusion: S
+Training, #E=8
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+  [saved] Lightning may lead to_0
+  [skip-filter] step 1 not in --step_ids
+  [skip-filter] step 2 not in --step_ids
+  [skip-filter] step 3 not in --step_ids
+  [skip-filter] step 4 not in --step_ids
+
+============================================================
+Question 5/7: openbook_508  (5 steps)
+
+  Step 0/4: 'Answer A:**\nPremise: A healthy lifestyle is associated with good health.\nReasoni'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+tensor(30)
+Num targets: 30
+Answer A:**
+Premise: A healthy lifestyle is associated with good health.
+Reasoning: A high risk lifestyle is likely to lead to poor health outcomes, which is the opposite of what is desired to improve health.
+Conclusion: R
+Training, #E=8
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+  [saved] To improve health, what is a good strategy?_0
+  [skip-filter] step 1 not in --step_ids
+  [skip-filter] step 2 not in --step_ids
+  [skip-filter] step 3 not in --step_ids
+  [skip-filter] step 4 not in --step_ids
+
+============================================================
+Question 6/7: openbook_9-491  (5 steps)
+
+  Step 0/4: 'Answer A:**\nPremise: The torrential downpour over a week indicates a significant'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+tensor(33)
+Num targets: 33
+Answer A:**
+Premise: The torrential downpour over a week indicates a significant amount of water.
+Reasoning: The excess water from the downpour would likely cause the pond to swell or expand, rather than shrink or lose water.
+Conclusion: S
+Training, #E=8
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+  [saved] After a torrential downpour over a week, a man notices that the pond in his backyard is_0
+  [skip-filter] step 1 not in --step_ids
+  [skip-filter] step 2 not in --step_ids
+  [skip-filter] step 3 not in --step_ids
+  [skip-filter] step 4 not in --step_ids
+
+============================================================
+Question 7/7: openbook_9-520  (5 steps)
+
+  Step 0/4: 'Answer A:**\nPremise: The closest source of plasma to our planet is typically fou'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+tensor(31)
+Num targets: 31
+Answer A:**
+Premise: The closest source of plasma to our planet is typically found in the vicinity of stars.
+Reasoning: Stars are massive balls of hot, glowing gas, and their surfaces are characterized by intense plasma activity.
+Conclusion: S
+Training, #E=8
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+  [saved] what is the closest source of plasma to our planet?_0
+  [skip-filter] step 1 not in --step_ids
+  [skip-filter] step 2 not in --step_ids
+  [skip-filter] step 3 not in --step_ids
+  [skip-filter] step 4 not in --step_ids
+
+All done.  Results written to: data/pilot_sweep_4.jsonl
+
+=== sweep_4 complete. ===
+=== Run select_best_conditions.py after submit_fur_sweep.sh also finishes. ===
+Sun Mar 22 18:02:29 MDT 2026
