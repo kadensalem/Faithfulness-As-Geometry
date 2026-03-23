@@ -196,11 +196,14 @@ def extract_embeddings(
     cot_prompt: str,
     new_cot_text: str,
     middle_layer: int,
+    sweep_layers: List[int] = (),
 ) -> dict:
     """
     Prefix-forced forward pass on (prompt + new_cot_text).
-    Returns anchor_embeddings, conclusion_embeddings, expression spans,
-    and diagnostics.
+    Returns anchor_embeddings and conclusion_embeddings at every layer in
+    {middle_layer} ∪ sweep_layers (stored as anchor_embeddings_L{N}).
+    anchor_embeddings / conclusion_embeddings are backward-compat aliases
+    pointing to middle_layer.
     """
     # Apply chat template to the user-turn prompt
     formatted_prompt = cot_prompt
@@ -251,15 +254,25 @@ def extract_embeddings(
             return None
         return hs[layer_idx][0, tok, :].detach().float().cpu().numpy()
 
-    # 9-point trajectory anchors (middle layer)
-    anchor_embeddings = {k: get_hidden(middle_layer, anchor_pos.get(k))
-                         for k in TRAJ_KEYS}
+    # Extract anchor + conclusion embeddings at every requested layer
+    all_layers = sorted(set([middle_layer] + list(sweep_layers)))
+    per_layer_anchors: Dict[int, dict] = {}
+    per_layer_conclusions: Dict[int, dict] = {}
+    for layer_idx in all_layers:
+        if layer_idx < 0 or layer_idx >= len(hs):
+            print(f"    WARNING: layer {layer_idx} out of range (model has {len(hs)-1} layers)",
+                  flush=True)
+            continue
+        per_layer_anchors[layer_idx] = {k: get_hidden(layer_idx, anchor_pos.get(k))
+                                        for k in TRAJ_KEYS}
+        per_layer_conclusions[layer_idx] = {
+            l: get_hidden(layer_idx, anchor_pos.get(f"Conclusion_{l}"))
+            for l in "ABCD"
+        }
 
-    # Conclusion probe embeddings (middle layer)
-    conclusion_embeddings = {
-        l: get_hidden(middle_layer, anchor_pos.get(f"Conclusion_{l}"))
-        for l in "ABCD"
-    }
+    # Backward-compat aliases → primary (middle) layer
+    anchor_embeddings     = per_layer_anchors.get(middle_layer, {k: None for k in TRAJ_KEYS})
+    conclusion_embeddings = per_layer_conclusions.get(middle_layer, {l: None for l in "ABCD"})
 
     # Premise / Reasoning span embeddings (mean-pooled, middle + last layer)
     expression_mid: dict = {}
@@ -283,19 +296,26 @@ def extract_embeddings(
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
 
-    return {
-        "anchor_embeddings":    anchor_embeddings,
+    result = {
+        # Backward-compat keys (alias to middle_layer)
+        "anchor_embeddings":     anchor_embeddings,
         "conclusion_embeddings": conclusion_embeddings,
-        "expression_mid":       expression_mid,
-        "expression_last":      expression_last,
-        "cot_text":             new_cot_text,
-        "cot_steps":            parse_cot_blocks(new_cot_text),
-        "anchor_positions":     anchor_pos,
-        "seq_len":              seq_len,
-        "middle_layer":         middle_layer,
-        "last_layer":           last_layer,
-        "n_model_layers":       n_layers,
+        # Per-layer keys: anchor_embeddings_L{N}, conclusion_embeddings_L{N}
+        **{f"anchor_embeddings_L{n}":     per_layer_anchors[n]      for n in per_layer_anchors},
+        **{f"conclusion_embeddings_L{n}": per_layer_conclusions[n]  for n in per_layer_conclusions},
+        # Span embeddings (primary layer only — identical forward pass cost)
+        "expression_mid":        expression_mid,
+        "expression_last":       expression_last,
+        "cot_text":              new_cot_text,
+        "cot_steps":             parse_cot_blocks(new_cot_text),
+        "anchor_positions":      anchor_pos,
+        "seq_len":               seq_len,
+        "middle_layer":          middle_layer,
+        "sweep_layers":          list(per_layer_anchors.keys()),
+        "last_layer":            last_layer,
+        "n_model_layers":        n_layers,
     }
+    return result
 
 
 # ─── Unlearning loop with in-place embedding extraction ───────────────────────
@@ -312,6 +332,7 @@ def unlearn_and_extract(
     middle_layer: int,
     DH,
     step_idx: int = 0,
+    sweep_layers: List[int] = (),
 ) -> dict:
     """
     Re-run NPO+KL unlearning for `qid` up to `target_epoch` epochs using
@@ -419,6 +440,7 @@ def unlearn_and_extract(
         cot_prompt=cot_prompt,
         new_cot_text=new_cot_text,
         middle_layer=middle_layer,
+        sweep_layers=sweep_layers,
     )
 
     del model, oracle_model, collator, train_dataloader, dataset
@@ -447,7 +469,10 @@ def main() -> None:
     ap.add_argument("--hf_model", default="meta-llama/Meta-Llama-3-8B-Instruct",
                     help="HuggingFace model ID")
     ap.add_argument("--middle_layer", type=int, default=14,
-                    help="Transformer block index for anchor embeddings (1-indexed)")
+                    help="Primary layer index for anchor embeddings and backward-compat keys")
+    ap.add_argument("--sweep_layers", type=int, nargs="*", default=[4, 8, 20, 28],
+                    help="Additional layer indices to extract in the same forward pass "
+                         "(default: 4 8 20 28). Set to empty to disable: --sweep_layers")
     ap.add_argument("--output_file", default="data/fur_anchor_embeddings.pkl",
                     help="Output pickle path")
     ap.add_argument("--sanity_check_dir", default="data/pca_sanity_fur",
@@ -578,6 +603,7 @@ def main() -> None:
                 middle_layer=args.middle_layer,
                 DH=DH,
                 step_idx=step_idx,
+                sweep_layers=args.sweep_layers or [],
             )
         except Exception as exc:
             import traceback
@@ -617,17 +643,26 @@ def main() -> None:
 
     # ── Summary ───────────────────────────────────────────────────────────────
     print("\n[SUMMARY]")
-    total_anc = sum(
-        sum(1 for k in TRAJ_KEYS if r["anchor_embeddings"].get(k) is not None)
-        for r in results
-    )
     print(f"  Questions processed:            {len(results)}")
-    print(f"  Total anchor embeddings:        {total_anc} / {len(results) * 9}")
-    conc_ok = sum(
-        1 for r in results for l in "ABCD"
-        if r["conclusion_embeddings"].get(l) is not None
-    )
-    print(f"  Conclusion probe embeddings:    {conc_ok} / {len(results) * 4}")
+    # Per-layer anchor coverage
+    all_extracted_layers = sorted(set(
+        n for r in results for k in r if k.startswith("anchor_embeddings_L")
+        for n in [int(k.split("_L")[1])]
+    ))
+    for layer_n in all_extracted_layers:
+        key = f"anchor_embeddings_L{layer_n}"
+        total_anc = sum(
+            sum(1 for k in TRAJ_KEYS if r.get(key, {}).get(k) is not None)
+            for r in results
+        )
+        conc_key = f"conclusion_embeddings_L{layer_n}"
+        conc_ok = sum(
+            1 for r in results for l in "ABCD"
+            if r.get(conc_key, {}).get(l) is not None
+        )
+        primary = "  ← primary" if layer_n == args.middle_layer else ""
+        print(f"  Layer {layer_n:2d}: anchors {total_anc:3d}/{len(results)*9}  "
+              f"conclusions {conc_ok}/{len(results)*4}{primary}")
     ff_softs = [r["ff_soft"] for r in results]
     if ff_softs:
         print(f"  FF-SOFT range:                  "

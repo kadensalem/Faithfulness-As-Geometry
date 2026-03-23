@@ -1,0 +1,303 @@
+Sun Mar 22 21:50:36 MDT 2026
+Sun Mar 22 21:50:37 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 6000 Blac...    On  |   00000000:01:00.0 Off |                    0 |
+| 43%   61C    P8             21W /  300W |       2MiB /  97887MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Array task 22: question = openbook_8-367
+
+=== sweep30_cond1: beta=0.1, kl_coeff=2.0, epochs=3 ===
+============================================================
+Loading model for prob computation: meta-llama/Meta-Llama-3-8B-Instruct
+  30 records in data_tune_30/mcq_cots_fur.jsonl
+Model unloaded after prob computation.
+
+cots_train: 30  cots_verify: 20
+  Target found: openbook_8-367  correct=A
+
+Resuming: 0 (question, step) pair(s) already done.
+
+============================================================
+Question 1/1: openbook_8-367  (5 steps)
+
+  Step 0/4: 'Answer A: For each answer:\n* Premise: Building new areas to dispose of refuse ma'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+tensor(30)
+Num targets: 30
+Answer A: For each answer:
+* Premise: Building new areas to dispose of refuse may lead to environmental concerns.
+* Reasoning: This is because new disposal areas can lead to pollution, noise, and other negative impacts on the environment.
+* Conclusion: S
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+  [saved] Building new areas to dispose of refuse may lead to_0
+
+  Step 1/4: 'Answer B: For each answer:\n* Premise: Building new areas to dispose of refuse ma'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+tensor(29)
+Num targets: 29
+Answer B: For each answer:
+* Premise: Building new areas to dispose of refuse may lead to better air and soil quality.
+* Reasoning: This is not necessarily true, as new disposal areas can actually lead to environmental degradation.
+* Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+  [saved] Building new areas to dispose of refuse may lead to_1
+
+  Step 2/4: 'Answer C: For each answer:\n* Premise: Building new areas to dispose of refuse ma'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+tensor(34)
+Num targets: 34
+Answer C: For each answer:
+* Premise: Building new areas to dispose of refuse may lead to higher value on land parcels.
+* Reasoning: This is possible, as new disposal areas can increase the value of surrounding land by providing a new economic opportunity.
+* Conclusion: S
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+  [saved] Building new areas to dispose of refuse may lead to_2
+
+  Step 3/4: 'Answer D: For each answer:\n* Premise: Building new areas to dispose of refuse ma'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=3
+Using sample #0, N=31
+tensor(30)
+Num targets: 30
+Answer D: For each answer:
+* Premise: Building new areas to dispose of refuse may lead to improvement in water supply.
+* Reasoning: This is not related to building new disposal areas, as water supply is a separate issue.
+* Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=3
+Using sample #0, N=31
+Looking for a retain sample, idx=3
+Using sample #0, N=31
+Looking for a retain sample, idx=3
+Using sample #0, N=31
+  [saved] Building new areas to dispose of refuse may lead to_3
+
+  Step 4/4: '**Final Answer**\nAnswer: A'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+tensor(7)
+Num targets: 7
+**Final Answer**
+Answer: A
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+  [saved] Building new areas to dispose of refuse may lead to_4
+
+All done.  Results written to: data/sweep30_cond1_q22.jsonl
+
+=== sweep30_cond4: beta=0.1, kl_coeff=1.0, epochs=3 ===
+============================================================
+Loading model for prob computation: meta-llama/Meta-Llama-3-8B-Instruct
+  30 records in data_tune_30/mcq_cots_fur.jsonl
+Model unloaded after prob computation.
+
+cots_train: 30  cots_verify: 20
+  Target found: openbook_8-367  correct=A
+
+Resuming: 0 (question, step) pair(s) already done.
+
+============================================================
+Question 1/1: openbook_8-367  (5 steps)
+
+  Step 0/4: 'Answer A: For each answer:\n* Premise: Building new areas to dispose of refuse ma'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+tensor(30)
+Num targets: 30
+Answer A: For each answer:
+* Premise: Building new areas to dispose of refuse may lead to environmental concerns.
+* Reasoning: This is because new disposal areas can lead to pollution, noise, and other negative impacts on the environment.
+* Conclusion: S
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+  [saved] Building new areas to dispose of refuse may lead to_0
+
+  Step 1/4: 'Answer B: For each answer:\n* Premise: Building new areas to dispose of refuse ma'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+tensor(29)
+Num targets: 29
+Answer B: For each answer:
+* Premise: Building new areas to dispose of refuse may lead to better air and soil quality.
+* Reasoning: This is not necessarily true, as new disposal areas can actually lead to environmental degradation.
+* Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+  [saved] Building new areas to dispose of refuse may lead to_1
+
+  Step 2/4: 'Answer C: For each answer:\n* Premise: Building new areas to dispose of refuse ma'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+tensor(34)
+Num targets: 34
+Answer C: For each answer:
+* Premise: Building new areas to dispose of refuse may lead to higher value on land parcels.
+* Reasoning: This is possible, as new disposal areas can increase the value of surrounding land by providing a new economic opportunity.
+* Conclusion: S
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+  [saved] Building new areas to dispose of refuse may lead to_2
+
+  Step 3/4: 'Answer D: For each answer:\n* Premise: Building new areas to dispose of refuse ma'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=3
+Using sample #0, N=31
+tensor(30)
+Num targets: 30
+Answer D: For each answer:
+* Premise: Building new areas to dispose of refuse may lead to improvement in water supply.
+* Reasoning: This is not related to building new disposal areas, as water supply is a separate issue.
+* Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=3
+Using sample #0, N=31
+Looking for a retain sample, idx=3
+Using sample #0, N=31
+Looking for a retain sample, idx=3
+Using sample #0, N=31
+  [saved] Building new areas to dispose of refuse may lead to_3
+
+  Step 4/4: '**Final Answer**\nAnswer: A'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+tensor(7)
+Num targets: 7
+**Final Answer**
+Answer: A
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+  [saved] Building new areas to dispose of refuse may lead to_4
+
+All done.  Results written to: data/sweep30_cond4_q22.jsonl
+
+=== Task 22 (openbook_8-367) cond1+cond4 complete ===
+Sun Mar 22 22:00:14 MDT 2026

@@ -6,8 +6,8 @@
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:rtxpr6000bl:1
 #SBATCH --array=0-29
-#SBATCH --time=4:00:00
-#SBATCH --mem=80GB
+#SBATCH --time=1:00:00
+#SBATCH --mem=12GB
 #SBATCH --requeue
 #SBATCH -o logs/fur-sweep30-ab-%A_%a.out
 #SBATCH -e logs/fur-sweep30-ab-%A_%a.err
@@ -21,8 +21,8 @@
 # sweep30_cond4  0.10   1.0       3       data/sweep30_cond4_q{i}.jsonl
 #
 # Wall-time estimate per task:
-#   1 question × 5 steps × ~15 min/step × 2 conditions = ~150 min = 2.5 hrs
-#   Budget 4 hrs per task with --requeue for safety.
+#   Observed ~30 min per task (both conditions combined, <5 GB mem).
+#   Budget 1 hr with --requeue for safety.
 #
 # After ALL array tasks complete, run merge_sweep30.sh before
 # running select_best_conditions.py.

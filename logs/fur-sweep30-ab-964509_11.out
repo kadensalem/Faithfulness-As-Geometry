@@ -1,0 +1,303 @@
+Sun Mar 22 21:49:14 MDT 2026
+Sun Mar 22 21:49:15 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 6000 Blac...    On  |   00000000:41:00.0 Off |                    0 |
+| 44%   60C    P8             14W /  300W |       2MiB /  97887MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Array task 11: question = openbook_9-548
+
+=== sweep30_cond1: beta=0.1, kl_coeff=2.0, epochs=3 ===
+============================================================
+Loading model for prob computation: meta-llama/Meta-Llama-3-8B-Instruct
+  30 records in data_tune_30/mcq_cots_fur.jsonl
+Model unloaded after prob computation.
+
+cots_train: 30  cots_verify: 20
+  Target found: openbook_9-548  correct=A
+
+Resuming: 0 (question, step) pair(s) already done.
+
+============================================================
+Question 1/1: openbook_9-548  (5 steps)
+
+  Step 0/4: 'Answer A:**\nPremise: Pasteurization was invented by Louis Pasteur, a French scie'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+tensor(34)
+Num targets: 34
+Answer A:**
+Premise: Pasteurization was invented by Louis Pasteur, a French scientist.
+Reasoning: Thomas Edison was an American inventor who developed many important technologies, but pasteurization was not one of them.
+Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+  [saved] Did pasteurization get invented by Thomas Edison?_0
+
+  Step 1/4: 'Answer B:**\nPremise: Pasteurization is a process of killing bacteria in milk and'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+tensor(37)
+Num targets: 37
+Answer B:**
+Premise: Pasteurization is a process of killing bacteria in milk and other liquids.
+Reasoning: Thomas Edison did not invent pasteurization, as it was already developed by Louis Pasteur in the 19th century.
+Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+  [saved] Did pasteurization get invented by Thomas Edison?_1
+
+  Step 2/4: 'Answer C:**\nPremise: This option is a combination of A and B.\nReasoning: This op'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+tensor(24)
+Num targets: 24
+Answer C:**
+Premise: This option is a combination of A and B.
+Reasoning: This option is incorrect because it combines two contradictory statements.
+Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+  [saved] Did pasteurization get invented by Thomas Edison?_2
+
+  Step 3/4: 'Answer D:**\nPremise: There is no evidence to support this option.\nReasoning: Thi'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=3
+Using sample #0, N=30
+tensor(26)
+Num targets: 26
+Answer D:**
+Premise: There is no evidence to support this option.
+Reasoning: This option is vague and lacks specific information about the invention of pasteurization.
+Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=3
+Using sample #0, N=30
+Looking for a retain sample, idx=3
+Using sample #0, N=30
+Looking for a retain sample, idx=3
+Using sample #0, N=30
+  [saved] Did pasteurization get invented by Thomas Edison?_3
+
+  Step 4/4: '**Final Answer**\nAnswer: A'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+tensor(7)
+Num targets: 7
+**Final Answer**
+Answer: A
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+  [saved] Did pasteurization get invented by Thomas Edison?_4
+
+All done.  Results written to: data/sweep30_cond1_q11.jsonl
+
+=== sweep30_cond4: beta=0.1, kl_coeff=1.0, epochs=3 ===
+============================================================
+Loading model for prob computation: meta-llama/Meta-Llama-3-8B-Instruct
+  30 records in data_tune_30/mcq_cots_fur.jsonl
+Model unloaded after prob computation.
+
+cots_train: 30  cots_verify: 20
+  Target found: openbook_9-548  correct=A
+
+Resuming: 0 (question, step) pair(s) already done.
+
+============================================================
+Question 1/1: openbook_9-548  (5 steps)
+
+  Step 0/4: 'Answer A:**\nPremise: Pasteurization was invented by Louis Pasteur, a French scie'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+tensor(34)
+Num targets: 34
+Answer A:**
+Premise: Pasteurization was invented by Louis Pasteur, a French scientist.
+Reasoning: Thomas Edison was an American inventor who developed many important technologies, but pasteurization was not one of them.
+Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+  [saved] Did pasteurization get invented by Thomas Edison?_0
+
+  Step 1/4: 'Answer B:**\nPremise: Pasteurization is a process of killing bacteria in milk and'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+tensor(37)
+Num targets: 37
+Answer B:**
+Premise: Pasteurization is a process of killing bacteria in milk and other liquids.
+Reasoning: Thomas Edison did not invent pasteurization, as it was already developed by Louis Pasteur in the 19th century.
+Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+Looking for a retain sample, idx=1
+Using sample #0, N=24
+  [saved] Did pasteurization get invented by Thomas Edison?_1
+
+  Step 2/4: 'Answer C:**\nPremise: This option is a combination of A and B.\nReasoning: This op'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+tensor(24)
+Num targets: 24
+Answer C:**
+Premise: This option is a combination of A and B.
+Reasoning: This option is incorrect because it combines two contradictory statements.
+Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+Looking for a retain sample, idx=2
+Using sample #0, N=25
+  [saved] Did pasteurization get invented by Thomas Edison?_2
+
+  Step 3/4: 'Answer D:**\nPremise: There is no evidence to support this option.\nReasoning: Thi'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=3
+Using sample #0, N=30
+tensor(26)
+Num targets: 26
+Answer D:**
+Premise: There is no evidence to support this option.
+Reasoning: This option is vague and lacks specific information about the invention of pasteurization.
+Conclusion: R
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=3
+Using sample #0, N=30
+Looking for a retain sample, idx=3
+Using sample #0, N=30
+Looking for a retain sample, idx=3
+Using sample #0, N=30
+  [saved] Did pasteurization get invented by Thomas Edison?_3
+
+  Step 4/4: '**Final Answer**\nAnswer: A'
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+tensor(7)
+Num targets: 7
+**Final Answer**
+Answer: A
+Training, #E=3
+Setting only FF2 parameters to be optimized
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+Looking for a retain sample, idx=4
+Using sample #0, N=26
+  [saved] Did pasteurization get invented by Thomas Edison?_4
+
+All done.  Results written to: data/sweep30_cond4_q11.jsonl
+
+=== Task 11 (openbook_9-548) cond1+cond4 complete ===
+Sun Mar 22 21:58:59 MDT 2026
