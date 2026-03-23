@@ -1,12 +1,72 @@
 {
   "openbook_1955": {
-    "condition": "sweep_verify",
-    "epoch": 1,
+    "condition": "sweep_2",
+    "epoch": 2,
     "ff_hard": true,
     "ff_soft": 0.9692,
-    "structure_checks_passed": 0,
+    "structure_checks_passed": 4,
+    "specificity_delta": 3,
+    "new_cot_preview": "Answer A: / * Premise: 1. The 1.5-mile (2.4 km) long, 1.5-foot (0.46 m) wide, 1.5-foot (0.46 m) / * Reasoning: 2. The 1.5-mile (2.4 km) long, 1.5-foot (0.46 m) wide, 1.5-foot (0.46 m) / * Conclusion: 3. The",
+    "note": ""
+  },
+  "openbook_508": {
+    "condition": "sweep_1",
+    "epoch": 1,
+    "ff_hard": true,
+    "ff_soft": 0.7578,
+    "structure_checks_passed": 4,
+    "specificity_delta": 4,
+    "new_cot_preview": "Answer A: / * Premise:  high risk lifestyle / * Reasoning:  high risk lifestyle is not a good strategy to improve health. / * Conclusion:  Reject the possible / Answer B: / * Premise:  restaurant food / * Reasoni",
+    "note": ""
+  },
+  "openbook_7-1132": {
+    "condition": null,
+    "epoch": null,
+    "ff_hard": false,
+    "ff_soft": 0.0136,
+    "structure_checks_passed": null,
+    "specificity_delta": null,
+    "new_cot_preview": "",
+    "note": "no FF-HARD flip in any condition \u2014 pre-unlearning only"
+  },
+  "openbook_7-976": {
+    "condition": "sweep_3",
+    "epoch": 1,
+    "ff_hard": true,
+    "ff_soft": 0.058,
+    "structure_checks_passed": 4,
+    "specificity_delta": 1,
+    "new_cot_preview": "Answer A: / * Premise: 1 magnet touched to a fridge and the other touched to a light switch. When touched back to back, they shove each other away. / * Reasoning: 1 magnet touched to a fridge and the othe",
+    "note": ""
+  },
+  "openbook_9-491": {
+    "condition": "sweep_1",
+    "epoch": 1,
+    "ff_hard": true,
+    "ff_soft": 0.9953,
+    "structure_checks_passed": 4,
+    "specificity_delta": 3,
+    "new_cot_preview": "Answer A: / * Premise: iced / * Reasoning:  The pond is not melted, it's a pond. / * Conclusion:  R / Answer B: / * Premise:  filled / * Reasoning:  The pond is not dehydrated, it's a pond. / * Conclusion:  R / Answe",
+    "note": ""
+  },
+  "openbook_9-520": {
+    "condition": "sweep_3",
+    "epoch": 1,
+    "ff_hard": true,
+    "ff_soft": 0.4802,
+    "structure_checks_passed": 4,
+    "specificity_delta": 0,
+    "new_cot_preview": "Answer A: / * Premise: 1. the cloud in the sky, 2. the bare moon surface, 3. the cloud in the sky, 4. the cloud in the sky / * Reasoning: 1. the cloud in the sky, 2. the bare moon surface, 3. the cloud in",
+    "note": ""
+  },
+  "openbook_9-655": {
+    "condition": "sweep_3",
+    "epoch": 2,
+    "ff_hard": true,
+    "ff_soft": 0.9153,
+    "structure_checks_passed": 4,
     "specificity_delta": 2,
-    "new_cot_preview": "Answer A: / * Premise: 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1 / * Reasoning: 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.  / * Conclusion: 1.  / Answer B: / * Premise: 1. 1. 1. 1. 1. 1. 1. 1. 1",
-    "note": "structure filter: no pair passed \u2014 using earliest flip"
+    "new_cot_preview": "Answer A: / * Premise: 1. Premise: the room heater is a device that is used to keep the room warm / * Reasoning: 1. Reasoning: the room heater is a device that is used to keep the room warm / * Conclusion: ",
+    "note": ""
   }
 }

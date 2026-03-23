@@ -1,0 +1,157 @@
+Sun Mar 22 19:01:17 MDT 2026
+Sun Mar 22 19:01:18 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 6000 Blac...    On  |   00000000:41:00.0 Off |                    0 |
+| 30%   35C    P8              5W /  300W |       2MiB /  97887MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[INFO] 7 total entries in best_conditions.json
+[INFO] 6 question(s) with FF-HARD flip and valid condition
+
+[INFO] Loading base model for prob computation: meta-llama/Meta-Llama-3-8B-Instruct
+[INFO] 30 records in fur file
+[INFO] Base model unloaded.
+
+[INFO] cots_train=30  cots_verify=20
+
+
+[1/6] openbook_1955  condition=sweep_2  epoch=2  ff_soft=0.9692
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+tensor(24)
+  Unlearning targets in dataset: 24
+  Training 2 epoch(s) (1 steps/epoch)...
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+  epoch 1/2 done
+Looking for a retain sample, idx=0
+Using sample #0, N=27
+  epoch 2/2 done
+  Extracting embeddings at epoch 2...
+  anchor coverage: 9/9
+
+[2/6] openbook_508  condition=sweep_1  epoch=1  ff_soft=0.7578
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+tensor(30)
+  Unlearning targets in dataset: 30
+  Training 1 epoch(s) (1 steps/epoch)...
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+  epoch 1/1 done
+  Extracting embeddings at epoch 1...
+  anchor coverage: 9/9
+
+[3/6] openbook_7-976  condition=sweep_3  epoch=1  ff_soft=0.0580
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+tensor(30)
+  Unlearning targets in dataset: 30
+  Training 1 epoch(s) (1 steps/epoch)...
+Looking for a retain sample, idx=0
+Using sample #0, N=25
+  epoch 1/1 done
+  Extracting embeddings at epoch 1...
+  anchor coverage: 9/9
+
+[4/6] openbook_9-491  condition=sweep_1  epoch=1  ff_soft=0.9953
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+tensor(33)
+  Unlearning targets in dataset: 33
+  Training 1 epoch(s) (1 steps/epoch)...
+Looking for a retain sample, idx=0
+Using sample #0, N=30
+  epoch 1/1 done
+  Extracting embeddings at epoch 1...
+  anchor coverage: 9/9
+
+[5/6] openbook_9-520  condition=sweep_3  epoch=1  ff_soft=0.4802
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+tensor(31)
+  Unlearning targets in dataset: 31
+  Training 1 epoch(s) (1 steps/epoch)...
+Looking for a retain sample, idx=0
+Using sample #0, N=26
+  epoch 1/1 done
+  Extracting embeddings at epoch 1...
+  anchor coverage: 9/9
+
+[6/6] openbook_9-655  condition=sweep_3  epoch=2  ff_soft=0.9153
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+num_paraphrases= None
+L = 1
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+tensor(27)
+  Unlearning targets in dataset: 27
+  Training 2 epoch(s) (1 steps/epoch)...
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+  epoch 1/2 done
+Looking for a retain sample, idx=0
+Using sample #0, N=24
+  epoch 2/2 done
+  Extracting embeddings at epoch 2...
+  anchor coverage: 9/9
+
+[DONE] Saved 6 record(s) to /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/data/fur_anchor_embeddings.pkl
+[WARN] sklearn not available, skipping PCA sanity check
+[DONE] PCA CSVs saved to /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/data/pca_sanity_fur
+
+[SUMMARY]
+  Questions processed:            6
+  Total anchor embeddings:        54 / 54
+  Conclusion probe embeddings:    4 / 24
+  FF-SOFT range:                  0.0580 – 0.9953  (mean 0.6960)
+
+Embedding extraction complete.
+Sun Mar 22 19:03:08 MDT 2026
