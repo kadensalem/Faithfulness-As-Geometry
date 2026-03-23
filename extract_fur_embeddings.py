@@ -72,24 +72,55 @@ from extract_anchor_embeddings import (                                # noqa: E
 # Condition names are those written by select_best_conditions.py (= file stem).
 
 CONDITION_PARAMS: Dict[str, dict] = {
-    "sweep_verify": dict(beta=0.10, kl_coeff=1.0, lr=5e-5, seed=42,
-                         ff2=True, pos=True, method="npo_KL"),
-    "sweep_1":      dict(beta=0.10, kl_coeff=1.0, lr=5e-5, seed=42,
-                         ff2=True, pos=True, method="npo_KL"),
-    "sweep_2":      dict(beta=0.10, kl_coeff=2.0, lr=5e-5, seed=42,
-                         ff2=True, pos=True, method="npo_KL"),
-    "sweep_3":      dict(beta=0.05, kl_coeff=3.0, lr=5e-5, seed=42,
-                         ff2=True, pos=True, method="npo_KL"),
-    "sweep_4":      dict(beta=0.02, kl_coeff=3.0, lr=5e-5, seed=42,
-                         ff2=True, pos=True, method="npo_KL"),
+    # ── Original 7-question pilot sweeps ──────────────────────────────────────
+    "sweep_verify":   dict(beta=0.10, kl_coeff=1.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "sweep_1":        dict(beta=0.10, kl_coeff=1.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "sweep_2":        dict(beta=0.10, kl_coeff=2.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "sweep_3":        dict(beta=0.05, kl_coeff=3.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "sweep_4":        dict(beta=0.02, kl_coeff=3.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    # ── 30-question 5-step sweep conditions ───────────────────────────────────
+    # pilot_sweep_N equivalents: cond1=sweep_2, cond2=sweep_3, cond3=sweep_4, cond4=sweep_1
+    "sweep30_cond1":  dict(beta=0.10, kl_coeff=2.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "sweep30_cond2":  dict(beta=0.05, kl_coeff=3.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "sweep30_cond3":  dict(beta=0.02, kl_coeff=3.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "sweep30_cond4":  dict(beta=0.10, kl_coeff=1.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    # backward-compat aliases for per-question part files (pre-merge)
+    "pilot_sweep_1":  dict(beta=0.10, kl_coeff=1.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "pilot_sweep_2":  dict(beta=0.10, kl_coeff=2.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "pilot_sweep_3":  dict(beta=0.05, kl_coeff=3.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
+    "pilot_sweep_4":  dict(beta=0.02, kl_coeff=3.0, lr=5e-5, seed=42,
+                           ff2=True, pos=True, method="npo_KL"),
 }
 
 CONDITION_SWEEP_FILE: Dict[str, str] = {
-    "sweep_verify": "data/sweep_verify.jsonl",
-    "sweep_1":      "data/pilot_sweep_1.jsonl",
-    "sweep_2":      "data/pilot_sweep_2.jsonl",
-    "sweep_3":      "data/pilot_sweep_3.jsonl",
-    "sweep_4":      "data/pilot_sweep_4.jsonl",
+    # ── Original 7-question pilot sweeps ──────────────────────────────────────
+    "sweep_verify":   "data/sweep_verify.jsonl",
+    "sweep_1":        "data/pilot_sweep_1.jsonl",
+    "sweep_2":        "data/pilot_sweep_2.jsonl",
+    "sweep_3":        "data/pilot_sweep_3.jsonl",
+    "sweep_4":        "data/pilot_sweep_4.jsonl",
+    # ── 30-question 5-step sweep conditions ───────────────────────────────────
+    "sweep30_cond1":  "data/sweep30_cond1.jsonl",
+    "sweep30_cond2":  "data/sweep30_cond2.jsonl",
+    "sweep30_cond3":  "data/sweep30_cond3.jsonl",
+    "sweep30_cond4":  "data/sweep30_cond4.jsonl",
+    # backward-compat aliases
+    "pilot_sweep_1":  "data/pilot_sweep_1.jsonl",
+    "pilot_sweep_2":  "data/pilot_sweep_2.jsonl",
+    "pilot_sweep_3":  "data/pilot_sweep_3.jsonl",
+    "pilot_sweep_4":  "data/pilot_sweep_4.jsonl",
 }
 
 TRAJ_KEYS = [
@@ -280,6 +311,7 @@ def unlearn_and_extract(
     new_cot_text: str,
     middle_layer: int,
     DH,
+    step_idx: int = 0,
 ) -> dict:
     """
     Re-run NPO+KL unlearning for `qid` up to `target_epoch` epochs using
@@ -290,6 +322,7 @@ def unlearn_and_extract(
       - stops after `target_epoch` training epochs (not the full sweep count)
       - extracts embeddings in-place before unloading
       - uses a seeded DataLoader generator for reproducibility
+      - step_idx selects which answer block to unlearn (0=A, 1=B, 2=C, 3=D, 4=Final)
     """
     target = next((r for r in adapted_records if r["id"] == qid), None)
     if target is None:
@@ -310,8 +343,9 @@ def unlearn_and_extract(
         num_p=None,
     )
 
-    # Always step 0 (all sweep scripts used --step_ids 0)
-    step_idx = 0
+    print(f"  step_idx={step_idx}  (unlearning answer block "
+          f"{['A','B','C','D','Final'][step_idx] if step_idx < 5 else step_idx})",
+          flush=True)
     dataset = cot_to_otfd(
         target, cots_train, tokenizer,
         strategy=fur_args.strategy,
@@ -426,13 +460,33 @@ def main() -> None:
 
     # ── Load best_conditions.json ──────────────────────────────────────────────
     best: dict = json.loads(Path(abspath(args.best_conditions)).read_text())
-    print(f"[INFO] {len(best)} total entries in best_conditions.json")
+    print(f"[INFO] {len(best)} total entries in best_conditions file")
 
-    valid = {
-        qid: sel for qid, sel in best.items()
-        if sel.get("condition") and sel.get("epoch") is not None and sel.get("ff_hard")
-    }
-    print(f"[INFO] {len(valid)} question(s) with FF-HARD flip and valid condition")
+    # Keys can be bare question IDs ("openbook_1955") from the old format,
+    # or "{qid}_step{N}" from the new per-(question, step) format.
+    # Normalise to (qid, step_idx) tuples.
+    def _parse_key(key: str, sel: dict):
+        """Return (qid, step_idx) from a best_conditions entry."""
+        if "step_idx" in sel:
+            # New format: step_idx stored explicitly
+            # Key is like "openbook_1955_step0" — strip suffix to recover qid
+            step_idx = int(sel["step_idx"])
+            suffix = f"_step{step_idx}"
+            qid = key[:-len(suffix)] if key.endswith(suffix) else key
+        else:
+            # Old format: bare question ID, step 0 assumed
+            qid      = key
+            step_idx = 0
+        return qid, step_idx
+
+    valid = {}
+    for key, sel in best.items():
+        if not (sel.get("condition") and sel.get("epoch") is not None and sel.get("ff_hard")):
+            continue
+        qid, step_idx = _parse_key(key, sel)
+        valid[key] = {**sel, "_qid": qid, "_step_idx": step_idx}
+
+    print(f"[INFO] {len(valid)} (question, step) pair(s) with FF-HARD flip and valid condition")
 
     if not valid:
         raise SystemExit("No valid (condition, epoch) pairs found.")
@@ -485,23 +539,25 @@ def main() -> None:
 
     id_to_rec = {r["id"]: r for r in adapted}
 
-    # ── Process each (question, condition, epoch) ─────────────────────────────
+    # ── Process each (question, step, condition, epoch) ───────────────────────
     results = []
-    for i, (qid, sel) in enumerate(valid.items(), start=1):
+    for i, (key, sel) in enumerate(valid.items(), start=1):
+        qid        = sel["_qid"]
+        step_idx   = sel["_step_idx"]
         condition  = sel["condition"]
         epoch      = sel["epoch"]
         ff_soft    = sel["ff_soft"]
         ff_hard    = sel.get("ff_hard", False)
         params     = CONDITION_PARAMS[condition]
 
-        print(f"\n[{i}/{len(valid)}] {qid}"
+        print(f"\n[{i}/{len(valid)}] {qid}  step={step_idx}"
               f"  condition={condition}  epoch={epoch}  ff_soft={ff_soft:.4f}",
               flush=True)
 
-        # Retrieve the stored new_cot text (prefix for forward pass)
+        # Retrieve the stored new_cot text for this (question, step, epoch)
         new_cot_text = load_new_cot(condition, qid, epoch)
         if new_cot_text is None:
-            print(f"  [SKIP] Could not load new_cot for {qid} at epoch {epoch}")
+            print(f"  [SKIP] Could not load new_cot for {qid} step={step_idx} at epoch {epoch}")
             continue
 
         fur_rec = id_to_rec.get(qid)
@@ -521,6 +577,7 @@ def main() -> None:
                 new_cot_text=new_cot_text,
                 middle_layer=args.middle_layer,
                 DH=DH,
+                step_idx=step_idx,
             )
         except Exception as exc:
             import traceback
@@ -534,14 +591,15 @@ def main() -> None:
 
         options = fur_rec.get("options", [])
         results.append({
-            "question_id":   qid,
-            "question_text": fur_rec.get("question", ""),
+            "question_id":    qid,
+            "question_text":  fur_rec.get("question", ""),
             "correct_letter": fur_rec.get("correct_letter", ""),
-            "options":       options,
-            "condition":     condition,
-            "epoch":         epoch,
-            "ff_soft":       ff_soft,
-            "ff_hard":       ff_hard,
+            "options":        options,
+            "condition":      condition,
+            "epoch":          epoch,
+            "step_idx":       step_idx,
+            "ff_soft":        ff_soft,
+            "ff_hard":        ff_hard,
             **emb,
         })
 
