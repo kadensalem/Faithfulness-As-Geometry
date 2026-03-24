@@ -29,10 +29,11 @@ PROJECT_ROOT="/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry"
 cd "$PROJECT_ROOT"
 
 python run_geometry_analysis.py \
-    --pkl    data/fur_anchor_embeddings.pkl \
-    --pkl30  data/fur_anchor_embeddings_30.pkl \
-    --bc30   data/best_conditions_30.json \
-    --outdir data/geometry_analysis_plots
+    --pkl           data/fur_anchor_embeddings.pkl \
+    --pkl30         data/fur_anchor_embeddings_30.pkl \
+    --bc30          data/best_conditions_30.json \
+    --freeform_pkl  data/freeform_embeddings.pkl \
+    --outdir        data/geometry_analysis_plots
 
 echo ""
 echo "Geometry analysis complete."

@@ -1,0 +1,221 @@
+Mon Mar 23 11:39:26 MDT 2026
+Mon Mar 23 11:39:27 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 6000 Blac...    On  |   00000000:61:00.0 Off |                    0 |
+| 30%   35C    P8             11W /  300W |       2MiB /  97887MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[INFO] Loading best conditions from /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/data/best_conditions_30.json
+[INFO] 30 unique questions in best_conditions
+[INFO] Scanning FUR output files in /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/data
+[INFO] FUR index covers 30 questions
+[INFO] All 30 questions found in FUR index
+
+[INFO] Loading model: meta-llama/Meta-Llama-3-8B-Instruct
+[INFO] Model has 32 transformer layers
+[INFO] Extracting at layers: [8, 14, 28]
+
+[1/30] openbook_1095
+  n_tokens=182
+  L8: mean_disp=6.5959  arc=1193.86  straight=0.3240  curvature=0.368888
+  L14: mean_disp=8.4407  arc=1527.77  straight=0.2543  curvature=0.260308
+  L28: mean_disp=27.4526  arc=4968.93  straight=0.0781  curvature=0.064420
+
+[2/30] openbook_1161
+  n_tokens=220
+  L8: mean_disp=6.1012  arc=1336.16  straight=0.2908  curvature=0.385091
+  L14: mean_disp=8.3521  arc=1829.10  straight=0.2134  curvature=0.253425
+  L28: mean_disp=25.9663  arc=5686.61  straight=0.0686  curvature=0.069125
+
+[3/30] openbook_1215
+  n_tokens=178
+  L8: mean_disp=6.5939  arc=1167.13  straight=0.3314  curvature=0.372112
+  L14: mean_disp=8.5296  arc=1509.74  straight=0.2574  curvature=0.259232
+  L28: mean_disp=27.3213  arc=4835.87  straight=0.0803  curvature=0.065678
+
+[4/30] openbook_1334
+  n_tokens=238
+  L8: mean_disp=5.9834  arc=1418.07  straight=0.2740  curvature=0.379030
+  L14: mean_disp=8.1043  arc=1920.73  straight=0.2031  curvature=0.253859
+  L28: mean_disp=26.2992  arc=6232.91  straight=0.0625  curvature=0.067129
+
+[5/30] openbook_1955
+  n_tokens=208
+  L8: mean_disp=6.3455  arc=1313.52  straight=0.2945  curvature=0.369077
+  L14: mean_disp=8.2873  arc=1715.47  straight=0.2265  curvature=0.256705
+  L28: mean_disp=26.6221  arc=5510.78  straight=0.0704  curvature=0.066683
+
+[6/30] openbook_3
+  n_tokens=181
+  L8: mean_disp=6.6284  arc=1193.11  straight=0.3242  curvature=0.368280
+  L14: mean_disp=8.6991  arc=1565.84  straight=0.2482  curvature=0.251715
+  L28: mean_disp=27.0787  arc=4874.16  straight=0.0797  curvature=0.066573
+
+[7/30] openbook_385
+  n_tokens=203
+  L8: mean_disp=6.3038  arc=1273.36  straight=0.3038  curvature=0.375379
+  L14: mean_disp=8.3179  arc=1680.21  straight=0.2312  curvature=0.255714
+  L28: mean_disp=26.9739  arc=5448.72  straight=0.0713  curvature=0.065841
+
+[8/30] openbook_406
+  n_tokens=183
+  L8: mean_disp=6.5207  arc=1186.77  straight=0.3260  curvature=0.375306
+  L14: mean_disp=8.5821  arc=1561.94  straight=0.2488  curvature=0.254476
+  L28: mean_disp=26.9941  arc=4912.93  straight=0.0790  curvature=0.066413
+
+[9/30] openbook_508
+  n_tokens=213
+  L8: mean_disp=6.1885  arc=1311.97  straight=0.2962  curvature=0.376672
+  L14: mean_disp=8.0236  arc=1701.01  straight=0.2294  curvature=0.266431
+  L28: mean_disp=26.7631  arc=5673.78  straight=0.0687  curvature=0.066252
+
+[10/30] openbook_7-1132
+  n_tokens=199
+  L8: mean_disp=6.3250  arc=1252.36  straight=0.3089  curvature=0.379484
+  L14: mean_disp=8.5476  arc=1692.43  straight=0.2295  curvature=0.251220
+  L28: mean_disp=26.5731  arc=5261.48  straight=0.0739  curvature=0.067652
+
+[11/30] openbook_7-140
+  n_tokens=155
+  L8: mean_disp=6.8706  arc=1058.07  straight=0.3661  curvature=0.377918
+  L14: mean_disp=8.8777  arc=1367.17  straight=0.2846  curvature=0.258505
+  L28: mean_disp=27.3391  arc=4210.22  straight=0.0924  curvature=0.066539
+
+[12/30] openbook_7-171
+  n_tokens=210
+  L8: mean_disp=6.2110  arc=1298.10  straight=0.2993  curvature=0.379162
+  L14: mean_disp=8.1927  arc=1712.28  straight=0.2279  curvature=0.260574
+  L28: mean_disp=26.3414  arc=5505.35  straight=0.0709  curvature=0.067171
+
+[13/30] openbook_7-262
+  n_tokens=197
+  L8: mean_disp=6.3975  arc=1253.90  straight=0.3085  curvature=0.371359
+  L14: mean_disp=8.4640  arc=1658.95  straight=0.2342  curvature=0.252892
+  L28: mean_disp=26.9008  arc=5272.57  straight=0.0737  curvature=0.066099
+
+[14/30] openbook_7-732
+  n_tokens=194
+  L8: mean_disp=6.3967  arc=1234.57  straight=0.3133  curvature=0.373560
+  L14: mean_disp=8.4002  arc=1621.25  straight=0.2396  curvature=0.255550
+  L28: mean_disp=26.1592  arc=5048.73  straight=0.0769  curvature=0.067597
+
+[15/30] openbook_7-976
+  n_tokens=177
+  L8: mean_disp=6.6167  arc=1164.55  straight=0.3321  curvature=0.374354
+  L14: mean_disp=8.6832  arc=1528.24  straight=0.2542  curvature=0.255397
+  L28: mean_disp=26.9753  arc=4747.65  straight=0.0818  curvature=0.066819
+
+[16/30] openbook_8-240
+  n_tokens=150
+  L8: mean_disp=7.1106  arc=1059.49  straight=0.3656  curvature=0.366316
+  L14: mean_disp=9.1280  arc=1360.08  straight=0.2860  curvature=0.253470
+  L28: mean_disp=27.5648  arc=4107.16  straight=0.0946  curvature=0.066580
+
+[17/30] openbook_8-367
+  n_tokens=226
+  L8: mean_disp=6.1438  arc=1382.35  straight=0.2811  curvature=0.374475
+  L14: mean_disp=8.1902  arc=1842.79  straight=0.2118  curvature=0.254848
+  L28: mean_disp=26.3033  arc=5918.25  straight=0.0659  curvature=0.066914
+
+[18/30] openbook_8-409
+  n_tokens=195
+  L8: mean_disp=6.3712  arc=1236.02  straight=0.3129  curvature=0.375760
+  L14: mean_disp=8.2969  arc=1609.60  straight=0.2413  curvature=0.261512
+  L28: mean_disp=26.8580  arc=5210.46  straight=0.0744  curvature=0.066135
+
+[19/30] openbook_8-97
+  n_tokens=259
+  L8: mean_disp=5.8216  arc=1501.97  straight=0.2575  curvature=0.379624
+  L14: mean_disp=7.9584  arc=2053.26  straight=0.1892  curvature=0.254185
+  L28: mean_disp=26.1786  arc=6754.09  straight=0.0574  curvature=0.067178
+
+[20/30] openbook_9-187
+  n_tokens=184
+  L8: mean_disp=6.4585  arc=1181.91  straight=0.3272  curvature=0.378295
+  L14: mean_disp=8.5128  arc=1557.84  straight=0.2493  curvature=0.256764
+  L28: mean_disp=27.1316  arc=4965.09  straight=0.0782  curvature=0.065625
+
+[21/30] openbook_9-29
+  n_tokens=210
+  L8: mean_disp=6.2236  arc=1300.72  straight=0.2987  curvature=0.376805
+  L14: mean_disp=8.3273  arc=1740.40  straight=0.2242  curvature=0.253809
+  L28: mean_disp=26.1658  arc=5468.66  straight=0.0713  curvature=0.067489
+
+[22/30] openbook_9-322
+  n_tokens=200
+  L8: mean_disp=6.2530  arc=1244.35  straight=0.3108  curvature=0.379423
+  L14: mean_disp=8.0661  arc=1605.16  straight=0.2420  curvature=0.266914
+  L28: mean_disp=26.3298  arc=5239.64  straight=0.0740  curvature=0.067449
+
+[23/30] openbook_9-35
+  n_tokens=229
+  L8: mean_disp=6.0072  arc=1369.63  straight=0.2837  curvature=0.386386
+  L14: mean_disp=8.1764  arc=1864.21  straight=0.2093  curvature=0.256782
+  L28: mean_disp=26.1119  arc=5953.50  straight=0.0656  curvature=0.068305
+
+[24/30] openbook_9-491
+  n_tokens=224
+  L8: mean_disp=6.1366  arc=1368.46  straight=0.2839  curvature=0.376661
+  L14: mean_disp=8.2602  arc=1842.03  straight=0.2118  curvature=0.254896
+  L28: mean_disp=27.2160  arc=6069.16  straight=0.0642  curvature=0.065387
+
+[25/30] openbook_9-520
+  n_tokens=232
+  L8: mean_disp=6.0993  arc=1408.95  straight=0.2758  curvature=0.371514
+  L14: mean_disp=7.9248  arc=1830.63  straight=0.2132  curvature=0.262652
+  L28: mean_disp=26.4540  arc=6110.88  straight=0.0638  curvature=0.066894
+
+[26/30] openbook_9-528
+  n_tokens=198
+  L8: mean_disp=6.4542  arc=1271.49  straight=0.3042  curvature=0.367941
+  L14: mean_disp=8.4404  arc=1662.76  straight=0.2337  curvature=0.254515
+  L28: mean_disp=26.9079  arc=5300.86  straight=0.0733  curvature=0.066758
+
+[27/30] openbook_9-548
+  n_tokens=186
+  L8: mean_disp=6.4610  arc=1195.29  straight=0.3236  curvature=0.378675
+  L14: mean_disp=8.4332  arc=1560.15  straight=0.2490  curvature=0.260803
+  L28: mean_disp=26.5311  arc=4908.26  straight=0.0791  curvature=0.067705
+
+[28/30] openbook_9-655
+  n_tokens=220
+  L8: mean_disp=6.0866  arc=1332.96  straight=0.2915  curvature=0.382352
+  L14: mean_disp=8.2146  arc=1798.99  straight=0.2169  curvature=0.255248
+  L28: mean_disp=26.2234  arc=5742.92  straight=0.0678  curvature=0.067166
+
+[29/30] openbook_9-727
+  n_tokens=196
+  L8: mean_disp=6.4437  arc=1256.52  straight=0.3078  curvature=0.373020
+  L14: mean_disp=8.4588  arc=1649.47  straight=0.2355  curvature=0.256874
+  L28: mean_disp=27.2463  arc=5313.03  straight=0.0730  curvature=0.065734
+
+[30/30] openbook_9-993
+  n_tokens=177
+  L8: mean_disp=6.5530  arc=1153.33  straight=0.3354  curvature=0.378894
+  L14: mean_disp=8.6618  arc=1524.48  straight=0.2548  curvature=0.254097
+  L28: mean_disp=26.4508  arc=4655.35  straight=0.0834  curvature=0.068152
+
+[DONE] Saved 30 records to /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/data/freeform_embeddings.pkl
+
+[SUMMARY]
+  Questions processed: 30/30
+  ff_soft range: 0.4107 – 0.9984
+  n_tokens: mean=200.8  min=150  max=259
+  mean_displacement L14: mean=8.3851  range=[7.9248, 9.1280]
+
+Free-form embedding extraction complete.
+Mon Mar 23 11:39:46 MDT 2026
