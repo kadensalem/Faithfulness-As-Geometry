@@ -26,6 +26,7 @@ import gc
 import json
 import random
 import argparse
+import copy
 import types
 
 import numpy as np
@@ -69,7 +70,8 @@ def load_completed_ids(fout, stepwise=True):
                 d = json.loads(line)
                 key = d["question"]
                 if stepwise:
-                    key = f"{key}_{d['step_idx']}"
+                    mode = d.get("unlearn_mode", "whole_block")
+                    key = f"{key}_{d['step_idx']}_{mode}"
                 ids.add(key)
     return ids
 
@@ -121,6 +123,123 @@ def build_fur_args(args):
 
 
 # ---------------------------------------------------------------------------
+# Sub-block helpers
+# ---------------------------------------------------------------------------
+
+def is_valid_unlearning_target(step_text, tokenizer):
+    """Return False for steps that should be skipped as unlearning targets.
+
+    Filters out:
+      1. Final Answer declarations ("**Final Answer**" or "Final Answer" prefix)
+      2. Header-only blocks with no bullet lines (no '*' lines)
+      3. Steps tokenizing to fewer than 10 tokens
+    """
+    text = step_text.strip()
+    if "**Final Answer**" in text or text.startswith("Final Answer"):
+        return False
+    lines = [l.strip() for l in text.split('\n') if l.strip()]
+    if not any(l.startswith('*') for l in lines):
+        return False
+    tokens = tokenizer.encode(text, add_special_tokens=False)
+    if len(tokens) < 10:
+        return False
+    return True
+
+
+def extract_subblock_targets(block_text):
+    """Parse an Answer block into its sub-components.
+
+    Expected format::
+
+        Answer X: For each answer:
+        * Premise: ...
+        * Reasoning: ...
+        * Conclusion: S
+
+    Returns a dict with keys {header, premise, reasoning, conclusion}, or
+    None if the block does not match the expected structure.
+    """
+    lines = block_text.strip().split('\n')
+    header_lines = []
+    premise = None
+    reasoning = None
+    conclusion = None
+
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith('* Premise:'):
+            premise = line
+        elif stripped.startswith('* Reasoning:'):
+            reasoning = line
+        elif stripped.startswith('* Conclusion:'):
+            conclusion = line
+        else:
+            header_lines.append(line)
+
+    if premise is None or reasoning is None:
+        return None
+
+    return {
+        'header': '\n'.join(header_lines),
+        'premise': premise,
+        'reasoning': reasoning,
+        'conclusion': conclusion,
+    }
+
+
+def build_subblock_run(target, step_idx, unlearn_mode, cots_train):
+    """Return (run_target, run_step_idx, run_cots_train, target_type,
+               unlearn_target_text, unlearn_target_prefix) for a sub-block mode.
+
+    Splits the Answer block at step_idx into a prefix segment and a target
+    segment, inserts them into a deep-copied target, and patches cots_train
+    so that cot_to_otfd's list.remove(target) uses the modified copy.
+
+    Returns None if the block cannot be parsed.
+    """
+    step_text = target['segmented_cot'][step_idx]
+    sub = extract_subblock_targets(step_text)
+    if sub is None:
+        return None
+
+    if unlearn_mode == "premise_only":
+        prefix_seg = sub['header']
+        target_seg = sub['premise']
+        target_type = "premise"
+    elif unlearn_mode == "reasoning_only":
+        prefix_seg = sub['header'] + "\n" + sub['premise']
+        target_seg = sub['reasoning']
+        target_type = "reasoning"
+    else:  # premise_and_reasoning
+        prefix_seg = sub['header']
+        target_seg = sub['premise'] + "\n" + sub['reasoning']
+        target_type = "premise_and_reasoning"
+
+    target_copy = copy.deepcopy(target)
+    target_copy['segmented_cot'] = (
+        target['segmented_cot'][:step_idx]
+        + [prefix_seg, target_seg]
+        + target['segmented_cot'][step_idx + 1:]
+    )
+
+    preceding = "\n".join(target['segmented_cot'][:step_idx])
+    unlearn_target_prefix = (preceding + "\n" + prefix_seg).lstrip("\n")
+
+    # Replace original target in cots_train using identity check so that
+    # cot_to_otfd's all.remove(target_copy) finds the right record.
+    run_cots_train = [target_copy if r is target else r for r in cots_train]
+
+    return (
+        target_copy,
+        step_idx + 1,
+        run_cots_train,
+        target_type,
+        target_seg,
+        unlearn_target_prefix,
+    )
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -149,6 +268,11 @@ def main():
                         help="NPO forget loss coefficient (default: 1.0)")
     parser.add_argument("--beta", type=float, default=0.1,
                         help="NPO beta temperature — controls sharpness of forget gradient (default: 0.1)")
+    parser.add_argument("--unlearn_mode", default="whole_block",
+                        choices=["whole_block", "premise_only", "reasoning_only",
+                                 "premise_and_reasoning"],
+                        help="Granularity of the unlearning target within each Answer block "
+                             "(default: whole_block — existing behaviour)")
     args = parser.parse_args()
 
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -222,6 +346,8 @@ def main():
     # ------------------------------------------------------------------
     # Step 4: unlearn each (target, step_idx)
     # ------------------------------------------------------------------
+    print(f"\nUnlearning mode: {args.unlearn_mode}")
+
     for t_idx, target in enumerate(targets):
         n_steps = len(target["segmented_cot"])
         print(f"\n{'='*60}")
@@ -232,19 +358,42 @@ def main():
                 print(f"  [skip-filter] step {step_idx} not in --step_ids")
                 continue
 
-            check_id = f"{target['question']}_{step_idx}"
+            check_id = f"{target['question']}_{step_idx}_{args.unlearn_mode}"
 
             if check_id in completed:
-                print(f"  [skip] step {step_idx} already done")
+                print(f"  [skip] step {step_idx} mode={args.unlearn_mode} already done")
                 continue
 
-            print(f"\n  Step {step_idx}/{n_steps-1}: "
-                  f"{target['segmented_cot'][step_idx][:80]!r}")
+            step_text = target['segmented_cot'][step_idx]
+
+            if not is_valid_unlearning_target(step_text, tokenizer):
+                print(f"  [skip-invalid] step {step_idx}: not a valid unlearning target")
+                continue
+
+            print(f"\n  Step {step_idx}/{n_steps-1} mode={args.unlearn_mode}: "
+                  f"{step_text[:80]!r}")
+
+            # ── resolve actual target / step for unlearn_single ────────────
+            if args.unlearn_mode == "whole_block":
+                run_target = target
+                run_step_idx = step_idx
+                run_cots_train = cots_train
+                target_type = "whole_block"
+                unlearn_target_text = step_text
+                unlearn_target_prefix = "\n".join(target['segmented_cot'][:step_idx])
+            else:
+                sub_result = build_subblock_run(
+                    target, step_idx, args.unlearn_mode, cots_train)
+                if sub_result is None:
+                    print(f"  [skip-parse] step {step_idx}: could not parse sub-blocks")
+                    continue
+                (run_target, run_step_idx, run_cots_train,
+                 target_type, unlearn_target_text, unlearn_target_prefix) = sub_result
 
             result = unlearn_single(
                 args.model_name, tokenizer, fur_args,
-                target, step_idx,
-                cots_train, cots_verify,
+                run_target, run_step_idx,
+                run_cots_train, cots_verify,
                 DH, t_idx,
             )
 
@@ -266,6 +415,10 @@ def main():
                 "cot_step": target["segmented_cot"][step_idx],
                 "segmented_cot": target["segmented_cot"],
                 "unlearning_results": result["unlearning_results"],
+                "unlearn_mode": args.unlearn_mode,
+                "unlearn_target_type": target_type,
+                "unlearn_target_text": unlearn_target_text,
+                "unlearn_target_prefix": unlearn_target_prefix,
             }
             store(record, args.output_file)
             completed.add(check_id)
