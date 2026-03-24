@@ -1,0 +1,107 @@
+Mon Mar 23 23:24:24 MDT 2026
+Mon Mar 23 23:24:25 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 6000 Blac...    On  |   00000000:C1:00.0 Off |                    0 |
+| 30%   30C    P8              3W /  300W |       2MiB /  97887MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Loaded 37 records from /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/data/fur_anchor_embeddings_30.pkl
+
+Colon-conclusion coverage [BEFORE]:
+  L8: A=15 B=15 C=15 D=15  total=60/148
+  L14: A=15 B=15 C=15 D=15  total=60/148
+  L28: A=15 B=15 C=15 D=15  total=60/148
+
+Main pkl records needing extraction: 22/37
+Subblock questions found: 15
+
+[FULL RUN] main: 22 records | subblock: 15 questions
+
+Loading meta-llama/Meta-Llama-3-8B-Instruct ...
+Model loaded.
+
+Unique question_ids needing forward pass: 13
+  openbook_1161: extracting ...
+  Token identity [openbook_1161]:
+    Block A: tok_idx=108  token_id=25  decoded=':'
+    Block B: tok_idx=210  token_id=25  decoded=':'
+    Block C: tok_idx=312  token_id=25  decoded=':'
+    Block D: tok_idx=414  token_id=25  decoded=':'
+  Sanity check — cosine(Reasoning_A, conclusion_colon_A) at L14: 0.5755
+  openbook_1334: extracting ...
+  openbook_1955: extracting ...
+  openbook_3: extracting ...
+  openbook_385: extracting ...
+  --- progress: 5/13 unique qids done ---
+  openbook_406: extracting ...
+  openbook_7-1132: extracting ...
+  openbook_7-262: extracting ...
+  openbook_7-732: extracting ...
+  openbook_8-367: extracting ...
+  --- progress: 10/13 unique qids done ---
+  openbook_9-29: extracting ...
+  openbook_9-655: extracting ...
+  openbook_9-993: extracting ...
+
+Colon-conclusion coverage [AFTER main]:
+  L8: A=37 B=37 C=37 D=37  total=148/148
+  L14: A=37 B=37 C=37 D=37  total=148/148
+  L28: A=37 B=37 C=37 D=37  total=148/148
+New slots filled in main pkl: 264
+  Subblock openbook_1161: extracting ...
+  Token identity [openbook_1161]:
+    Block A: tok_idx=61  token_id=25  decoded=':'
+    Block B: tok_idx=114  token_id=25  decoded=':'
+    Block C: tok_idx=167  token_id=25  decoded=':'
+    Block D: tok_idx=220  token_id=25  decoded=':'
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_1334: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_1955: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_3: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_385: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_406: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_7-1132: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_7-171: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_7-262: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_7-732: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_8-367: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_8-97: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_9-29: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_9-655: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+  Subblock openbook_9-993: extracting ...
+    coverage: {8: 4, 14: 4, 28: 4}
+
+Subblock questions processed: 15
+
+[DONE] Main pkl updated: /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/data/fur_anchor_embeddings_30.pkl  (264 new slots)
+[DONE] Subblock pkl saved: /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/data/subblock_conclusion_colon.pkl  (15 questions)
+
+Conclusion colon extraction complete.
+Mon Mar 23 23:24:43 MDT 2026

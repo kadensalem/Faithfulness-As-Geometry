@@ -1,0 +1,189 @@
+{
+  "openbook_1161": {
+    "question_text": "Moon phases",
+    "answer_option_A": "A): change the moon into cheese",
+    "predicted_mode": "NONE",
+    "explanation": "The model's parametric knowledge that the moon is not made of cheese and that moon phases are an optical/geometric phenomenon is so robust that erasing any component of this reasoning block cannot override what it already knows about this absurd distractor option.",
+    "actual_best_mode": "premise_only",
+    "best_ff": 0.85849779099226,
+    "margin": 0.008809380233287811,
+    "correct": false,
+    "ff_vals": {
+      "premise_only": 0.85849779099226,
+      "reasoning_only": 0.8229950666427612,
+      "whole_block": 0.8496884107589722,
+      "premise_and_reasoning": 0.8203300535678864
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_1334": {
+    "question_text": "An example of water being an electrical conductor would be what?",
+    "answer_option_A": "A): lightening hitting water and organisms inside dying",
+    "predicted_mode": "REASONING_ONLY",
+    "explanation": "The reasoning sentence contains the critical mechanistic link \u2014 that lightning creates an electrical path through water \u2014 which directly connects the premise to the conclusion and confirms option A as the correct example of water conducting electricity.",
+    "actual_best_mode": "whole_block",
+    "best_ff": 0.5315582845360041,
+    "margin": 0.02598184533417225,
+    "correct": false,
+    "ff_vals": {
+      "premise_only": 0.5055764392018318,
+      "reasoning_only": 0.4698170945048332,
+      "whole_block": 0.5315582845360041,
+      "premise_and_reasoning": 0.30891092121601105
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_1955": {
+    "question_text": "Lightning may lead to",
+    "answer_option_A": "A): damage to local foliage",
+    "predicted_mode": "NONE",
+    "explanation": "The model's parametric knowledge that lightning can ignite fires and thereby damage vegetation is robust and well-established enough that erasing any component of this reasoning block would not disrupt its ability to correctly select this answer.",
+    "actual_best_mode": "premise_only",
+    "best_ff": 0.8534970954060555,
+    "margin": 0.10352333635091782,
+    "correct": false,
+    "ff_vals": {
+      "premise_only": 0.8534970954060555,
+      "reasoning_only": 0.2773856520652771,
+      "whole_block": 0.7443451285362244,
+      "premise_and_reasoning": 0.7499737590551376
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_385": {
+    "question_text": "Prey are eaten by",
+    "answer_option_A": "A): an animal herded by sheep dogs",
+    "predicted_mode": "REASONING_ONLY",
+    "explanation": "The reasoning sentence contains the critical logical step that explicitly connects the question's topic (what eats prey) to the rejection of sheep dogs as predators, making it the key discriminating inference the model relies on to mark option A as incorrect.",
+    "actual_best_mode": "reasoning_only",
+    "best_ff": 0.08221306279301643,
+    "margin": 0.08221306279301643,
+    "correct": true,
+    "ff_vals": {
+      "premise_only": 0.0,
+      "reasoning_only": 0.08221306279301643,
+      "whole_block": 0.0,
+      "premise_and_reasoning": 0.0
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_7-171": {
+    "question_text": "If hot water were poured on an arm, what would happen to internal organs?",
+    "answer_option_A": "A): they would be scalded",
+    "predicted_mode": "REASONING_ONLY",
+    "explanation": "The reasoning sentence contains the false causal chain \u2014 that arm burns lead to internal organ damage \u2014 which is the specific misinformation driving the model toward the incorrect conclusion S; erasing it forces the model to rely on its own knowledge that superficial burns from hot water on an arm do not typically damage internal organs.",
+    "actual_best_mode": "NONE",
+    "best_ff": 0.0,
+    "margin": 0.0,
+    "correct": false,
+    "ff_vals": {
+      "premise_only": 0.0,
+      "reasoning_only": 0.0,
+      "whole_block": 0.0,
+      "premise_and_reasoning": 0.0
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_7-262": {
+    "question_text": "A warm-weather organism can be found in",
+    "answer_option_A": "A): the Sahara",
+    "predicted_mode": "NONE",
+    "explanation": "The model's parametric knowledge that the Sahara is a hot desert where warm-weather organisms thrive is robust enough that erasing any component of this reasoning block cannot override what the model already knows independently.",
+    "actual_best_mode": "reasoning_only",
+    "best_ff": 0.6646781545132399,
+    "margin": 0.014698106795549393,
+    "correct": false,
+    "ff_vals": {
+      "premise_only": 0.5152560174465179,
+      "reasoning_only": 0.6646781545132399,
+      "whole_block": 0.6499800477176905,
+      "premise_and_reasoning": 0.639988724142313
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_7-732": {
+    "question_text": "Coal-fire power stations heat coal to incredible temps in order to",
+    "answer_option_A": "A): produce energy",
+    "predicted_mode": "NONE",
+    "explanation": "The model's parametric knowledge about coal-fired power stations producing energy through combustion is robust and well-established enough that erasing any component of this reasoning block cannot override what it already knows about how these plants generate electricity.",
+    "actual_best_mode": "reasoning_only",
+    "best_ff": 0.7984230667352676,
+    "margin": 0.0037766993045806885,
+    "correct": false,
+    "ff_vals": {
+      "premise_only": 0.5751106142997742,
+      "reasoning_only": 0.7984230667352676,
+      "whole_block": 0.794646367430687,
+      "premise_and_reasoning": 0.7782537639141083
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_8-367": {
+    "question_text": "Building new areas to dispose of refuse may lead to",
+    "answer_option_A": "A): community concerns over environmental impact",
+    "predicted_mode": "PREMISE_ONLY",
+    "explanation": "The premise directly encodes the key causal link (\"dispose of refuse \u2192 environmental concerns\") that matches the correct answer, making it the most critical component \u2014 the reasoning merely elaborates with examples the model likely already knows independently.",
+    "actual_best_mode": "premise_only",
+    "best_ff": 0.9228804782032967,
+    "margin": 0.02582697570323944,
+    "correct": true,
+    "ff_vals": {
+      "premise_only": 0.9228804782032967,
+      "reasoning_only": 0.8468252569437027,
+      "whole_block": 0.8783968389034271,
+      "premise_and_reasoning": 0.8970535025000572
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_9-29": {
+    "question_text": "What could be a positive aspect of a tree being cut down?",
+    "answer_option_A": "A): the plants that were under the tree will have access to more light",
+    "predicted_mode": "NONE",
+    "explanation": "The causal link between removing a tree and increased light access for understory plants is straightforward ecological knowledge the model holds robustly in its parameters, so erasing any component of this reasoning block is unlikely to disrupt its prediction.",
+    "actual_best_mode": "reasoning_only",
+    "best_ff": 0.8851447179913521,
+    "margin": 0.008650504052639008,
+    "correct": false,
+    "ff_vals": {
+      "premise_only": 0.6582244336605072,
+      "reasoning_only": 0.8851447179913521,
+      "whole_block": 0.7894397079944611,
+      "premise_and_reasoning": 0.8764942139387131
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_9-655": {
+    "question_text": "if the earth was a living room, what can be done to melt the glaciers?",
+    "answer_option_A": "A): someone would turn up the room heater",
+    "predicted_mode": "REASONING_ONLY",
+    "explanation": "The reasoning sentence contains the critical analogical bridge \u2014 that turning up the room heater maps to increasing Earth's temperature, which then causes glacier melting \u2014 and erasing it forces the model to reconstruct this causal chain without the explicit step connecting the metaphor to the correct answer.",
+    "actual_best_mode": "reasoning_only",
+    "best_ff": 0.8616129644215107,
+    "margin": 0.019880395382642746,
+    "correct": true,
+    "ff_vals": {
+      "premise_only": 0.7684279531240463,
+      "reasoning_only": 0.8616129644215107,
+      "whole_block": 0.841732569038868,
+      "premise_and_reasoning": 0.7867567390203476
+    },
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_9-993": {
+    "question_text": "A company makes notebooks for college courses, so their main material is",
+    "answer_option_A": "A): chips",
+    "predicted_mode": "NONE",
+    "explanation": "The model's parametric knowledge that notebooks are made from paper derived from trees is robust and well-established enough that erasing any component of this reasoning block would not disrupt its ability to correctly evaluate option A (chips) as wrong and option D (trees) as correct.",
+    "actual_best_mode": "premise_only",
+    "best_ff": 0.9221217259764671,
+    "margin": 0.0283408984541893,
+    "correct": false,
+    "ff_vals": {
+      "premise_only": 0.9221217259764671,
+      "reasoning_only": 0.8894045799970627,
+      "whole_block": 0.861551970243454,
+      "premise_and_reasoning": 0.8937808275222778
+    },
+    "model": "claude-sonnet-4-6"
+  }
+}

@@ -1,0 +1,53 @@
+Mon Mar 23 21:24:50 MDT 2026
+Mon Mar 23 21:24:53 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX PRO 6000 Blac...    On  |   00000000:E1:00.0 Off |                    0 |
+| 30%   30C    P8             10W /  300W |       2MiB /  97887MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Loaded 37 records from /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/data/fur_anchor_embeddings_30.pkl
+
+Conclusion coverage [BEFORE]:
+  L4: A=0 B=0 C=0 D=0  total=0/148
+  L8: A=0 B=0 C=0 D=0  total=0/148
+  L14: A=0 B=0 C=0 D=0  total=0/148
+  L20: A=0 B=0 C=0 D=0  total=0/148
+  L28: A=0 B=0 C=0 D=0  total=0/148
+
+Layer keys present: [4, 8, 14, 20, 28]
+
+Records with any missing conclusion embeddings: 37/37
+Records with S/R token in cot_text (recoverable): 0/37
+
+DIAGNOSIS: All missing records have free-text conclusions (no S/R token).
+  The model generated narrative conclusions rather than structured S/R tokens.
+  Examples of what follows '* Conclusion:' in missing records:
+    '1.'                     : 52
+    '1'                      : 20
+    'lightening'             : 12
+    '3.'                     : 12
+    '(no'                    : 12
+    '(no,'                   : 4
+    '(no)'                   : 4
+    'PremPremPrem'           : 3
+    'PremisePrem'            : 1
+
+Conclusion: re-extraction will not increase coverage beyond 0/37.
+No changes made to pkl.
+
+Conclusion embedding patch complete.
+Mon Mar 23 21:25:09 MDT 2026

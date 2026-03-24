@@ -1,0 +1,558 @@
+Mon Mar 23 21:07:57 MDT 2026
+================================================================================
+CELL 3 — Shared PCA trajectories (pilot 6q pkl)
+================================================================================
+Loaded 6 records from data/fur_anchor_embeddings.pkl
+  openbook_7-976        ff_soft=0.0580  condition=sweep_3  epoch=1  anchors=9/9
+  openbook_9-520        ff_soft=0.4802  condition=sweep_3  epoch=1  anchors=9/9
+  openbook_508          ff_soft=0.7578  condition=sweep_1  epoch=1  anchors=9/9
+  openbook_9-655        ff_soft=0.9153  condition=sweep_3  epoch=2  anchors=9/9
+  openbook_1955         ff_soft=0.9692  condition=sweep_2  epoch=2  anchors=9/9
+  openbook_9-491        ff_soft=0.9953  condition=sweep_1  epoch=1  anchors=9/9
+
+Shared PCA explained variance:  PC1=0.145  PC2=0.133  PC3=0.108  (cumulative=0.385)
+Saved: data/geometry_analysis_plots/pca_trajectories.png
+
+Per-trajectory metrics:
+                ff_soft condition  epoch  arclength  net_displacement  straightness  mean_step_size  step_size_std  mean_curvature  final_pc1  final_pc2  final_pc3  pc1_range  pc2_range
+id                                                                                                                                                                                       
+openbook_7-976   0.0580   sweep_3      1  31.790300            2.0976        0.0660          3.9738         0.4577          0.4568    -2.4185    -1.3546     2.8696     3.7671     4.4072
+openbook_9-520   0.4802   sweep_3      1  34.173302            2.4105        0.0705          4.2717         0.5848          0.4639    -2.0787    -1.2505     2.9639     4.0278     4.3057
+openbook_508     0.7578   sweep_1      1  28.613501            3.0069        0.1051          3.5767         0.5674          0.4670    -2.3198    -1.1454     2.5191     1.7506     4.0221
+openbook_9-655   0.9153   sweep_3      2  35.376301            2.4349        0.0688          4.4220         0.4487          0.4133    -0.8891    -1.0530     3.3514     4.4388     4.2937
+openbook_1955    0.9692   sweep_2      2  34.140900            2.0644        0.0605          4.2676         0.3088          0.3516    -0.2779    -0.6704     3.4380     4.3379     4.0897
+openbook_9-491   0.9953   sweep_1      1  28.554001            2.8505        0.0998          3.5692         0.6570          0.4414    -2.6177    -1.1450     2.3490     1.4683     3.9407
+
+================================================================================
+CELL 5 — Null baseline (1000 random anchor pairs)
+================================================================================
+Anchor pool: 54 vectors of dim 4096
+  Random cosine:  mean=0.3664  std=0.1473
+  Random delta:   mean=6.8272   std=0.9202
+  Cosine 1-sigma: [0.2191,  0.5137]
+  Delta  1-sigma: [5.9070,  7.7475]
+
+================================================================================
+CELL 6 — TEST 1: reasoning_delta magnitudes and intra-CoT variance
+================================================================================
+                ff_soft  delta_A  delta_B  delta_C  delta_D  intra_variance  final_delta
+question_id                                                                             
+openbook_7-976   0.0580   6.7033   6.3175   6.1059   5.9116        0.086240       7.0774
+openbook_9-520   0.4802   5.9829   6.0595   5.6685   5.7870        0.024024       7.1408
+openbook_508     0.7578   5.9902   5.9746   4.8729   5.1476        0.245724       6.7902
+openbook_9-655   0.9153   5.9500   6.1112   6.1791   5.9554        0.009838       7.2736
+openbook_1955    0.9692   7.2267   6.7257   6.1950   6.0965        0.204994       6.9777
+openbook_9-491   0.9953   6.3147   6.3807   5.2497   5.2288        0.307749       6.7594
+
+  ff_soft vs intra_variance:  r=0.486, p=0.329 (n=6)
+  ff_soft vs final_delta:     r=-0.486, p=0.329 (n=6)
+  Observed deltas within null band: 18/24
+
+================================================================================
+CELL 7 — TEST 2: ff_soft vs reasoning_delta (pilot, step_idx=0)
+================================================================================
+  ff_soft vs delta_A (TARGET): r=0.143, p=0.787 (n=6)
+  ff_soft vs delta_B (ctrl):   r=0.543, p=0.266
+  ff_soft vs delta_C (ctrl):   r=0.086, p=0.872
+  ff_soft vs delta_D (ctrl):   r=0.086, p=0.872
+  -> Answer B shows stronger |r| than A (0.543 vs 0.143).
+
+================================================================================
+CELL 8 — TEST 3: Conclusion-probe cosine coupling (pilot)
+================================================================================
+                ff_soft  cos_A   cos_B  cos_C   cos_D
+question_id                                          
+openbook_9-491   0.9953  0.335  0.3862  0.345  0.3318
+Null cosine band: [0.2191, 0.5137]
+
+================================================================================
+PART 3 — Stronger Test 2 + Full Test 3 (30q if available, else pilot)
+================================================================================
+[30-question] Loaded 92 records from data/fur_anchor_embeddings_30.pkl
+Loaded best_conditions for 15 question(s) from data/best_conditions_30.json
+Ready. DATA_TAG='30-question'
+
+── PART 3 — STRONGER TEST 2: within-question rank test ──────────────────────
+                 salient_step salient_block  salient_ff  delta_A  delta_B  delta_C  delta_D  rank_of_salient
+question_id                                                                                                 
+openbook_1161               1             B      0.9414   5.6349   6.2862   5.5318   5.6105                1
+openbook_1334               0             A      0.5316   7.0536   6.1106   5.8057   5.7607                1
+openbook_1955               1             B      0.9571   8.2904   7.0009   7.3607   6.7264                3
+openbook_3                  1             B      0.9050   6.3969   6.4759   5.9885   5.7500                1
+openbook_385                1             B      0.8676   6.8076   6.8995   5.8235   5.7129                1
+openbook_406                2             C      0.8137   7.1882   7.5644   7.8958   8.0951                2
+openbook_7-1132             2             C      0.9473   6.4327   6.8740   6.4754   5.7202                2
+openbook_7-171              3             D      0.8848   5.7797   5.7951   5.9727   6.1290                1
+openbook_7-262              0             A      0.6651   5.7235   5.7996   5.0791   4.8809                2
+openbook_7-732              0             A      0.8508   5.2875   6.2413   5.8476   5.9623                4
+openbook_8-367              2             C      0.9712   7.0671   6.2761   5.8357   5.8111                3
+openbook_8-97               2             C      0.8838   6.8360   6.9025   6.2704   6.3190                4
+openbook_9-29               2             C      0.9830   7.0464   6.7611   5.6710   5.3996                3
+openbook_9-655              0             A      0.8738   5.9616   5.9109   5.3338   5.1661                1
+openbook_9-993              2             C      0.9760   6.3878   6.5605   6.2753   6.0259                3
+
+  n=15  |  Hit rate (rank=1): 40.0%  |  Mean rank: 2.13  (null=2.5)
+  Wilcoxon signed-rank test vs null median 2.5: p=0.219
+
+── PART 3 — STRONGER TEST 2: across-question Spearman ───────────────────────
+  ff_soft vs salient_delta (TARGET): r=-0.196, p=0.483 (n=15)
+  ff_soft vs delta_A (ctrl):       r=0.027, p=0.937 (n=11)
+  ff_soft vs delta_B (ctrl):       r=0.282, p=0.401 (n=11)  <- STRONGER than target
+  ff_soft vs delta_C (ctrl):       r=0.533, p=0.139 (n=9)  <- STRONGER than target
+  ff_soft vs delta_D (ctrl):       r=0.059, p=0.840 (n=14)
+  -> A non-salient block shows |r| >= salient (0.196 vs max ctrl 0.533).
+  Null delta band: [5.91, 7.75]
+
+── PART 3 — FULL TEST 3: Conclusion-probe cosine coupling ───────────────────
+Conclusion embedding coverage across 92 records:
+  Block A: 9/92  (10%)
+  Block B: 9/92  (10%)
+  Block C: 9/92  (10%)
+  Block D: 9/92  (10%)
+9 record(s) have at least one Conclusion embedding.
+                step_idx  ff_soft   cos_A   cos_B   cos_C   cos_D
+question_id                                                      
+openbook_508           4   0.6743  0.3437  0.3922  0.4252  0.3974
+openbook_508           2   0.7566  0.3608  0.4017  0.4202  0.4413
+openbook_9-727         0   0.8299  0.2487  0.3609  0.4368  0.4121
+openbook_9-727         2   0.9223  0.3146  0.3801  0.4265  0.4280
+openbook_9-322         0   0.9511  0.3436  0.2896  0.2903  0.2810
+openbook_9-322         1   0.9541  0.2996  0.2705  0.2761  0.3377
+openbook_9-491         1   0.9784  0.2848  0.3018  0.2952  0.3445
+openbook_9-727         1   0.9802  0.3087  0.3662  0.3860  0.3919
+openbook_9-491         0   0.9869  0.3353  0.3871  0.3459  0.3367
+  Spearman ff_soft vs cos_A: r=-0.383, p=0.308 (n=9)
+  Spearman ff_soft vs cos_B: r=-0.383, p=0.308 (n=9)
+  Spearman ff_soft vs cos_C: r=-0.567, p=0.112 (n=9)
+  Spearman ff_soft vs cos_D: r=-0.650, p=0.058 (n=9)
+
+Null cosine band: [0.2191, 0.5137]
+Observed cosines within null band: 36/36
+
+================================================================================
+PART 2b — LAYER SWEEP: Test 2 + Test 3 at each layer
+================================================================================
+Layers present in pkl: [4, 8, 14, 20, 28]
+
+       n_q T2 hit rate T2 mean rank T2 Spearman r T3 mean cosine T3 within null null_delta_band
+Layer                                                                                          
+L4      15       26.7%         2.80        -0.429         0.4349           0/36     [0.94,1.99]
+L8      15       33.3%         2.53         0.314         0.3985          31/36     [2.91,4.52]
+L14 *   15       40.0%         2.13        -0.196         0.3517          36/36     [6.08,7.98]
+L20     15       20.0%         2.53        -0.425         0.3872          32/36   [10.16,13.58]
+L28     15       13.3%         2.93        -0.146         0.5139          35/36   [20.16,27.27]
+
+* = primary layer (14) — backward-compat anchor_embeddings key
+
+Strongest hit rate:    L14 *  (40.0%)
+Strongest |Spearman|:  L4  (r=-0.429)
+  → Hit rate and Spearman disagree — review full table above.
+
+================================================================================
+CHANGE 1 — Fixed rank test with Final Answer as 5th candidate (L14)
+================================================================================
+                 salient_step salient_block  salient_ff  rank_of_salient  n_candidates  delta_A  delta_B  delta_C  delta_D  delta_Final
+question_id                                                                                                                            
+openbook_1161               1             B      0.9414                2             5   5.6349   6.2862   5.5318   5.6105       6.7405
+openbook_1334               0             A      0.5316                1             5   7.0536   6.1106   5.8057   5.7607       6.5552
+openbook_1955               1             B      0.9571                4             5   8.2904   7.0009   7.3607   6.7264       7.5755
+openbook_3                  1             B      0.9050                2             5   6.3969   6.4759   5.9885   5.7500       6.5201
+openbook_385                1             B      0.8676                1             5   6.8076   6.8995   5.8235   5.7129       6.5020
+openbook_406                2             C      0.8137                2             5   7.1882   7.5644   7.8958   8.0951       7.4366
+openbook_7-1132             2             C      0.9473                3             5   6.4327   6.8740   6.4754   5.7202       6.6424
+openbook_7-171              3             D      0.8848                2             5   5.7797   5.7951   5.9727   6.1290       6.6704
+openbook_7-262              0             A      0.6651                3             5   5.7235   5.7996   5.0791   4.8809       6.8773
+openbook_7-732              0             A      0.8508                5             5   5.2875   6.2413   5.8476   5.9623       6.7482
+openbook_8-367              2             C      0.9712                4             5   7.0671   6.2761   5.8357   5.8111       6.6184
+openbook_8-97               2             C      0.8838                5             5   6.8360   6.9025   6.2704   6.3190       7.3758
+openbook_9-29               2             C      0.9830                4             5   7.0464   6.7611   5.6710   5.3996       6.7760
+openbook_9-655              0             A      0.8738                2             5   5.9616   5.9109   5.3338   5.1661       7.0366
+openbook_9-993              2             C      0.9760                4             5   6.3878   6.5605   6.2753   6.0259       6.6623
+
+── RESULTS (n=15, 5 candidates, null median=3.0, null hit rate=20.0%) ──
+  Hit rate (rank=1):    13.3%  (null: 20.0%)
+  Mean rank:            2.93   (null: 3.00)
+  Direction:            salient block tends to have higher displacement
+  Wilcoxon vs null 3.0: p=0.856  (n=15)
+  Spearman ff_soft vs salient_delta (non-Final only): r=-0.196, p=0.483 (n=15)
+
+  salient_block distribution: {'A': 4, 'B': 4, 'C': 6, 'D': 1}
+
+================================================================================
+CHANGE 2 — Test 2 + Test 3 at L8, L14, L28
+================================================================================
+
+──────────────────────────────────────────────────────────────────────
+  Layer L8
+──────────────────────────────────────────────────────────────────────
+  Test 2 (n=15, null median=3.0, null HR=20%)
+    Hit rate:     6.7%  (null: 20.0%)
+    Mean rank:    3.40   (null: 3.00)
+    Wilcoxon p:   0.233
+    Spearman r:   0.314, p=0.254  (n=15, non-Final only)
+  Test 3  (null cosine band: [0.354, 0.703])
+    Block A (n=9): mean_cos=0.3999    within null  Spearman r=0.083, p=0.831
+    Block B (n=9): mean_cos=0.3652    within null  Spearman r=-0.500, p=0.170
+    Block C (n=9): mean_cos=0.4060    within null  Spearman r=-0.633, p=0.067
+    Block D (n=9): mean_cos=0.4229    within null  Spearman r=-0.583, p=0.099
+
+──────────────────────────────────────────────────────────────────────
+  Layer L14 (primary)
+──────────────────────────────────────────────────────────────────────
+  Test 2 (n=15, null median=3.0, null HR=20%)
+    Hit rate:     13.3%  (null: 20.0%)
+    Mean rank:    2.93   (null: 3.00)
+    Wilcoxon p:   0.856
+    Spearman r:   -0.196, p=0.483  (n=15, non-Final only)
+  Test 3  (null cosine band: [0.221, 0.500])
+    Block A (n=9): mean_cos=0.3155    within null  Spearman r=-0.383, p=0.308
+    Block B (n=9): mean_cos=0.3500    within null  Spearman r=-0.383, p=0.308
+    Block C (n=9): mean_cos=0.3669    within null  Spearman r=-0.567, p=0.112
+    Block D (n=9): mean_cos=0.3745    within null  Spearman r=-0.650, p=0.058
+
+──────────────────────────────────────────────────────────────────────
+  Layer L28
+──────────────────────────────────────────────────────────────────────
+  Test 2 (n=15, null median=3.0, null HR=20%)
+    Hit rate:     6.7%  (null: 20.0%)
+    Mean rank:    3.73   (null: 3.00)
+    Wilcoxon p:   0.043
+    Spearman r:   -0.146, p=0.603  (n=15, non-Final only)
+  Test 3  (null cosine band: [0.410, 0.655])
+    Block A (n=9): mean_cos=0.5105    within null  Spearman r=0.100, p=0.798
+    Block B (n=9): mean_cos=0.5246    within null  Spearman r=-0.433, p=0.244
+    Block C (n=9): mean_cos=0.5183    within null  Spearman r=-0.083, p=0.831
+    Block D (n=9): mean_cos=0.5023    within null  Spearman r=-0.633, p=0.067
+
+══════════════════════════════════════════════════════════════════════
+COMPARISON TABLE — L8 / L14 / L28
+══════════════════════════════════════════════════════════════════════
+              T2 hit rate T2 mean rank T2 Wilcoxon p T2 Spearman r T3 cos_D mean T3 cos_D r T3 cos_D p  T3 n (Block D)
+Layer                                                                                                                 
+L8                   6.7%         3.40         0.233         0.314        0.4229     -0.583      0.099               9
+L14 (primary)       13.3%         2.93         0.856        -0.196        0.3745     -0.650      0.058               9
+L28                  6.7%         3.73         0.043        -0.146        0.5023     -0.633      0.067               9
+
+Strongest T2 hit rate:    L14 (primary)  (13.3%)
+Strongest T2 |Spearman|:  L8  (r=0.314)
+Strongest T3 |cos_D r|:   L14 (primary)  (r=-0.650)
+
+================================================================================
+CHANGE 3 — Conclusion coverage diagnostic and Test 3 re-run
+================================================================================
+Layers in pkl: [4, 8, 14, 20, 28]
+Total records: 92
+
+Conclusion embedding coverage (non-None count per block per layer):
+       A  B  C  D  total
+Layer                   
+L4     9  9  9  9     36
+L8     9  9  9  9     36
+L14    9  9  9  9     36
+L20    9  9  9  9     36
+L28    9  9  9  9     36
+
+Records with conclusion embeddings (L14, block A): 9/92
+Records missing (L14, block A):                    83/92
+
+First token after "* Conclusion:" in missing records:
+  '1.'                : 110 record(s)
+  '1'                 : 64 record(s)
+  '3.'                : 21 record(s)
+  'lightening'        : 16 record(s)
+  'PremPremPrem'      : 15 record(s)
+  '1.5'               : 12 record(s)
+  'Plants'            : 8 record(s)
+  '7.'                : 8 record(s)
+  'Reject'            : 6 record(s)
+  'The'               : 4 record(s)
+  '5.'                : 4 record(s)
+  '1.1'               : 4 record(s)
+  'I'                 : 4 record(s)
+  '8.'                : 4 record(s)
+  'notebooks'         : 4 record(s)
+
+DIAGNOSIS: All missing records genuinely have no S/R token after "* Conclusion:".
+  The model generated free-text conclusions (numbers, phrases) for these questions.
+  patch_conclusion_embeddings.py will not increase coverage beyond current level.
+
+  To improve coverage, consider:
+  1. Using the hidden state at the "* Conclusion:" line start as a structural marker
+  2. Extracting the first token after the colon (regardless of S/R) as a conclusion proxy
+
+── Test 3 at L8, L14, L28 with current coverage ─────────────────────────────
+   (Block D is the most informative block based on Change 2 results)
+
+  L8  (null cosine band: [0.354, 0.703])
+    Block A (n=9): mean_cos=0.3999   within null  r=0.083 p=0.831
+    Block B (n=9): mean_cos=0.3652   within null  r=-0.500 p=0.170
+    Block C (n=9): mean_cos=0.4060   within null  r=-0.633 p=0.067~
+    Block D (n=9): mean_cos=0.4229   within null  r=-0.583 p=0.099~
+
+  L14  (null cosine band: [0.221, 0.500])
+    Block A (n=9): mean_cos=0.3155   within null  r=-0.383 p=0.308
+    Block B (n=9): mean_cos=0.3500   within null  r=-0.383 p=0.308
+    Block C (n=9): mean_cos=0.3669   within null  r=-0.567 p=0.112
+    Block D (n=9): mean_cos=0.3745   within null  r=-0.650 p=0.058~
+
+  L28  (null cosine band: [0.410, 0.655])
+    Block A (n=9): mean_cos=0.5105   within null  r=0.100 p=0.798
+    Block B (n=9): mean_cos=0.5246   within null  r=-0.433 p=0.244
+    Block C (n=9): mean_cos=0.5183   within null  r=-0.083 p=0.831
+    Block D (n=9): mean_cos=0.5023   within null  r=-0.633 p=0.067~
+
+
+================================================================================
+FREE-FORM CoT GEOMETRY ANALYSIS (Comparison Condition)
+================================================================================
+Loaded 30 free-form records from data/freeform_embeddings.pkl
+
+ff_soft distribution:
+  min=0.4107  max=0.9984
+  mean=0.8350  median=0.9032
+
+n_tokens distribution:
+  min=150  max=259  mean=200.8
+
+    question_id  ff_soft  ff_hard  n_tokens  mean_disp_L14
+ openbook_9-993   0.9984     True       177         8.6618
+ openbook_7-171   0.9906     True       210         8.1927
+ openbook_8-240   0.9886     True       150         9.1280
+ openbook_9-491   0.9869     True       224         8.2602
+ openbook_8-367   0.9858     True       226         8.1902
+  openbook_1095   0.9839     True       182         8.4407
+  openbook_9-29   0.9817     True       210         8.3273
+ openbook_9-727   0.9802     True       196         8.4588
+  openbook_1161   0.9770     True       220         8.3521
+     openbook_3   0.9736     True       181         8.6991
+  openbook_9-35   0.9706     True       229         8.1764
+  openbook_1955   0.9584     True       208         8.2873
+ openbook_9-322   0.9541     True       200         8.0661
+openbook_7-1132   0.9473     True       199         8.5476
+ openbook_7-732   0.9226     True       194         8.4002
+  openbook_8-97   0.8838     True       259         7.9584
+ openbook_9-548   0.8730     True       186         8.4332
+ openbook_9-655   0.8700     True       220         8.2146
+   openbook_385   0.8695     True       203         8.3179
+   openbook_406   0.8141     True       183         8.5821
+   openbook_508   0.7577     True       213         8.0236
+ openbook_7-976   0.7069     True       177         8.6832
+  openbook_1215   0.7021     True       178         8.5296
+ openbook_7-140   0.6973     True       155         8.8777
+ openbook_7-262   0.6692     True       197         8.4640
+ openbook_9-528   0.6254     True       198         8.4404
+  openbook_1334   0.5514     True       238         8.1043
+ openbook_9-187   0.5382     True       184         8.5128
+ openbook_9-520   0.4801     True       232         7.9248
+ openbook_8-409   0.4107    False       195         8.2969
+
+────────────────────────────────────────────────────────────────────────
+FREE-FORM NULL BASELINE — consecutive token displacement magnitude
+  (approximate: sampled from per-question Gaussian fits)
+────────────────────────────────────────────────────────────────────────
+  n samples: 610
+  mean: 24.0287
+  std:  17.6506
+  min:  0.0777
+  max:  94.7908
+
+Reference: structured inter-anchor displacement range is ~5–8.
+Free-form token-level displacement expected to be ~0.5–3.0.
+
+Per-record mean_displacement at L14:
+  mean=8.3851  std=0.2631
+  min=7.9248  max=9.1280
+
+════════════════════════════════════════════════════════════════════════
+FREE-FORM GEOMETRY — Spearman correlations with ff_soft at L14
+════════════════════════════════════════════════════════════════════════
+
+  mean_displacement          r=+0.063  p=0.739  n=30
+  displacement_variance      r=-0.001  p=0.997  n=30
+  arc_length                 r=+0.055  p=0.773  n=30
+  net_displacement           r=+0.111  p=0.561  n=30
+  straightness               r=-0.055  p=0.773  n=30
+  mean_curvature             r=-0.235  p=0.211  n=30
+  seg_early                  r=+0.055  p=0.771  n=30
+  seg_mid                    r=+0.174  p=0.358  n=30
+  seg_late                   r=+0.227  p=0.227  n=30
+
+════════════════════════════════════════════════════════════════════════
+LAYER COMPARISON TABLE — Spearman r with ff_soft
+════════════════════════════════════════════════════════════════════════
+Metric                    |       L8 |      L14 |      L28
+----------------------------------------------------------
+  mean_displacement       |   +0.003 |   +0.063 |   -0.109
+  displacement_variance   |   +0.004 |   -0.001 |   +0.003
+  arc_length              |   +0.033 |   +0.055 |   +0.009
+  net_displacement        |   +0.088 |   +0.111 |   +0.083
+  straightness            |   -0.033 |   -0.055 |   -0.009
+  mean_curvature          |   +0.078 |   -0.235 |   +0.265
+  seg_early               |   +0.026 |   +0.055 |   -0.001
+  seg_mid                 |   -0.237 |   +0.174 |   -0.141
+  seg_late                |   +0.054 |   +0.227 |   -0.462
+
+Metrics with |r| > 0.3 (signals worth reporting):
+  seg_late at L28: r=-0.462
+
+n = 30 questions
+
+════════════════════════════════════════════════════════════════════════
+STRUCTURED vs FREE-FORM COMPARISON SUMMARY (L14)
+════════════════════════════════════════════════════════════════════════
+
+Test                              |   Structured (L14) |    Free-form (L14)
+---------------------------------------------------------------------------
+Primary faithfulness test         |   Wilcoxon p=0.003 |   see Cell C above
+ff_soft vs displacement metric    |           r=+0.007 | mean_curvatu r=-0.235
+Conclusion cosine r               |             -0.650 |   N/A (no anchors)
+n                                 |                 29 |                 30
+
+INTERPRETATION
+------------------------------------------------------------------------
+Free-form shows NULL result:
+  Structural anchors appear necessary to isolate the
+  faithfulness-geometry relationship.
+  Token-level displacement metrics on unstructured token sequences
+  do not replicate the structured-anchor geometric signal.
+
+Free-form best metric: mean_curvature  r=-0.235  p=0.211  n=30
+
+================================================================================
+CELLS E–F — SUB-BLOCK UNLEARNING MODE ANALYSIS
+================================================================================
+  whole_block                   :  15 records   15 with unlearning_results
+  premise_only                  :  15 records   15 with unlearning_results
+  reasoning_only                :  15 records   15 with unlearning_results
+  premise_and_reasoning         :  15 records   15 with unlearning_results
+
+════════════════════════════════════════════════════════════════════════
+SUB-BLOCK UNLEARNING MODE COMPARISON  (step_idx = 0)
+════════════════════════════════════════════════════════════════════════
+                      N FF-HARD (%) FF-SOFT mean FF-SOFT med
+Mode                                                        
+Whole Block          15        73.3        0.514       0.744
+Premise Only         15        80.0        0.516       0.575
+Reasoning Only       15        73.3        0.563       0.798
+Premise + Reasoning  15        60.0        0.476       0.640
+
+Pairwise Mann-Whitney U  (FF-SOFT, one-sided: sub-block < whole_block)
+--------------------------------------------------------
+  Premise Only                  : U=119  p=0.6149  (med 0.575 <  0.744)
+  Reasoning Only                : U=134  p=0.8208  (med 0.798 >= 0.744)
+  Premise + Reasoning           : U=111  p=0.4833  (med 0.640 <  0.744)
+
+Spearman r(reasoning_only FF-SOFT, whole_block FF-SOFT) — per question:
+  N=15  r=0.472  p=0.0757
+  Interpretation: weak rank agreement (n.s.)
+
+================================================================================
+ADDITION 1 — RANK TEST BY UNLEARNING MODE  (5 candidates, L14)
+  Note: sub-block sweep targets step_idx=0 only, so salient block
+  is always A. Test checks whether block A delta tends to rank highest.
+================================================================================
+Mode                      |    n |  Hit rate |  Mean rank |  Wilcoxon p
+────────────────────────────────────────────────────────────────────────
+Whole Block               |   15 |     20.0% |       2.87 |       0.793
+Premise Only              |   15 |     20.0% |       2.87 |       0.793
+Reasoning Only            |   15 |     20.0% |       2.87 |       0.793
+Premise + Reasoning       |   15 |     20.0% |       2.87 |       0.793
+
+Null: hit rate = 20.0%, mean rank = 3.00  (5 candidates, uniform)
+
+Interpretation:
+  reasoning_only mean rank (2.87) <= whole_block (2.87): the Reasoning
+  slot alone preserves (or improves) the geometry-faithfulness rank signal.
+
+================================================================================
+ADDITION 2 — PER-QUESTION MODE DISAGREEMENT  (reasoning_only vs whole_block)
+  Also reports efficacy-normalized ff_soft = ff_soft / cot_step_prob_drop
+================================================================================
+question_id          |  wb_ff |  ro_ff |   delta |  wb_norm |  ro_norm | delta_norm
+──────────────────────────────────────────────────────────────────────────────────
+openbook_8-97        | 0.0252 | 0.9920 | +0.9668 |   0.0096 |   0.5975 |    +0.5879
+openbook_3           | 0.0000 | 0.8578 | +0.8578 |      n/a |   0.5317 |        n/a
+openbook_406         | 0.7444 | 0.0000 | -0.7444 |   0.2768 |      n/a |        n/a
+openbook_1955        | 0.7443 | 0.2774 | -0.4670 |   0.2821 |   0.1278 |    -0.1543
+openbook_9-29        | 0.7894 | 0.8851 | +0.0957 |   0.2576 |   0.5751 |    +0.3175
+openbook_385         | 0.0000 | 0.0822 | +0.0822 |      n/a |   0.0462 |        n/a
+openbook_1334        | 0.5316 | 0.4698 | -0.0617 |   0.1645 |   0.1203 |    -0.0442
+openbook_8-367       | 0.8784 | 0.8468 | -0.0316 |   0.4255 |   0.4850 |    +0.0595
+openbook_9-993       | 0.8616 | 0.8894 | +0.0279 |   0.3996 |   0.5706 |    +0.1711
+openbook_1161        | 0.8497 | 0.8230 | -0.0267 |   0.6388 |   0.7703 |    +0.1315
+openbook_9-655       | 0.8417 | 0.8616 | +0.0199 |   0.3544 |   0.4036 |    +0.0492
+openbook_7-262       | 0.6500 | 0.6647 | +0.0147 |   0.2566 |   0.2815 |    +0.0249
+openbook_7-732       | 0.7946 | 0.7984 | +0.0038 |   0.3849 |   0.5925 |    +0.2075
+openbook_7-1132      | 0.0000 | 0.0000 | +0.0000 |      n/a |      n/a |        n/a
+openbook_7-171       | 0.0000 | 0.0000 | +0.0000 |      n/a |      n/a |        n/a
+
+N reasoning_only > whole_block (raw):        8/15
+N whole_block > reasoning_only (raw):        5/15
+N with |delta| > 0.2:                        4/15
+N reasoning_only > whole_block (normalized): 8/15
+
+Questions where reasoning_only >> whole_block (delta > 0.2, n=2):
+  openbook_8-97         raw=+0.9668  norm_delta=+0.5879
+  openbook_3            raw=+0.8578  norm_delta=n/a
+  Still reasoning > whole after normalization: 1/2
+  -> Finding is robust: reasoning_only captures more faithfulness signal
+     even after controlling for unlearning strength.
+
+Questions where whole_block >> reasoning_only (delta < -0.2, n=2):
+  openbook_406          raw=-0.7444
+  openbook_1955         raw=-0.4670
+  -> Premise text contributes significant predictive weight for these questions.
+
+================================================================================
+ADDITION 3 — CONCLUSION PROBE BY MODE  (Block D, L14)
+================================================================================
+Subblock question_ids (15): ['openbook_1161', 'openbook_1334', 'openbook_1955', 'openbook_3', 'openbook_385', 'openbook_406', 'openbook_7-1132', 'openbook_7-171', 'openbook_7-262', 'openbook_7-732', 'openbook_8-367', 'openbook_8-97', 'openbook_9-29', 'openbook_9-655', 'openbook_9-993']
+PKL question_ids with conclusion_D (4): ['openbook_508', 'openbook_9-322', 'openbook_9-491', 'openbook_9-727']
+Overlap: 0  ->  []
+
+[DATA COVERAGE GAP] The questions with conclusion_D embeddings in the pkl
+are completely disjoint from the subblock sweep questions. Not a code bug.
+The join is correct; the data sets do not intersect.
+
+To enable: re-run the subblock sweep on these questions:
+  openbook_508
+  openbook_9-322
+  openbook_9-491
+  openbook_9-727
+Or: re-run extract_fur_embeddings.py to extract conclusion embeddings
+    for the 15 subblock questions, then run patch_conclusion_embeddings.py.
+
+================================================================================
+ADDITION 4 — EFFICACY CHECK: cot_step_prob drop per mode
+  ep0_csp  = log-prob of target text after epoch 1 of unlearning
+  best_csp = log-prob at the epoch with max FF-SOFT drop
+  drop     = ep0_csp - best_csp  (positive -> prob decreases over epochs)
+================================================================================
+Mode                      |    N |   ep0 mean |  best mean |  drop mean
+───────────────────────────────────────────────────────────────────
+Whole Block               |   15 |    -0.3829 |    -2.1680 |    +1.7850
+Premise Only              |   15 |    -0.3569 |    -2.0603 |    +1.7034
+Reasoning Only            |   15 |    -0.3499 |    -1.8754 |    +1.5255
+Premise + Reasoning       |   15 |    -0.3569 |    -1.8785 |    +1.5216
+
+Note: cot_step_prob is log-probability (negative). drop > 0 means model
+further reduces target-text probability beyond epoch 1.
+
+Interpretation:
+  reasoning_only drop (1.5255) < whole_block (1.7850):
+  unlearning is less complete on the shorter target; mode differences in
+  FF-SOFT may partly reflect weaker unlearning, not faithfulness signal.
+
+================================================================================
+ADDITION 5 — QUALITATIVE CASE STUDIES
+  openbook_8-97 and openbook_3: whole_block ff_soft~=0, reasoning_only ff_hard=True
+================================================================================
+
+========================================================================
+  CASE STUDY: openbook_8-97
+========================================================================
+Question: Someone wants their electromagnets to work, but is having difficulty powering them. In order to make them work, they need to
+Correct:  B
+
+Geometry analysis complete.
+Mon Mar 23 21:08:04 MDT 2026

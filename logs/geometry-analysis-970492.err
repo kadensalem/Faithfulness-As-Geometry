@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/run_geometry_analysis.py", line 1813, in <module>
+    print(f'  {k}) {opts[k]}{marker}')
+                    ~~~~^^^
+TypeError: list indices must be integers or slices, not str

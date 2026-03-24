@@ -35,6 +35,8 @@ parser.add_argument('--outdir', default='data/geometry_analysis_plots',
                     help='Directory for output plots and tables')
 parser.add_argument('--freeform_pkl', default='data/freeform_embeddings.pkl',
                     help='Free-form CoT geometry metrics pkl (from extract_freeform_embeddings.py)')
+parser.add_argument('--subblock_dir', default='data',
+                    help='Directory containing subblock_cond_*.jsonl or subblock_*_q*.jsonl files')
 args = parser.parse_args()
 
 os.makedirs(args.outdir, exist_ok=True)
@@ -325,14 +327,14 @@ print('CELL 8 — TEST 3: Conclusion-probe cosine coupling (pilot)')
 print('=' * 80)
 
 usable = [rec for rec in records
-          if any(v is not None for v in rec.get('conclusion_embeddings', {}).values())]
+          if any(v is not None for v in rec.get('conclusion_colon_L14', {}).values())]
 if not usable:
     print('No conclusion embeddings found — Test 3 deferred to 30q run.')
 else:
     rows_t3 = []
     for rec in sorted(usable, key=lambda x: x['ff_soft']):
         ae = rec['anchor_embeddings']
-        ce = rec['conclusion_embeddings']
+        ce = rec.get('conclusion_colon_L14', {})
         row = {'question_id': rec['question_id'], 'ff_soft': round(rec['ff_soft'], 4)}
         for letter in BLOCK_LETTERS:
             reas = ae.get(f'Reasoning_{letter}')
@@ -491,26 +493,26 @@ else:
 print('\n── PART 3 — FULL TEST 3: Conclusion-probe cosine coupling ───────────────────')
 conc_cov = {l: 0 for l in BLOCK_LETTERS}
 for rec in records_p3:
-    ce = rec.get('conclusion_embeddings', {})
+    ce = rec.get('conclusion_colon_L14', {})
     for l in BLOCK_LETTERS:
         if ce.get(l) is not None:
             conc_cov[l] += 1
 
-print(f'Conclusion embedding coverage across {len(records_p3)} records:')
+print(f'Conclusion colon embedding coverage across {len(records_p3)} records:')
 for l in BLOCK_LETTERS:
     print(f'  Block {l}: {conc_cov[l]}/{len(records_p3)}  ({100*conc_cov[l]/len(records_p3):.0f}%)')
 
 usable_recs = [rec for rec in records_p3
-               if any(rec.get('conclusion_embeddings', {}).get(l) is not None
+               if any(rec.get('conclusion_colon_L14', {}).get(l) is not None
                       for l in BLOCK_LETTERS)]
 if not usable_recs:
     print('No conclusion embeddings — Test 3 deferred.')
 else:
-    print(f'{len(usable_recs)} record(s) have at least one Conclusion embedding.')
+    print(f'{len(usable_recs)} record(s) have at least one Conclusion colon embedding.')
     cos_rows = []
     for rec in sorted(usable_recs, key=lambda x: x.get('ff_soft', 0)):
         ae = rec['anchor_embeddings']
-        ce = rec.get('conclusion_embeddings', {})
+        ce = rec.get('conclusion_colon_L14', {})
         row = {'question_id': rec['question_id'], 'step_idx': rec.get('step_idx', 0),
                'ff_soft': round(rec.get('ff_soft', 0), 4)}
         for letter in BLOCK_LETTERS:
@@ -564,7 +566,7 @@ else:
 
     for layer_n in sweep_layers_present:
         anc_key  = f'anchor_embeddings_L{layer_n}'
-        conc_key = f'conclusion_embeddings_L{layer_n}'
+        conc_key = f'conclusion_colon_L{layer_n}'
 
         # ── Rebuild rand_deltas / rand_cosines for this layer ─────────────────
         pool_l = []
@@ -850,9 +852,9 @@ def test3_at_layer(records_p3, bc_map, anc_key, conc_key, rand_cosines_ref):
 comparison = []
 
 for layer_n, anc_key_l, conc_key_l, label in [
-    (8,  'anchor_embeddings_L8',  'conclusion_embeddings_L8',  'L8'),
-    (14, 'anchor_embeddings',     'conclusion_embeddings',     'L14 (primary)'),
-    (28, 'anchor_embeddings_L28', 'conclusion_embeddings_L28', 'L28'),
+    (8,  'anchor_embeddings_L8',  'conclusion_colon_L8',  'L8'),
+    (14, 'anchor_embeddings',     'conclusion_colon_L14', 'L14 (primary)'),
+    (28, 'anchor_embeddings_L28', 'conclusion_colon_L28', 'L28'),
 ]:
     print(f'\n{"─"*70}')
     print(f'  Layer {label}')
@@ -964,10 +966,10 @@ print(f'Total records: {len(records_p3)}')
 print()
 
 # Coverage table
-print('Conclusion embedding coverage (non-None count per block per layer):')
+print('Conclusion colon embedding coverage (non-None count per block per layer):')
 cov_table = []
-for ln in LAYERS_ALL:
-    ck = f'conclusion_embeddings_L{ln}'
+for ln in [8, 14, 28]:
+    ck = f'conclusion_colon_L{ln}'
     row = {'Layer': f'L{ln}'}
     for lt in BLOCK_LETTERS:
         row[lt] = sum(1 for r in records_p3 if r.get(ck, {}).get(lt) is not None)
@@ -980,11 +982,11 @@ print()
 _CONC_RE_STRICT  = re.compile(r'\*?\s*Conclusion\s*:\s*([SR])\b', re.IGNORECASE)
 _CONC_RE_RELAXED = re.compile(r'\*?\s*Conclusion\s*:[\s]*([\w\.]+)')
 
-missing_recs = [r for r in records_p3 if r.get('conclusion_embeddings_L14', {}).get('A') is None]
-present_recs = [r for r in records_p3 if r.get('conclusion_embeddings_L14', {}).get('A') is not None]
+missing_recs = [r for r in records_p3 if r.get('conclusion_colon_L14', {}).get('A') is None]
+present_recs = [r for r in records_p3 if r.get('conclusion_colon_L14', {}).get('A') is not None]
 
-print(f'Records with conclusion embeddings (L14, block A): {len(present_recs)}/{len(records_p3)}')
-print(f'Records missing (L14, block A):                    {len(missing_recs)}/{len(records_p3)}')
+print(f'Records with conclusion_colon_L14 (block A): {len(present_recs)}/{len(records_p3)}')
+print(f'Records missing (block A):                    {len(missing_recs)}/{len(records_p3)}')
 print()
 
 word_counts = {}
@@ -1001,19 +1003,10 @@ for w, c in sorted(word_counts.items(), key=lambda x: -x[1])[:15]:
     print(f'  {w!r:20s}: {c} record(s)')
 print()
 
-if has_sr_but_missing:
-    print(f'ATTENTION: {len(has_sr_but_missing)} records have S/R in cot_text but missing embeddings:')
-    for qid in has_sr_but_missing:
-        print(f'  {qid}')
-    print('  -> These CAN be recovered by patch_conclusion_embeddings.py')
-else:
-    print('DIAGNOSIS: All missing records genuinely have no S/R token after "* Conclusion:".')
-    print('  The model generated free-text conclusions (numbers, phrases) for these questions.')
-    print('  patch_conclusion_embeddings.py will not increase coverage beyond current level.')
-    print()
-    print('  To improve coverage, consider:')
-    print('  1. Using the hidden state at the "* Conclusion:" line start as a structural marker')
-    print('  2. Extracting the first token after the colon (regardless of S/R) as a conclusion proxy')
+if missing_recs:
+    print(f'Note: {len(missing_recs)} records lack conclusion_colon_L14 (block A).')
+    print('  These are records for questions not yet processed by extract_conclusion_colon.py.')
+    print('  Run: sbatch slurms/submit_extract_conclusion_colon.sh')
 print()
 
 # Test 3 at L8, L14, L28 with current coverage
@@ -1027,7 +1020,7 @@ def _cosine(a, b):
 
 for ln in [8, 14, 28]:
     ck_a = 'anchor_embeddings'      if ln == 14 else f'anchor_embeddings_L{ln}'
-    ck_c = 'conclusion_embeddings'  if ln == 14 else f'conclusion_embeddings_L{ln}'
+    ck_c = f'conclusion_colon_L{ln}'
 
     pool_l = [v.astype(np.float32)
               for r in records_p3
@@ -1301,6 +1294,952 @@ if ff_records:
     print()
     print(f'Free-form best metric: {ff_best_name}  r={ff_primary_r:+.3f}  '
           f'p={ff_primary_p:.3f}  n={ff_n_val}')
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CELLS E–F — Sub-Block Unlearning Mode Analysis
+# ══════════════════════════════════════════════════════════════════════════════
+print('\n' + '=' * 80)
+print('CELLS E–F — SUB-BLOCK UNLEARNING MODE ANALYSIS')
+print('=' * 80)
+
+import glob as _glob
+
+SUBBLOCK_MODES = ['whole_block', 'premise_only', 'reasoning_only', 'premise_and_reasoning']
+SUBBLOCK_MODE_LABELS = {
+    'whole_block':           'Whole Block',
+    'premise_only':          'Premise Only',
+    'reasoning_only':        'Reasoning Only',
+    'premise_and_reasoning': 'Premise + Reasoning',
+}
+
+def _load_subblock_mode(mode, data_dir):
+    """Load per-question JSONL files or merged file for a given sub-block mode."""
+    records = []
+    for path in sorted(_glob.glob(f'{data_dir}/subblock_{mode}_q*.jsonl')):
+        with open(path) as f:
+            for line in f:
+                records.append(json.loads(line))
+    if not records:
+        merged = f'{data_dir}/subblock_cond_{mode}.jsonl'
+        if os.path.exists(merged):
+            with open(merged) as f:
+                for line in f:
+                    records.append(json.loads(line))
+    return records
+
+def _compute_subblock_ff(records):
+    """Return per-record ff_hard/ff_soft from unlearning_results."""
+    out = []
+    for rec in records:
+        ur = rec.get('unlearning_results')
+        if not ur:
+            continue
+        correct_idx = ord(rec['correct']) - ord('A')
+        init_prob   = rec['initial_probs'][correct_idx]
+        init_pred   = int(np.argmax(rec['initial_probs']))
+        ff_hard, ff_soft = False, 0.0
+        epoch_results = ur.values() if isinstance(ur, dict) else ur
+        for epoch_result in epoch_results:
+            probs = epoch_result.get('probs') or epoch_result.get('answer_probs')
+            if probs is None:
+                continue
+            probs = list(probs)
+            if int(np.argmax(probs)) != init_pred:
+                ff_hard = True
+            drop = init_prob - probs[correct_idx]
+            if drop > ff_soft:
+                ff_soft = drop
+        out.append({
+            'id':       rec['id'],
+            'step_idx': rec['step_idx'],
+            'ff_hard':  ff_hard,
+            'ff_soft':  ff_soft,
+        })
+    return out
+
+# ── Cell E: load all modes ────────────────────────────────────────────────────
+subblock_data = {}
+any_subblock = False
+for mode in SUBBLOCK_MODES:
+    recs = _load_subblock_mode(mode, args.subblock_dir)
+    subblock_data[mode] = _compute_subblock_ff(recs)
+    print(f'  {mode:30s}: {len(recs):3d} records  '
+          f'{len(subblock_data[mode]):3d} with unlearning_results')
+    if recs:
+        any_subblock = True
+
+if not any_subblock:
+    print('[INFO] No sub-block data found — skipping Cells E–F.')
+    print(f'       Expected files in {args.subblock_dir}/subblock_{{mode}}_q*.jsonl')
+    print('       or merged subblock_cond_{{mode}}.jsonl files.')
+    print('       Run: sbatch slurms/submit_subblock_sweep.sh')
+else:
+    # ── Cell F: FF-HARD / FF-SOFT comparison table + pairwise tests ──────────
+    print()
+    print('═' * 72)
+    print('SUB-BLOCK UNLEARNING MODE COMPARISON  (step_idx = 0)')
+    print('═' * 72)
+
+    rows = []
+    for mode in SUBBLOCK_MODES:
+        labels = subblock_data[mode]
+        if not labels:
+            rows.append({
+                'Mode':         SUBBLOCK_MODE_LABELS[mode],
+                'N':            0,
+                'FF-HARD (%)':  '—',
+                'FF-SOFT mean': '—',
+                'FF-SOFT med':  '—',
+            })
+            continue
+        n            = len(labels)
+        ff_hard_rate = np.mean([l['ff_hard'] for l in labels]) * 100
+        ff_soft_vals = np.array([l['ff_soft'] for l in labels])
+        rows.append({
+            'Mode':         SUBBLOCK_MODE_LABELS[mode],
+            'N':            n,
+            'FF-HARD (%)':  f'{ff_hard_rate:.1f}',
+            'FF-SOFT mean': f'{ff_soft_vals.mean():.3f}',
+            'FF-SOFT med':  f'{np.median(ff_soft_vals):.3f}',
+        })
+
+    print(pd.DataFrame(rows).set_index('Mode').to_string())
+
+    # Pairwise Mann-Whitney U: each sub-block mode vs whole_block
+    print()
+    print('Pairwise Mann-Whitney U  (FF-SOFT, one-sided: sub-block < whole_block)')
+    print('-' * 56)
+    wb_soft = np.array([l['ff_soft'] for l in subblock_data['whole_block']])
+    for mode in SUBBLOCK_MODES[1:]:
+        sub_soft = np.array([l['ff_soft'] for l in subblock_data[mode]])
+        if len(sub_soft) == 0 or len(wb_soft) == 0:
+            print(f'  {SUBBLOCK_MODE_LABELS[mode]:30s}: insufficient data')
+            continue
+        stat, p = stats.mannwhitneyu(sub_soft, wb_soft, alternative='less')
+        direction = '< ' if np.median(sub_soft) < np.median(wb_soft) else '>='
+        print(f'  {SUBBLOCK_MODE_LABELS[mode]:30s}: U={stat:.0f}  p={p:.4f}  '
+              f'(med {np.median(sub_soft):.3f} {direction} {np.median(wb_soft):.3f})')
+
+    # Spearman: does reasoning_only reproduce whole_block signal?
+    print()
+    print('Spearman r(reasoning_only FF-SOFT, whole_block FF-SOFT) — per question:')
+    wb_dict = {l['id']: l['ff_soft'] for l in subblock_data['whole_block']}
+    ro_dict = {l['id']: l['ff_soft'] for l in subblock_data['reasoning_only']}
+    common  = sorted(set(wb_dict) & set(ro_dict))
+    if len(common) >= 5:
+        wb_v = np.array([wb_dict[k] for k in common])
+        ro_v = np.array([ro_dict[k] for k in common])
+        r, p = stats.spearmanr(ro_v, wb_v)
+        print(f'  N={len(common)}  r={r:.3f}  p={p:.4f}')
+        print(f'  Interpretation: {"strong" if abs(r) > 0.5 else "weak"} rank agreement '
+              f'({"p<0.05" if p < 0.05 else "n.s."})')
+    else:
+        print(f'  Insufficient overlap ({len(common)} questions) — run sweep first.')
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ADDITION 1 — Rank test by unlearning mode
+# ══════════════════════════════════════════════════════════════════════════════
+if any_subblock:
+    print('\n' + '=' * 80)
+    print('ADDITION 1 — RANK TEST BY UNLEARNING MODE  (5 candidates, L14)')
+    print('  Note: sub-block sweep targets step_idx=0 only, so salient block')
+    print('  is always A. Test checks whether block A delta tends to rank highest.')
+    print('=' * 80)
+
+    from collections import defaultdict as _defaultdict
+
+    def _mode_bc_map(subblock_entries):
+        m = _defaultdict(list)
+        for entry in subblock_entries:
+            m[entry['id']].append({
+                'step_idx':  entry['step_idx'],
+                'ff_soft':   entry['ff_soft'],
+                'ff_hard':   entry['ff_hard'],
+                'condition': None,
+            })
+        return m
+
+    mode_rank_results = {}
+    for mode in SUBBLOCK_MODES:
+        entries = subblock_data[mode]
+        if not entries:
+            continue
+        mbcmap = _mode_bc_map(entries)
+        rr, ranks, ffl, sdl = run_rank_test(mbcmap, rec_by_qid,
+                                             anc_key='anchor_embeddings', label='L14')
+        n  = len(rr)
+        hr = sum(1 for r in rr if r['rank_of_salient'] == 1) / n if n else float('nan')
+        mr = float(np.mean(ranks)) if ranks else float('nan')
+        p_w = float('nan')
+        if n >= 6:
+            diffs = [r - NULL_MEDIAN_5 for r in ranks]
+            if len(set(diffs)) > 1:
+                _, p_w = stats.wilcoxon(diffs)
+        mode_rank_results[mode] = {'n': n, 'hit_rate': hr, 'mean_rank': mr, 'wilcoxon_p': p_w}
+
+    print(f'{"Mode":<25} | {"n":>4} | {"Hit rate":>9} | {"Mean rank":>10} | {"Wilcoxon p":>11}')
+    print('─' * 72)
+    for mode in SUBBLOCK_MODES:
+        r = mode_rank_results.get(mode)
+        if r is None:
+            print(f'{SUBBLOCK_MODE_LABELS[mode]:<25} | {"—":>4} | {"—":>9} | {"—":>10} | {"—":>11}')
+            continue
+        hr_s = f'{r["hit_rate"]:.1%}'  if not np.isnan(r['hit_rate'])   else 'n/a'
+        mr_s = f'{r["mean_rank"]:.2f}' if not np.isnan(r['mean_rank'])  else 'n/a'
+        pw_s = f'{r["wilcoxon_p"]:.3f}'if not np.isnan(r['wilcoxon_p']) else 'n/a'
+        print(f'{SUBBLOCK_MODE_LABELS[mode]:<25} | {r["n"]:>4} | {hr_s:>9} | {mr_s:>10} | {pw_s:>11}')
+    print()
+    print('Null: hit rate = 20.0%, mean rank = 3.00  (5 candidates, uniform)')
+
+    wb = mode_rank_results.get('whole_block', {})
+    ro = mode_rank_results.get('reasoning_only', {})
+    po = mode_rank_results.get('premise_only', {})
+    if wb and ro and po:
+        ro_mr = ro.get('mean_rank', float('nan'))
+        wb_mr = wb.get('mean_rank', float('nan'))
+        po_mr = po.get('mean_rank', float('nan'))
+        print('\nInterpretation:')
+        if not np.isnan(ro_mr) and not np.isnan(wb_mr):
+            if ro_mr <= wb_mr:
+                print(f'  reasoning_only mean rank ({ro_mr:.2f}) <= whole_block ({wb_mr:.2f}): the Reasoning')
+                print('  slot alone preserves (or improves) the geometry-faithfulness rank signal.')
+            else:
+                print(f'  reasoning_only mean rank ({ro_mr:.2f}) > whole_block ({wb_mr:.2f}): shorter target')
+                print('  may produce a noisier faithfulness label at this sample size.')
+        if not np.isnan(po_mr) and not np.isnan(wb_mr) and po_mr > wb_mr:
+            print(f'  premise_only mean rank ({po_mr:.2f}) > whole_block ({wb_mr:.2f}): consistent with')
+            print('  the Premise slot carrying less faithfulness-relevant information than Reasoning.')
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ADDITION 2 — Per-question mode disagreement + efficacy-normalized ff_soft
+# ══════════════════════════════════════════════════════════════════════════════
+if any_subblock:
+    print('\n' + '=' * 80)
+    print('ADDITION 2 — PER-QUESTION MODE DISAGREEMENT  (reasoning_only vs whole_block)')
+    print('  Also reports efficacy-normalized ff_soft = ff_soft / cot_step_prob_drop')
+    print('=' * 80)
+
+    def _eff_drop_by_id_script(mode):
+        recs = _load_subblock_mode(mode, args.subblock_dir)
+        out = {}
+        for rec in recs:
+            ur = rec.get('unlearning_results')
+            if not ur:
+                continue
+            epoch_results = ur.values() if isinstance(ur, dict) else ur
+            correct_idx = ord(rec['correct']) - ord('A')
+            init_prob   = rec['initial_probs'][correct_idx]
+            ep0_csp, best_csp, best_drop_e = None, None, -float('inf')
+            for i, er in enumerate(epoch_results):
+                if not isinstance(er, dict):
+                    continue
+                csp_l = er.get('cot_step_prob') or er.get('cot_prob')
+                if csp_l is None:
+                    continue
+                csp = float(csp_l[0]) if isinstance(csp_l, list) else float(csp_l)
+                if i == 0:
+                    ep0_csp = csp
+                probs = er.get('probs') or er.get('answer_probs')
+                if probs is not None:
+                    drop = init_prob - list(probs)[correct_idx]
+                    if drop > best_drop_e:
+                        best_drop_e, best_csp = drop, csp
+            if ep0_csp is not None and best_csp is not None:
+                eff = ep0_csp - best_csp
+                out[rec['id']] = eff if abs(eff) > 1e-9 else float('nan')
+        return out
+
+    eff_wb2 = _eff_drop_by_id_script('whole_block')
+    eff_ro2 = _eff_drop_by_id_script('reasoning_only')
+
+    wb_by_id = {e['id']: e['ff_soft'] for e in subblock_data['whole_block']}
+    ro_by_id = {e['id']: e['ff_soft'] for e in subblock_data['reasoning_only']}
+
+    common_ids = sorted(set(wb_by_id) & set(ro_by_id))
+    disagree_rows = []
+    for qid in common_ids:
+        wb_ff = wb_by_id[qid]
+        ro_ff = ro_by_id[qid]
+        delta = ro_ff - wb_ff
+        wb_eff = eff_wb2.get(qid, float('nan'))
+        ro_eff = eff_ro2.get(qid, float('nan'))
+        wb_norm = wb_ff / abs(wb_eff) if not np.isnan(wb_eff) and abs(wb_eff) > 1e-6 else float('nan')
+        ro_norm = ro_ff / abs(ro_eff) if not np.isnan(ro_eff) and abs(ro_eff) > 1e-6 else float('nan')
+        delta_norm = (ro_norm - wb_norm) if not (np.isnan(ro_norm) or np.isnan(wb_norm)) else float('nan')
+        disagree_rows.append({
+            'question_id': qid,
+            'wb_ff':       round(wb_ff, 4),
+            'ro_ff':       round(ro_ff, 4),
+            'delta':       round(delta, 4),
+            'wb_norm':     round(wb_norm, 4) if not np.isnan(wb_norm) else float('nan'),
+            'ro_norm':     round(ro_norm, 4) if not np.isnan(ro_norm) else float('nan'),
+            'delta_norm':  round(delta_norm, 4) if not np.isnan(delta_norm) else float('nan'),
+        })
+    disagree_rows.sort(key=lambda x: abs(x['delta']), reverse=True)
+
+    print(f'{"question_id":<20} | {"wb_ff":>6} | {"ro_ff":>6} | {"delta":>7} | {"wb_norm":>8} | {"ro_norm":>8} | {"delta_norm":>10}')
+    print('─' * 82)
+    for r in disagree_rows:
+        dn = f'{r["delta_norm"]:>+10.4f}' if not np.isnan(r['delta_norm']) else f'{"n/a":>10}'
+        wn = f'{r["wb_norm"]:>8.4f}' if not np.isnan(r['wb_norm']) else f'{"n/a":>8}'
+        rn = f'{r["ro_norm"]:>8.4f}' if not np.isnan(r['ro_norm']) else f'{"n/a":>8}'
+        print(f'{r["question_id"]:<20} | {r["wb_ff"]:>6.4f} | {r["ro_ff"]:>6.4f} | {r["delta"]:>+7.4f} | {wn} | {rn} | {dn}')
+
+    n_ro_gt = sum(1 for r in disagree_rows if r['delta'] > 0)
+    n_wb_gt = sum(1 for r in disagree_rows if r['delta'] < 0)
+    n_mean  = sum(1 for r in disagree_rows if abs(r['delta']) > 0.2)
+    n_ro_gt_norm = sum(1 for r in disagree_rows
+                       if not np.isnan(r['delta_norm']) and r['delta_norm'] > 0)
+    print(f'\nN reasoning_only > whole_block (raw):        {n_ro_gt}/{len(disagree_rows)}')
+    print(f'N whole_block > reasoning_only (raw):        {n_wb_gt}/{len(disagree_rows)}')
+    print(f'N with |delta| > 0.2:                        {n_mean}/{len(disagree_rows)}')
+    print(f'N reasoning_only > whole_block (normalized): {n_ro_gt_norm}/{len(disagree_rows)}')
+
+    top_ro = [r for r in disagree_rows if r['delta'] > 0.2]
+    if top_ro:
+        robust = [r for r in top_ro if not np.isnan(r['delta_norm']) and r['delta_norm'] > 0]
+        print(f'\nQuestions where reasoning_only >> whole_block (delta > 0.2, n={len(top_ro)}):')
+        for r in top_ro:
+            dn = f'{r["delta_norm"]:+.4f}' if not np.isnan(r['delta_norm']) else 'n/a'
+            print(f'  {r["question_id"]:<20}  raw={r["delta"]:+.4f}  norm_delta={dn}')
+        print(f'  Still reasoning > whole after normalization: {len(robust)}/{len(top_ro)}')
+        if robust:
+            print('  -> Finding is robust: reasoning_only captures more faithfulness signal')
+            print('     even after controlling for unlearning strength.')
+        else:
+            print('  -> Normalization reverses direction: raw delta reflects weaker unlearning.')
+    top_wb = [r for r in disagree_rows if r['delta'] < -0.2]
+    if top_wb:
+        print(f'\nQuestions where whole_block >> reasoning_only (delta < -0.2, n={len(top_wb)}):')
+        for r in top_wb:
+            print(f'  {r["question_id"]:<20}  raw={r["delta"]:+.4f}')
+        print('  -> Premise text contributes significant predictive weight for these questions.')
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ADDITION 3 — Conclusion probe by mode (with join diagnostic)
+# ══════════════════════════════════════════════════════════════════════════════
+if any_subblock:
+    print('\n' + '=' * 80)
+    print('ADDITION 3 — CONCLUSION PROBE BY MODE  (Block D, L14)')
+    print('=' * 80)
+
+    sb_ids_all = set(e['id'] for mode in SUBBLOCK_MODES for e in subblock_data[mode])
+    pkl_conc_D_ids = set(
+        r['question_id'] for r in records_p3
+        if r.get('conclusion_colon_L14', {}).get('D') is not None
+    )
+    overlap_conc = sb_ids_all & pkl_conc_D_ids
+
+    print(f'Subblock question_ids ({len(sb_ids_all)}): {sorted(sb_ids_all)}')
+    print(f'PKL question_ids with conclusion_D ({len(pkl_conc_D_ids)}): {sorted(pkl_conc_D_ids)}')
+    print(f'Overlap: {len(overlap_conc)}  ->  {sorted(overlap_conc)}')
+    print()
+
+    if not overlap_conc:
+        print('[DATA COVERAGE GAP] The questions with conclusion_D embeddings in the pkl')
+        print('are completely disjoint from the subblock sweep questions. Not a code bug.')
+        print('The join is correct; the data sets do not intersect.')
+        print()
+        print('To enable: re-run the subblock sweep on these questions:')
+        for qid in sorted(pkl_conc_D_ids):
+            print(f'  {qid}')
+        print('Or: re-run extract_fur_embeddings.py to extract conclusion embeddings')
+        print('    Run: sbatch slurms/submit_extract_conclusion_colon.sh')
+    else:
+        mode_ff_lookup = {mode: {e['id']: e['ff_soft'] for e in subblock_data[mode]}
+                          for mode in SUBBLOCK_MODES}
+        probe_rows = []
+        for rec in records_p3:
+            ae = rec.get('anchor_embeddings', {})
+            ce = rec.get('conclusion_colon_L14', {})
+            reas_D = ae.get('Reasoning_D')
+            conc_D = ce.get('D')
+            if reas_D is None or conc_D is None:
+                continue
+            cos_d = cosine_sim(reas_D, conc_D)
+            qid = rec['question_id']
+            row = {'question_id': qid, 'cos_D': cos_d}
+            for mode in SUBBLOCK_MODES:
+                row[mode] = mode_ff_lookup[mode].get(qid, float('nan'))
+            probe_rows.append(row)
+
+        n_probe = len(probe_rows)
+        print(f'Records with Reasoning_D, Conclusion_D, and subblock ff_soft: {n_probe}')
+        print(f'{"Mode":<25} | {"cos_D r":>8} | {"cos_D p":>8} | {"n":>4}')
+        print('─' * 52)
+        cos_r_by_mode = {}
+        for mode in SUBBLOCK_MODES:
+            ff_vals  = [r[mode]    for r in probe_rows if not np.isnan(r[mode])]
+            cos_vals = [r['cos_D'] for r in probe_rows if not np.isnan(r[mode])]
+            n_m = len(ff_vals)
+            if n_m >= 3:
+                r_c, p_c = stats.spearmanr(ff_vals, cos_vals)
+                cos_r_by_mode[mode] = r_c
+                print(f'{SUBBLOCK_MODE_LABELS[mode]:<25} | {r_c:>+8.3f} | {p_c:>8.3f} | {n_m:>4}')
+            else:
+                cos_r_by_mode[mode] = float('nan')
+                print(f'{SUBBLOCK_MODE_LABELS[mode]:<25} | {"n/a":>8} | {"n/a":>8} | {n_m:>4}')
+
+        wb_r = cos_r_by_mode.get('whole_block', float('nan'))
+        ro_r = cos_r_by_mode.get('reasoning_only', float('nan'))
+        print('\nInterpretation:')
+        if not np.isnan(wb_r) and not np.isnan(ro_r):
+            if abs(ro_r) > abs(wb_r):
+                print(f'  reasoning_only |r| ({abs(ro_r):.3f}) > whole_block |r| ({abs(wb_r):.3f}):')
+                print('  the Reasoning slot governs geometric decoupling at the conclusion probe.')
+            else:
+                print(f'  reasoning_only |r| ({abs(ro_r):.3f}) <= whole_block |r| ({abs(wb_r):.3f}):')
+                print('  Premise text also contributes to conclusion-probe coupling.')
+        else:
+            print('  Insufficient data (n < 3 for one or more modes).')
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ADDITION 4 — Efficacy check: cot_step_prob drop per mode
+# ══════════════════════════════════════════════════════════════════════════════
+if any_subblock:
+    print('\n' + '=' * 80)
+    print('ADDITION 4 — EFFICACY CHECK: cot_step_prob drop per mode')
+    print('  ep0_csp  = log-prob of target text after epoch 1 of unlearning')
+    print('  best_csp = log-prob at the epoch with max FF-SOFT drop')
+    print('  drop     = ep0_csp - best_csp  (positive -> prob decreases over epochs)')
+    print('=' * 80)
+
+    def _extract_efficacy(records):
+        out = []
+        for rec in records:
+            ur = rec.get('unlearning_results')
+            if not ur:
+                continue
+            epoch_results = ur.values() if isinstance(ur, dict) else ur
+            correct_idx = ord(rec['correct']) - ord('A')
+            init_prob   = rec['initial_probs'][correct_idx]
+            ep0_csp, best_csp, best_drop = None, None, -float('inf')
+            for i, er in enumerate(epoch_results):
+                if not isinstance(er, dict):
+                    continue
+                csp_list = er.get('cot_step_prob') or er.get('cot_prob')
+                if csp_list is None:
+                    continue
+                csp = float(csp_list[0]) if isinstance(csp_list, list) else float(csp_list)
+                if i == 0:
+                    ep0_csp = csp
+                probs = er.get('probs') or er.get('answer_probs')
+                if probs is not None:
+                    drop = init_prob - list(probs)[correct_idx]
+                    if drop > best_drop:
+                        best_drop = drop
+                        best_csp  = csp
+            if ep0_csp is not None and best_csp is not None:
+                out.append({'ep0_csp': ep0_csp, 'best_csp': best_csp,
+                            'drop': ep0_csp - best_csp})
+        return out
+
+    print(f'{"Mode":<25} | {"N":>4} | {"ep0 mean":>10} | {"best mean":>10} | {"drop mean":>10}')
+    print('─' * 67)
+    eff_by_mode = {}
+    for mode in SUBBLOCK_MODES:
+        recs = _load_subblock_mode(mode, args.subblock_dir)
+        eff  = _extract_efficacy(recs)
+        eff_by_mode[mode] = eff
+        if not eff:
+            print(f'{SUBBLOCK_MODE_LABELS[mode]:<25} | {"—":>4} | {"—":>10} | {"—":>10} | {"—":>10}')
+            continue
+        ep0_m  = float(np.mean([e['ep0_csp']  for e in eff]))
+        best_m = float(np.mean([e['best_csp'] for e in eff]))
+        drop_m = float(np.mean([e['drop']     for e in eff]))
+        print(f'{SUBBLOCK_MODE_LABELS[mode]:<25} | {len(eff):>4} | {ep0_m:>+10.4f} | {best_m:>+10.4f} | {drop_m:>+10.4f}')
+
+    print()
+    print('Note: cot_step_prob is log-probability (negative). drop > 0 means model')
+    print('further reduces target-text probability beyond epoch 1.')
+
+    wb_eff = eff_by_mode.get('whole_block', [])
+    ro_eff = eff_by_mode.get('reasoning_only', [])
+    if wb_eff and ro_eff:
+        wb_drop = float(np.mean([e['drop'] for e in wb_eff]))
+        ro_drop = float(np.mean([e['drop'] for e in ro_eff]))
+        wb_ep0  = float(np.mean([e['ep0_csp'] for e in wb_eff]))
+        ro_ep0  = float(np.mean([e['ep0_csp'] for e in ro_eff]))
+        print('\nInterpretation:')
+        if ro_drop < wb_drop - 0.05:
+            print(f'  reasoning_only drop ({ro_drop:.4f}) < whole_block ({wb_drop:.4f}):')
+            print('  unlearning is less complete on the shorter target; mode differences in')
+            print('  FF-SOFT may partly reflect weaker unlearning, not faithfulness signal.')
+        else:
+            print(f'  reasoning_only drop ({ro_drop:.4f}) approx= whole_block ({wb_drop:.4f}):')
+            print('  unlearning efficacy is comparable; mode differences in FF-SOFT reflect')
+            print('  genuine faithfulness signal differences, not unlearning strength.')
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ADDITION 5 — Qualitative case studies (Cell K): openbook_8-97 and openbook_3
+# ══════════════════════════════════════════════════════════════════════════════
+if any_subblock:
+    print('\n' + '=' * 80)
+    print('ADDITION 5 — QUALITATIVE CASE STUDIES')
+    print('  openbook_8-97 and openbook_3: whole_block ff_soft~=0, reasoning_only ff_hard=True')
+    print('=' * 80)
+
+    CASE_STUDY_IDS = ['openbook_8-97', 'openbook_3']
+    case_recs = {qid: {} for qid in CASE_STUDY_IDS}
+    for mode in SUBBLOCK_MODES:
+        recs = _load_subblock_mode(mode, args.subblock_dir)
+        for rec in recs:
+            if rec['id'] in CASE_STUDY_IDS:
+                case_recs[rec['id']][mode] = rec
+
+    for qid in CASE_STUDY_IDS:
+        print('\n' + '=' * 72)
+        print(f'  CASE STUDY: {qid}')
+        print('=' * 72)
+        base = case_recs[qid].get('whole_block') or next(iter(case_recs[qid].values()), None)
+        if base is None:
+            print('  [no data for this question in subblock dir]')
+            continue
+
+        print(f'Question: {base["question"]}')
+        print(f'Correct:  {base["correct"]}')
+        opts = base.get('options', {})
+        if isinstance(opts, list):
+            for opt in opts:
+                marker = ' <- CORRECT' if opt.startswith(base['correct']) else ''
+                print(f'  {opt}{marker}')
+        else:
+            for k in sorted(opts):
+                marker = ' <- CORRECT' if k == base['correct'] else ''
+                print(f'  {k}) {opts[k]}{marker}')
+        print()
+
+        # Print Answer A block from initial CoT
+        init_cot = base.get('initial_cot')
+        if init_cot:
+            cot_text = init_cot[0] if isinstance(init_cot, list) else init_cot
+            print('Initial CoT -- Answer A block (step_idx=0, the unlearning target):')
+            print('-' * 72)
+            in_A = False
+            for ln in cot_text.split('\n'):
+                if 'Answer A' in ln:
+                    in_A = True
+                if in_A and 'Answer B' in ln:
+                    break
+                if in_A:
+                    print(ln)
+            print()
+
+        # Per-mode results
+        print('Unlearning mode results:')
+        print(f'  {"Mode":<25}  {"ff_soft":>7}  {"ff_hard":>7}')
+        print('  ' + '-' * 42)
+        for mode in SUBBLOCK_MODES:
+            rec = case_recs[qid].get(mode)
+            if rec is None:
+                print(f'  {SUBBLOCK_MODE_LABELS[mode]:<25}  [no data]')
+                continue
+            ur = rec.get('unlearning_results', {})
+            correct_idx = ord(rec['correct']) - ord('A')
+            init_prob   = rec['initial_probs'][correct_idx]
+            init_pred   = int(np.argmax(rec['initial_probs']))
+            ff_hard, ff_soft = False, 0.0
+            for er in (ur.values() if isinstance(ur, dict) else ur):
+                if not isinstance(er, dict):
+                    continue
+                probs = er.get('probs') or er.get('answer_probs')
+                if probs:
+                    if int(np.argmax(probs)) != init_pred:
+                        ff_hard = True
+                    drop = init_prob - list(probs)[correct_idx]
+                    if drop > ff_soft:
+                        ff_soft = drop
+            print(f'  {SUBBLOCK_MODE_LABELS[mode]:<25}  {ff_soft:>7.4f}  {str(ff_hard):>7}')
+        print()
+
+        # Print per-mode target texts
+        print('Unlearning targets by mode:')
+        for mode in SUBBLOCK_MODES:
+            rec = case_recs[qid].get(mode)
+            if rec is None:
+                continue
+            target = str(rec.get('unlearn_target_text', '')).strip()
+            print(f'  [{SUBBLOCK_MODE_LABELS[mode]}]')
+            for ln in target.split('\n'):
+                if ln.strip():
+                    print(f'    {ln}')
+            print()
+        print('  Hypothesis: whole_block NPO gradient is diluted across the full Answer A')
+        print('  block, whereas reasoning_only targets exactly the causal sentence.')
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ADDITION 6 — Geometry-faithfulness correlation: ff_soft vs delta_A by mode
+# ══════════════════════════════════════════════════════════════════════════════
+# NOTE: A rank test cannot differentiate modes here. All subblock questions
+# have step_idx=0, so the salient block is always A for every mode. Since
+# anchor embeddings are fixed (pre-unlearning), delta_A ranks are identical
+# across modes — making the rank test mode-independent by construction.
+# The correct test is Spearman(ff_soft, delta_A) per mode.
+if any_subblock:
+    print('\n' + '=' * 80)
+    print('ADDITION 6 — GEOMETRY-FAITHFULNESS CORRELATION BY MODE')
+    print('  Spearman(ff_soft, delta_A) per mode  |  delta_A = ||Reasoning_A - Answer_A||')
+    print('  Also: block A rank test (once — mode-independent since salient block = A always)')
+    print('=' * 80)
+
+    RANK6_MODES = {
+        'whole_block':           'Whole Block',
+        'premise_only':          'Premise Only',
+        'reasoning_only':        'Reasoning Only',
+        'premise_and_reasoning': 'Premise + Reasoning',
+    }
+
+    def _load_max_ff_soft_script(mode_str):
+        """Load {qid: max_ff_soft} at step_idx=0 from per-question subblock files."""
+        result = {}
+        for fpath in sorted(_glob.glob(os.path.join(args.subblock_dir,
+                                                     f'subblock_{mode_str}_q*.jsonl'))):
+            with open(fpath) as fh:
+                for line in fh:
+                    rec = json.loads(line.strip())
+                    if rec.get('step_idx', 0) != 0:
+                        continue
+                    qid = rec['id']
+                    init_probs = rec.get('initial_probs', [])
+                    cidx = ord(rec.get('correct', 'A')) - ord('A')
+                    if not init_probs or cidx >= len(init_probs):
+                        continue
+                    ip = init_probs[cidx]
+                    ur = rec.get('unlearning_results', {})
+                    items = ur.items() if isinstance(ur, dict) else enumerate(ur)
+                    best = 0.0
+                    for _, er in items:
+                        if not isinstance(er, dict):
+                            continue
+                        probs = er.get('probs') or er.get('answer_probs') or []
+                        if probs and cidx < len(probs):
+                            drop = ip - list(probs)[cidx]
+                            if drop > best:
+                                best = drop
+                    result[qid] = best
+        return result
+
+    # Load ff_soft per mode
+    ff6_by_mode = {mode: _load_max_ff_soft_script(mode) for mode in RANK6_MODES}
+
+    # Diagnostic: confirm values differ across modes
+    print('FF-SOFT values per mode (sorted by question_id):')
+    all_qids6 = sorted(set(q for d in ff6_by_mode.values() for q in d))
+    for mode6, lbl6 in RANK6_MODES.items():
+        vals = [round(ff6_by_mode[mode6].get(q, float('nan')), 4) for q in all_qids6]
+        print(f'  {lbl6}: {vals}')
+    print()
+
+    # Build delta lookup from anchor embeddings (mode-independent)
+    delta6 = {}   # qid -> {A: float, B: float, C: float, D: float}
+    for qid6, recs6 in rec_by_qid.items():
+        if qid6 not in all_qids6:
+            continue
+        ae6 = recs6[0].get('anchor_embeddings', {})
+        d = {}
+        for lt6 in 'ABCD':
+            v = _rdelta(ae6, lt6)
+            if v is not None:
+                d[lt6] = v
+        if d:
+            delta6[qid6] = d
+
+    # ── Part 1: Block A rank test — run once (mode-independent) ───────────────
+    bcmap6_any = defaultdict(list)
+    ff6_wb = ff6_by_mode['whole_block']
+    for qid6, ff6v in ff6_wb.items():
+        bcmap6_any[qid6].append({'step_idx': 0, 'ff_soft': ff6v,
+                                  'ff_hard': False, 'condition': None})
+    rr6, ranks6, _, _ = run_rank_test(bcmap6_any, rec_by_qid,
+                                       anc_key='anchor_embeddings', label='L14')
+    n6  = len(rr6)
+    hr6 = sum(1 for r in rr6 if r['rank_of_salient'] == 1) / n6 if n6 else float('nan')
+    mr6 = float(np.mean(ranks6)) if ranks6 else float('nan')
+    pw6 = float('nan')
+    if n6 >= 6:
+        diffs6 = [r - NULL_MEDIAN_5 for r in ranks6]
+        if len(set(diffs6)) > 1:
+            _, pw6 = stats.wilcoxon(diffs6)
+
+    print('Block A rank across all 15 subblock questions (mode-independent):')
+    print(f'  Hit rate (rank=1): {hr6:.1%}  (null: 20.0%)')
+    print(f'  Mean rank:         {mr6:.2f}   (null: 3.00)')
+    pw6_s = f'{pw6:.3f}' if not np.isnan(pw6) else 'n/a'
+    print(f'  Wilcoxon p:        {pw6_s}')
+    print('  Note: this result is fixed for all modes — anchor embeddings are')
+    print('  pre-unlearning and identical regardless of unlearning target.')
+    print()
+
+    # ── Part 2: Spearman(ff_soft, delta_A) per mode ───────────────────────────
+    print(f'{"FF-SOFT source":<25} | {"Spearman r":>11} | {"p-value":>9} | {"n":>4}')
+    print('-' * 57)
+    add6_corr = {}
+    for mode6, lbl6 in RANK6_MODES.items():
+        ff_d = ff6_by_mode[mode6]
+        pairs = [(ff_d[q], delta6[q]['A'])
+                 for q in all_qids6
+                 if q in ff_d and q in delta6 and 'A' in delta6[q]]
+        if len(pairs) < 3:
+            print(f'{lbl6:<25} | {"n/a":>11} | {"n/a":>9} | {len(pairs):>4}')
+            add6_corr[mode6] = float('nan')
+            continue
+        ff_v6, da_v6 = zip(*pairs)
+        r6, p6 = stats.spearmanr(ff_v6, da_v6)
+        add6_corr[mode6] = r6
+        print(f'{lbl6:<25} | {r6:>+11.3f} | {p6:>9.3f} | {len(pairs):>4}')
+
+    print()
+
+    # ── Part 3: Extended table r_A / r_B / r_C / r_D (whole_block vs reasoning_only) ──
+    print('Extended block correlation (whole_block vs reasoning_only):')
+    print(f'{"FF-SOFT source":<25}' + ''.join(f' | {"r_" + lt:>7}' for lt in 'ABCD'))
+    print('-' * (25 + 4 * 10))
+    for mode6 in ['whole_block', 'reasoning_only']:
+        lbl6 = RANK6_MODES[mode6]
+        ff_d = ff6_by_mode[mode6]
+        row = f'{lbl6:<25}'
+        for lt6 in 'ABCD':
+            pairs = [(ff_d[q], delta6[q][lt6])
+                     for q in all_qids6
+                     if q in ff_d and q in delta6 and lt6 in delta6[q]]
+            if len(pairs) < 3:
+                row += f' | {"n/a":>7}'
+            else:
+                ff_v6, dv6 = zip(*pairs)
+                r6, _ = stats.spearmanr(ff_v6, dv6)
+                row += f' | {r6:>+7.3f}'
+        print(row)
+
+    print()
+    ro_r = add6_corr.get('reasoning_only', float('nan'))
+    wb_r = add6_corr.get('whole_block',    float('nan'))
+    print('Interpretation:')
+    if not np.isnan(ro_r) and not np.isnan(wb_r):
+        if abs(ro_r) > abs(wb_r):
+            print(f'  reasoning_only |r_A| ({abs(ro_r):.3f}) > whole_block |r_A| ({abs(wb_r):.3f}):')
+            print('  the Reasoning-slot faithfulness label is more geometrically coherent')
+            print('  with block A displacement — supports Reasoning as the primary signal carrier.')
+        else:
+            print(f'  reasoning_only |r_A| ({abs(ro_r):.3f}) <= whole_block |r_A| ({abs(wb_r):.3f}):')
+            print('  whole_block or premise labels align equally well with block A geometry.')
+            print('  The Reasoning slot alone does not provide a stronger geometric signal.')
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SPECIFICITY-DISPLACEMENT HYPOTHESIS
+# Does high geometric displacement covary with broad unlearning (specificity_delta)?
+# ══════════════════════════════════════════════════════════════════════════════
+print('\n' + '=' * 80)
+print('SPECIFICITY-DISPLACEMENT HYPOTHESIS')
+print('Does high geometric displacement covary with broad unlearning (high specificity_delta)?')
+print('=' * 80)
+
+if BC_PATH and os.path.exists(BC_PATH):
+    # Build (qid, step_idx) → specificity_delta from the bc_raw already loaded above
+    _spec_map = {}
+    for _key, _sel in bc_raw.items():
+        _sidx = _sel.get('step_idx', 0)
+        _qid  = _key[:-len(f'_step{_sidx}')] if _key.endswith(f'_step{_sidx}') else _key
+        _spec_map[(_qid, _sidx)] = _sel.get('specificity_delta')
+
+    BLOCK_TO_STEP = {v: k for k, v in STEP_TO_BLOCK.items()}  # 'A'→0, ..., 'Final'→4
+
+    # ── Build flat table: one row per (question, block) ───────────────────────
+    _rows    = []
+    _skipped = []
+
+    for qid in sorted(bc_map):
+        valid_steps = [s for s in bc_map[qid] if s['ff_soft'] is not None and s['ff_soft'] > 0]
+        if not valid_steps:
+            _skipped.append((qid, 'no valid steps'))
+            continue
+
+        salient      = max(valid_steps, key=lambda s: s['ff_soft'])
+        salient_step = salient['step_idx']
+        salient_blk  = STEP_TO_BLOCK.get(salient_step, 'Final')
+
+        if salient_blk == 'Final':
+            _skipped.append((qid, 'salient=Final'))
+            continue
+
+        recs_q      = rec_by_qid.get(qid, [])
+        salient_rec = next((r for r in recs_q if r.get('step_idx') == salient_step),
+                           recs_q[0] if recs_q else None)
+        if salient_rec is None:
+            _skipped.append((qid, 'no pkl record'))
+            continue
+
+        ae = salient_rec['anchor_embeddings']
+
+        deltas = {}
+        for lt in BLOCK_LETTERS:
+            d = _rdelta(ae, lt)
+            if d is not None:
+                deltas[lt] = d
+        fd = _fdelta(ae)
+        if fd is not None:
+            deltas['Final'] = fd
+
+        if len(deltas) < 5:
+            _skipped.append((qid, f'missing deltas {set(["A","B","C","D","Final"]) - set(deltas)}'))
+            continue
+
+        sorted_blks = sorted(deltas, key=lambda b: deltas[b], reverse=True)
+        geo_rank    = {b: sorted_blks.index(b) + 1 for b in sorted_blks}
+
+        for blk in ['A', 'B', 'C', 'D', 'Final']:
+            step_i = BLOCK_TO_STEP.get(blk, 4)
+            _rows.append({
+                'question_id':       qid,
+                'block':             blk,
+                'step_idx':          step_i,
+                'is_salient':        blk == salient_blk,
+                'delta_magnitude':   round(deltas[blk], 4),
+                'geo_rank':          geo_rank[blk],
+                'specificity_delta': _spec_map.get((qid, step_i)),
+            })
+
+    df_spec = pd.DataFrame(_rows)
+    n_q_spec = df_spec['question_id'].nunique()
+    print(f'\nQuestions included: {n_q_spec}  |  Total rows: {len(df_spec)}')
+    if _skipped:
+        for _qid, _reason in _skipped:
+            print(f'  [SKIP] {_qid}: {_reason}')
+    print()
+
+    # Print flat table
+    print(f'  {"question_id":<22} {"blk":<5} {"sal":<5} {"delta_mag":<11} {"geo_rank":<10} spec_delta')
+    print('  ' + '─' * 66)
+    for _, r in df_spec.sort_values(['question_id', 'geo_rank']).iterrows():
+        sal_str   = '★' if r['is_salient'] else ' '
+        spec_str  = str(int(r['specificity_delta'])) if pd.notna(r['specificity_delta']) else 'n/a'
+        sal_label = 'yes' if r['is_salient'] else 'no'
+        print(f'  {r["question_id"]:<22} {sal_str}{r["block"]:<4} {sal_label:<5} '
+              f'{r["delta_magnitude"]:<11.4f} {r["geo_rank"]:<10} {spec_str}')
+    print()
+
+    # ── TEST A ────────────────────────────────────────────────────────────────
+    print('─' * 78)
+    print('TEST A — Non-salient blocks ranked above salient: higher specificity_delta?')
+    print('─' * 78)
+
+    _above_spec   = []
+    _salient_spec = []
+
+    for qid, grp in df_spec.groupby('question_id'):
+        sal_row  = grp[grp['is_salient']].iloc[0]
+        sal_rank = sal_row['geo_rank']
+        sal_sd   = sal_row['specificity_delta']
+
+        if sal_rank == 1 or pd.isna(sal_sd):
+            continue
+
+        above = grp[(~grp['is_salient']) &
+                    (grp['geo_rank'] < sal_rank) &
+                    (grp['specificity_delta'].notna())]
+        if above.empty:
+            continue
+
+        for _, ab in above.iterrows():
+            _above_spec.append(ab['specificity_delta'])
+        _salient_spec.append(sal_sd)
+
+    if len(_above_spec) < 2 or len(_salient_spec) < 2:
+        print(f'  Insufficient data (above n={len(_above_spec)}, salient n={len(_salient_spec)})')
+        _p_mw = 1.0
+    else:
+        _mean_above = np.mean(_above_spec)
+        _mean_sal   = np.mean(_salient_spec)
+        _u, _p_mw   = stats.mannwhitneyu(_above_spec, _salient_spec, alternative='greater')
+        print(f'  Questions where salient != rank 1:       {len(_salient_spec)}')
+        print(f'  Blocks above salient  (n={len(_above_spec):>2}):  mean spec_delta = {_mean_above:.2f}')
+        print(f'  Salient blocks        (n={len(_salient_spec):>2}):  mean spec_delta = {_mean_sal:.2f}')
+        print(f'  Direction: {"above > salient" if _mean_above > _mean_sal else "above <= salient"}')
+        print(f'  Mann-Whitney U = {_u:.1f},  p (one-sided, above > salient) = {_p_mw:.3f}')
+        if _p_mw < 0.05:
+            print('  -> SIGNIFICANT: outranking non-salient blocks cause broader disruption')
+        else:
+            print('  -> not significant')
+    print()
+
+    # ── TEST B ────────────────────────────────────────────────────────────────
+    print('─' * 78)
+    print('TEST B — Spearman correlations across all (question, block) rows with valid spec_delta')
+    print('─' * 78)
+
+    df_sv  = df_spec[df_spec['specificity_delta'].notna()].copy()
+    n_sv   = len(df_sv)
+    print(f'  Rows with valid specificity_delta: {n_sv}  (excluded: {len(df_spec) - n_sv})')
+    print()
+
+    if n_sv >= 5:
+        _r_mag, _p_mag = stats.spearmanr(df_sv['specificity_delta'], df_sv['delta_magnitude'])
+        _r_rnk, _p_rnk = stats.spearmanr(df_sv['specificity_delta'], df_sv['geo_rank'])
+
+        print(f'  spec_delta vs delta_magnitude:')
+        print(f'    Spearman r = {_r_mag:+.3f},  p = {_p_mag:.3f}  (n={n_sv})')
+        print(f'    Direction: {"higher displacement -> broader disruption" if _r_mag > 0 else "higher displacement -> narrower disruption"}')
+        if _p_mag < 0.05:
+            print('    -> SIGNIFICANT')
+        print()
+        print(f'  spec_delta vs geo_rank (rank 1 = largest delta):')
+        print(f'    Spearman r = {_r_rnk:+.3f},  p = {_p_rnk:.3f}  (n={n_sv})')
+        print(f'    (expect r < 0 if lobotomy: lower rank number = larger delta = broader disruption)')
+        if _p_rnk < 0.05:
+            print('    -> SIGNIFICANT')
+    else:
+        _p_mag, _p_rnk = 1.0, 1.0
+        print('  Insufficient data.')
+    print()
+
+    # ── TEST C ────────────────────────────────────────────────────────────────
+    print('─' * 78)
+    print('TEST C — Per question: argmax(delta_magnitude) == argmax(specificity_delta)?')
+    print('  (restricted to blocks with valid specificity_delta; null = 1/5 = 0.20)')
+    print('─' * 78)
+
+    _hits, _total_c = 0, 0
+    for qid, grp in df_spec.groupby('question_id'):
+        gv = grp[grp['specificity_delta'].notna()]
+        if len(gv) < 2:
+            continue
+        argmax_delta = gv.loc[gv['delta_magnitude'].idxmax(), 'block']
+        argmax_spec  = gv.loc[gv['specificity_delta'].idxmax(), 'block']
+        _hits    += int(argmax_delta == argmax_spec)
+        _total_c += 1
+
+    if _total_c > 0:
+        _hit_rate = _hits / _total_c
+        _binom_p  = stats.binomtest(_hits, _total_c, 1/5, alternative='greater').pvalue
+        print(f'  Questions with >=2 valid spec_delta steps: {_total_c}')
+        print(f'  Hit rate (argmax match): {_hits}/{_total_c} = {_hit_rate:.2f}  (null = 0.20)')
+        print(f'  Binomial p (one-sided, hit_rate > 0.20): {_binom_p:.3f}')
+        print(f'  Direction: {"above chance" if _hit_rate > 0.20 else "at or below chance"}  ({_hit_rate:.2f} vs 0.20)')
+        if _binom_p < 0.05:
+            print('  -> SIGNIFICANT')
+        else:
+            print('  -> not significant')
+    else:
+        _binom_p = 1.0
+        print('  No questions with >=2 valid spec_delta steps.')
+    print()
+
+    # ── INTERPRETATION ────────────────────────────────────────────────────────
+    print('=' * 78)
+    print('INTERPRETATION')
+    print('=' * 78)
+    _any_sig = (_p_mw < 0.05) or (_p_mag < 0.05) or (_p_rnk < 0.05) or (_binom_p < 0.05)
+    if _any_sig:
+        print('  >=1 test significant -> lobotomy signal present.')
+        print('  Large geometric displacement covaries with broad unlearning disruption.')
+        print('  Non-salient blocks that outrank the salient block in displacement may')
+        print('  corrupt general knowledge rather than surgically targeting the question.')
+    else:
+        print('  No test reached significance. Geometric displacement does not reliably')
+        print('  predict unlearning breadth (specificity_delta). The lobotomy hypothesis')
+        print('  is not supported: non-salient outranking blocks are geometrically large')
+        print('  but do not appear to cause broader held-out prediction disruption.')
+else:
+    print('  [SKIP] best_conditions JSON not available — cannot compute specificity_delta.')
 
 print('\n' + '=' * 80)
 print('ANALYSIS COMPLETE')

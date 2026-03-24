@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/run_geometry_analysis.py", line 1373, in <module>
+    subblock_data[mode] = _compute_subblock_ff(recs)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry/run_geometry_analysis.py", line 1351, in _compute_subblock_ff
+    probs = epoch_result.get('probs') or epoch_result.get('answer_probs')
+            ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'

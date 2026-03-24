@@ -1,0 +1,122 @@
+{
+  "openbook_1161": {
+    "question_text": "Moon phases",
+    "answer_option_A": "A): change the moon into cheese",
+    "premise_text": "* Premise: The moon's appearance changes over time.",
+    "judgment": "GENERIC",
+    "explanation": "The premise states only that the moon's appearance changes over time, which is a broad background fact applicable to many moon-related questions and does not provide any specific information to evaluate the claim that moon phases \"change the moon into cheese.\"",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_1334": {
+    "question_text": "An example of water being an electrical conductor would be what?",
+    "answer_option_A": "A): lightening hitting water and organisms inside dying",
+    "premise_text": "* Premise: Water is an electrical conductor.",
+    "judgment": "GENERIC",
+    "explanation": "The premise \"Water is an electrical conductor\" is a broad, general fact that applies universally to any question about water's conductivity and does not encode any specific information about lightning, organisms, or the particular scenario described in the answer option.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_1955": {
+    "question_text": "Lightning may lead to",
+    "answer_option_A": "A): damage to local foliage",
+    "premise_text": "* Premise: Lightning is a natural phenomenon that can cause damage to the environment.",
+    "judgment": "GENERIC",
+    "explanation": "The premise states only that lightning can cause environmental damage, which is a broadly applicable background statement that does not specifically address foliage, vegetation, or plant-related damage needed to evaluate answer option A.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_3": {
+    "question_text": "Sources of air pollution are",
+    "answer_option_A": "A): Walking",
+    "premise_text": "* Premise: Human activities can contribute to air pollution.",
+    "judgment": "GENERIC",
+    "explanation": "The premise merely states that human activities can contribute to air pollution, which is a broad background statement that applies equally to countless questions about pollution sources and provides no specific information to help evaluate whether \"walking\" is a source of air pollution.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_385": {
+    "question_text": "Prey are eaten by",
+    "answer_option_A": "A): an animal herded by sheep dogs",
+    "premise_text": "* Premise: Sheep dogs are used to herd animals.",
+    "judgment": "SPECIFIC",
+    "explanation": "The premise directly references sheep dogs and their role in herding animals, which is content specifically relevant to evaluating answer option A about \"an animal herded by sheep dogs.\"",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_406": {
+    "question_text": "Dairy is a source of",
+    "answer_option_A": "A): a vitamin that prevents blood loss",
+    "premise_text": "* Premise: Dairy products contain various nutrients.",
+    "judgment": "GENERIC",
+    "explanation": "The premise only states that dairy products contain \"various nutrients,\" which is a broadly true, non-specific statement that provides no discriminating information about whether dairy specifically contains a vitamin that prevents blood loss (vitamin K).",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_7-1132": {
+    "question_text": "Atomic 26 is drawn to a device, it could be",
+    "answer_option_A": "A): magnetized",
+    "premise_text": "* Premise: Atomic 26 is drawn to a device.",
+    "judgment": "SPECIFIC",
+    "explanation": "The premise directly references \"Atomic 26\" (iron, a specific element) and states it is \"drawn to a device,\" which is factual content directly relevant to evaluating whether the device could be magnetized, since iron is a ferromagnetic material attracted to magnets.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_7-171": {
+    "question_text": "If hot water were poured on an arm, what would happen to internal organs?",
+    "answer_option_A": "A): they would be scalded",
+    "premise_text": "* Premise: Hot water can cause damage to human tissue.",
+    "judgment": "GENERIC",
+    "explanation": "The premise states only that hot water can damage human tissue, which is a broadly applicable background fact that does not specifically address internal organs, the mechanism of scalding, or how pouring hot water on an arm would affect organs deeper in the body.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_7-262": {
+    "question_text": "A warm-weather organism can be found in",
+    "answer_option_A": "A): the Sahara",
+    "premise_text": "* Premise: The Sahara is a desert.",
+    "judgment": "SPECIFIC",
+    "explanation": "The premise identifies the Sahara by name and classifies it as a desert, which is directly relevant to evaluating whether it is a suitable habitat for warm-weather organisms in this specific question.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_7-732": {
+    "question_text": "Coal-fire power stations heat coal to incredible temps in order to",
+    "answer_option_A": "A): produce energy",
+    "premise_text": "* Premise: Coal-fire power stations use high temperatures to convert coal into a usable form.",
+    "judgment": "SPECIFIC",
+    "explanation": "The premise makes a domain-specific causal claim about coal-fire power stations using high temperatures to convert coal into a usable form, which directly relates to the mechanism described in the question and is relevant to evaluating whether energy production is the purpose.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_8-367": {
+    "question_text": "Building new areas to dispose of refuse may lead to",
+    "answer_option_A": "A): community concerns over environmental impact",
+    "premise_text": "* Premise: Building new areas to dispose of refuse may lead to environmental concerns.",
+    "judgment": "SPECIFIC",
+    "explanation": "The premise directly states a causal relationship between building new refuse disposal areas and environmental concerns, which directly encodes the discriminating information needed to evaluate answer option A about community concerns over environmental impact.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_8-97": {
+    "question_text": "Someone wants their electromagnets to work, but is having difficulty powering them. In order to make them work, they need to",
+    "answer_option_A": "A): run wire through currants",
+    "premise_text": "* Premise: Electromagnets require a flow of electric current to function.",
+    "judgment": "SPECIFIC",
+    "explanation": "The premise directly states the mechanism by which electromagnets function (requiring electric current flow), which is directly relevant to evaluating whether \"running wire through currants\" (a homophone-based distractor for \"currents\") addresses the powering difficulty described in the question.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_9-29": {
+    "question_text": "What could be a positive aspect of a tree being cut down?",
+    "answer_option_A": "A): the plants that were under the tree will have access to more light",
+    "premise_text": "* Premise: The tree is cut down.",
+    "judgment": "SPECIFIC",
+    "explanation": "The premise directly states that the tree is cut down, which is the specific causal event central to evaluating whether plants underneath would gain more light access.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_9-655": {
+    "question_text": "if the earth was a living room, what can be done to melt the glaciers?",
+    "answer_option_A": "A): someone would turn up the room heater",
+    "premise_text": "* Premise: The Earth's temperature is currently below the melting point of glaciers.",
+    "judgment": "GENERIC",
+    "explanation": "This premise states a broadly applicable background fact about Earth's temperature relative to glacier melting points, but does not encode any information specific to the room heater analogy or the particular answer option being evaluated.",
+    "model": "claude-sonnet-4-6"
+  },
+  "openbook_9-993": {
+    "question_text": "A company makes notebooks for college courses, so their main material is",
+    "answer_option_A": "A): chips",
+    "premise_text": "* Premise: The company makes notebooks for college courses.",
+    "judgment": "SPECIFIC",
+    "explanation": "The premise directly restates the specific context of the question\u2014that the company makes notebooks for college courses\u2014which is the named entity and domain-specific claim needed to evaluate what material they would primarily use.",
+    "model": "claude-sonnet-4-6"
+  }
+}
