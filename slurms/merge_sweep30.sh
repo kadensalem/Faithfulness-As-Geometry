@@ -7,7 +7,6 @@
 #   cd /uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry
 #   bash slurms/merge_sweep30.sh
 
-set -euo pipefail
 
 PROJECT_ROOT="/uufs/chpc.utah.edu/common/home/u1427573/Faithfulness-As-Geometry"
 cd "$PROJECT_ROOT"
